@@ -6,7 +6,8 @@
           <icon name="chart-bar" class="text-icon"></icon>
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">数据统计图</span>
+          <span class="font-size: 1.5rem;color: #fff;margin-left: 0.5rem;
+          margin-right: 0.5rem;">康复指标恢复情况</span>
         </div>
       </div>
       <div>
@@ -26,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$box-height: 520px;
+$box-height: 400px;
 $box-width: 100%;
 #bottomLeft {
   padding: 20px 16px;

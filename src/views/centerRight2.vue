@@ -5,10 +5,9 @@
         <span>
           <icon name="align-left" class="text-icon"></icon>
         </span>
-        <span class="fs-xl text mx-2">产品销售渠道分析</span>
+        <span class="margin-left:0.75rem;color:blue;font-weight: bold;">当前康复量表得分</span>
       </div>
-      <div class="d-flex ai-center flex-column body-box">
-        <dv-capsule-chart class="dv-cap-chart" :config="config" />
+      <div class="display: flex;align-items: center;flex-direction: column; body-box">
         <centerRight2Chart1 />
       </div>
     </div>
@@ -53,8 +52,8 @@ export default {
 
 <style lang="scss" scoped>
 #centerRight2 {
-  $box-height: 410px;
-  $box-width: 340px;
+  $box-height: 100%;
+  $box-width: 100%;
   padding: 5px;
   height: $box-height;
   width: $box-width;
@@ -67,14 +66,6 @@ export default {
   }
   .text {
     color: #c3cbde;
-  }
-  .body-box {
-    border-radius: 10px;
-    overflow: hidden;
-    .dv-cap-chart {
-      width: 100%;
-      height: 160px;
-    }
   }
 }
 </style>

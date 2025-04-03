@@ -4,7 +4,7 @@
     <Echart
       :options="options"
       id="bottomLeftChart"
-      height="480px"
+      height="400px"
       width="100%"
     ></Echart>
   </div>
@@ -43,9 +43,10 @@ export default {
             }
           },
           legend: {
-            data: ["已贯通", "计划贯通", "贯通率"],
+            data: ["舒张压", "收缩压", "心率"],
             textStyle: {
-              color: "#B4B4B4"
+              color: "#B4B4B4",
+              fontSize: 14
             },
             top: "0%"
           },
@@ -92,7 +93,7 @@ export default {
           ],
           series: [
             {
-              name: "贯通率",
+              name: "心率",
               type: "line",
               smooth: true,
               showAllSymbol: true,
@@ -107,7 +108,7 @@ export default {
               data: newData.rateData
             },
             {
-              name: "已贯通",
+              name: "舒张压",
               type: "bar",
               barWidth: 10,
               itemStyle: {
@@ -122,7 +123,7 @@ export default {
               data: newData.barData
             },
             {
-              name: "计划贯通",
+              name: "收缩压",
               type: "bar",
               barGap: "-100%",
               barWidth: 10,

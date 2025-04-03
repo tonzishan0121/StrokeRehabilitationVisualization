@@ -15,7 +15,7 @@ export default {
         weekCategory: [],
         radarData: [],
         radarDataAvg: [],
-        maxData: 12000,
+        maxData: 60,
         weekMaxData: [],
         weekLineData: []
       }
@@ -42,8 +42,6 @@ export default {
       this.cdata.weekCategory = [];
       this.cdata.weekMaxData = [];
       this.cdata.weekLineData = [];
-      this.cdata.radarData = [];
-      this.cdata.radarDataAvg = [];
 
       let dateBase = new Date();
       this.cdata.year = dateBase.getFullYear();
@@ -51,33 +49,12 @@ export default {
       for (let i = 0; i < 7; i++) {
         // 日期
         let date = new Date();
-        this.cdata.weekCategory.unshift([date.getMonth() + 1, date.getDate()-i].join("/"));
+        this.cdata.weekCategory.unshift([date.getMonth() , date.getDate()-i+7].join("/"));
 
         // 折线图数据
         this.cdata.weekMaxData.push(this.cdata.maxData);
-        let distance = Math.round(Math.random() * 11000 + 500);
+        let distance = Math.round(Math.random() * 20 + 30);
         this.cdata.weekLineData.push(distance);
-
-        // 雷达图数据
-        // 我的指标
-        let averageSpeed = +(Math.random() * 5 + 3).toFixed(3);
-        let maxSpeed = averageSpeed + +(Math.random() * 3).toFixed(2);
-        let hour = +(distance / 1000 / averageSpeed).toFixed(1);
-        let radarDayData = [distance, averageSpeed, maxSpeed, hour];
-        this.cdata.radarData.unshift(radarDayData);
-
-        // 平均指标
-        let distanceAvg = Math.round(Math.random() * 8000 + 4000);
-        let averageSpeedAvg = +(Math.random() * 4 + 4).toFixed(3);
-        let maxSpeedAvg = averageSpeedAvg + +(Math.random() * 2).toFixed(2);
-        let hourAvg = +(distance / 1000 / averageSpeed).toFixed(1);
-        let radarDayDataAvg = [
-          distanceAvg,
-          averageSpeedAvg,
-          maxSpeedAvg,
-          hourAvg
-        ];
-        this.cdata.radarDataAvg.unshift(radarDayDataAvg);
       }
 
     }

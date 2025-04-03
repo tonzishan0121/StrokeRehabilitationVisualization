@@ -1,132 +1,104 @@
 <template>
-  <div>
-    <Echart
-      :options="options"
-      id="centreRight2Chart1"
-      height="200px"
-      width="260px"
-    ></Echart>
-  </div>
+  <div ref="chartRef" style="width: 600px; height: 400px;"></div>
 </template>
 
 <script>
-import Echart from '@/common/echart'
+import * as echarts from 'echarts';
+
 export default {
-  data () {
+  name: 'RadarChart',
+  data() {
     return {
-      options: {},
+      myChart: null, // 用于存储 ECharts 实例
     };
   },
-  components: {
-    Echart,
+  mounted() {
+    this.initChart();
   },
-  props: {
-    cdata: {
-      type: Object,
-      default: () => ({})
+  methods: {
+    initChart() {
+      // 获取 DOM 元素
+      const chartDom = this.$refs.chartRef;
+      this.myChart = echarts.init(chartDom);
+
+      // 雷达图配置
+      const option = {
+        title: {
+          text: '',
+          left: 'center',
+          textStyle: {
+            color: '#ffffff', // 修改标题颜色
+            fontSize: 18, // 修改标题字体大小
+            fontWeight: 'bold' // 修改标题字体粗细
+          }
+        },
+        tooltip: {},
+        legend: {
+          data: ['康复量表得分'],
+          align: 'left',
+          textStyle: {
+            color: '#ffffff', // 修改图例文字颜色
+            fontSize: 18 // 修改图例文字大小
+          }
+        },
+        radar: {
+          indicator: [
+            { name: 'S5Q', max: 100 },
+            { name: 'RASS', max: 100 },
+            { name: 'MMASA ', max: 100 },
+            { name: 'MRCsum ', max: 100 },
+            { name: 'BBS sit-to-stand', max: 100 },
+            { name: 'BBS standing', max: 100 },
+            { name: 'BBS sitting', max: 100 },
+            { name: 'FOIS', max: 100 }
+          ],
+          name: {
+            textStyle: {
+              color: '#ffffff', // 修改指示器名称颜色
+              fontSize: 16 // 修改指示器名称大小
+            }
+          }
+        },
+        series: [
+          {
+            name: '某指标',
+            type: 'radar',
+            data: [
+              {
+                value: [80, 50, 30, 40, 70, 60,90,100],
+                fontSize: 12,
+                name: '得分',
+                areaStyle: {
+                  color: 'rgba(255, 215, 0, 0.5)' // 修改区域颜色
+                },
+                lineStyle: {
+                  color: '#ffd700', // 修改线条颜色
+                  width: 2 // 修改线条宽度
+                }
+              }
+            ]
+          }
+        ],
+        backgroundColor: '#0d1223' // 修改背景颜色
+      };
+
+      // 设置 ECharts 配置
+      this.myChart.setOption(option);
+
+      // 监听窗口大小变化，重新绘制图表
+      window.addEventListener('resize', this.myChart.resize);
     },
   },
-  watch: {
-    cdata: {
-      handler (newData) {
-        // 固定样式数据
-        let lineStyle = {
-          normal: {
-            width: 1,
-            opacity: 0.5
-          }
-        };
-
-        this.options = {
-          radar: {
-            indicator: newData.indicatorData,
-            shape: "circle",
-            splitNumber: 5,
-            radius: ["0%", "65%"],
-            name: {
-              textStyle: {
-                color: "rgb(238, 197, 102)"
-              }
-            },
-            splitLine: {
-              lineStyle: {
-                color: [
-                  "rgba(238, 197, 102, 0.1)",
-                  "rgba(238, 197, 102, 0.2)",
-                  "rgba(238, 197, 102, 0.4)",
-                  "rgba(238, 197, 102, 0.6)",
-                  "rgba(238, 197, 102, 0.8)",
-                  "rgba(238, 197, 102, 1)"
-                ].reverse()
-              }
-            },
-            splitArea: {
-              show: false
-            },
-            axisLine: {
-              lineStyle: {
-                color: "rgba(238, 197, 102, 0.5)"
-              }
-            }
-          },
-          series: [
-            {
-              name: "北京",
-              type: "radar",
-              lineStyle: lineStyle,
-              data: newData.dataBJ,
-              symbol: "none",
-              itemStyle: {
-                normal: {
-                  color: "#F9713C"
-                }
-              },
-              areaStyle: {
-                normal: {
-                  opacity: 0.1
-                }
-              }
-            },
-            {
-              name: "上海",
-              type: "radar",
-              lineStyle: lineStyle,
-              data: newData.dataSH,
-              symbol: "none",
-              itemStyle: {
-                normal: {
-                  color: "#B3E4A1"
-                }
-              },
-              areaStyle: {
-                normal: {
-                  opacity: 0.05
-                }
-              }
-            },
-            {
-              name: "广州",
-              type: "radar",
-              lineStyle: lineStyle,
-              data: newData.dataGZ,
-              symbol: "none",
-              itemStyle: {
-                normal: {
-                  color: "rgb(238, 197, 102)"
-                }
-              },
-              areaStyle: {
-                normal: {
-                  opacity: 0.05
-                }
-              }
-            } //end
-          ]
-        }
-      },
-      immediate: true,
-      deep: true
+  beforeDestroy() {
+    // 组件销毁时移除事件监听
+    if (this.myChart) {
+      window.removeEventListener('resize', this.myChart.resize);
+      this.myChart.dispose();
     }
-  }
+  },
 };
 </script>
+
+<style scoped>
+/* 可以根据需要添加样式 */
+</style>

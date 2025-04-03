@@ -64,80 +64,36 @@
     .react-l-s {
       background-color: #0f1325;
     }
-
-    // 平行四边形
-    .react-right {
-      &.react-l-s {
-        text-align: right;
-        width: 500px;
-      }
-      font-size: 18px;
-      width: 300px;
-      line-height: 50px;
-      text-align: center;
-      transform: skewX(-45deg);
-
-      .react-after {
-        position: absolute;
-        right: -25px;
-        top: 0;
-        height: 50px;
-        width: 50px;
-        background-color: #0f1325;
-        transform: skewX(45deg);
-      }
-
-      .text {
-        display: inline-block;
-        transform: skewX(45deg);
-      }
-    }
-
-    .react-left {
-      &.react-l-s {
-        width: 500px;
-        text-align: left;
-      }
-      font-size: 18px;
-      width: 300px;
-      height: 50px;
-      line-height: 50px;
-      text-align: center;
-      transform: skewX(45deg);
-      background-color: #0f1325;
-
-      .react-left {
-        position: absolute;
-        left: -25px;
-        top: 0;
-        height: 50px;
-        width: 50px;
-        background-color: #0f1325;
-        transform: skewX(-45deg);
-      }
-
-      .text {
-        display: inline-block;
-        transform: skewX(-45deg);
-      }
-    }
-
+    
     .body-box {
       margin-top: 16px;
       display: flex;
       flex-direction: column;
+      
+      .info-box{
+        height: 10%;
+        .info-item {
+          display: flex;
+          flex-flow: row nowrap;
+          justify-content: space-around;
+          height: 50px;
+          align-items: center;
+          margin-right: 50%;
+        }
+      }
 
       //下方区域的布局
       .content-box {
         display: grid;
-        grid-template-columns: 2fr 3fr 5fr 3fr 2fr;
+        grid-template-columns: 5fr 3fr 2fr;
       }
 
       // 底部数据
       .bottom-box {
-        margin-top: 10px;
+        margin-top: 20px;
         display: grid;
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: 4fr 4fr;
+        height: 450px;
       }
     }
   }

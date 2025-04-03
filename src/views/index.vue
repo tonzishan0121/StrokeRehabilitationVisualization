@@ -8,72 +8,54 @@
           <div class="d-flex jc-center">
             <dv-decoration-8 class="dv-dec-8" :color="decorationColor" />
             <div class="title">
-              <span class="title-text">大数据可视化平台</span>
-              <dv-decoration-6 class="dv-dec-6" :reverse="true" :color="['#50e3c2', '#67a1e5']" />
+              <span class="title-text">脑卒中重症康复<br/><br/>智能临床路径可视化平台</span>
+              <dv-decoration-6 class="dv-dec-6" :reverse="true" :color="['#50e3c2', '#67a1e5']" style="bottom:-10px;"/>
             </div>
             <dv-decoration-8 class="dv-dec-8" :reverse="true" :color="decorationColor" />
           </div>
           <dv-decoration-10 class="dv-dec-10-s" />
         </div>
-        <!-- 第二行 -->
-        <div class="d-flex jc-between px-2">
-          <div class="d-flex aside-width">
-            <div class="react-left ml-4 react-l-s">
-              <span class="react-left"></span>
-              <span class="text">数据分析1</span>
+        <span class="text" style="position:absolute;right:2%;">{{ dateYear }} {{ dateWeek }} {{ dateDay }}</span>        
+        <div class="body-box">
+          <!-- 信息区 -->
+        <div class="info-box">
+          <dv-border-box-12 >
+            <div class="info-item">
+              <span style="font-size:large;">姓名：张三</span>
+              <span style="font-size:large;">性别：男</span>
+              <span style="font-size:large;">年龄：65</span>
+              <span style="font-size:large;">住院号：10000</span>
+              <span style="font-size:large;">住院时间：2025.4.1</span>
+              <span style="font-size:large;">科室：重症监护室</span>
             </div>
-            <div class="react-left ml-3">
-              <span class="text">数据分析2</span>
-            </div>
+          </dv-border-box-12>
+        </div>
+            <!-- 上层 数据 -->
+        <div class="content-box">
+          <div>
+            <dv-border-box-12>
+              <centerLeft1 />
+            </dv-border-box-12>
           </div>
-          <div class="d-flex aside-width">
-            <div class="react-right bg-color-blue mr-3">
-              <span class="text fw-b">vue-big-screen</span>
-            </div>
-            <div class="react-right mr-4 react-l-s">
-              <span class="react-after"></span>
-              <span class="text">{{ dateYear }} {{ dateWeek }} {{ dateDay }}</span>
-            </div>
+          <div>
+            <centerRight2 />
+          </div>
+          <div>
+            <dv-border-box-13>
+              <centerRight1 />
+            </dv-border-box-13>
           </div>
         </div>
 
-        <div class="body-box">
-          <!-- 第三行数据 -->
-          <div class="content-box">
-            <div>
-              <dv-border-box-12>
-                <centerLeft1 />
-              </dv-border-box-12>
-            </div>
-            <div>
-              <dv-border-box-12>
-                <centerLeft2 />
-              </dv-border-box-12>
-            </div>
-            <!-- 中间 -->
-            <div>
-              <center />
-            </div>
-            <!-- 中间 -->
-            <div>
-              <centerRight2 />
-            </div>
-            <div>
-              <dv-border-box-13>
-                <centerRight1 />
-              </dv-border-box-13>
-            </div>
-          </div>
-
-          <!-- 第四行数据 -->
-          <div class="bottom-box">
-            <dv-border-box-13>
-              <bottomLeft />
-            </dv-border-box-13>
-            <dv-border-box-12>
-              <bottomRight />
-            </dv-border-box-12>
-          </div>
+        <!-- 下层 数据 -->
+        <div class="bottom-box">
+          <dv-border-box-13>
+            <bottomLeft />
+          </dv-border-box-13>
+          <dv-border-box-12>
+            <bottomRight />
+          </dv-border-box-12>
+        </div>
         </div>
       </div>
     </div>

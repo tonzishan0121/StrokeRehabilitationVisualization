@@ -6,7 +6,7 @@
           <icon name="chart-area" class="text-icon"></icon>
         </span>
         <div class="d-flex">
-          <span class="fs-xl text mx-2">工单修复以及满意度统计图</span>
+          <span class="margin-left:0.75rem;color:blue;font-weight: bold;">MRCsum得分情况</span>
           <div class="decoration2">
             <dv-decoration-2 :reverse="true" style="width:5px;height:6rem;" />
           </div>
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss" class>
-$box-height: 520px;
+$box-height: 400px;
 $box-width: 100%;
 #bottomRight {
   padding: 14px 16px;
