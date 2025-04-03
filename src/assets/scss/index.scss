@@ -87,13 +87,24 @@
         display: grid;
         grid-template-columns: 5fr 3fr 2fr;
       }
-
+      
+      .graph-box {
+        display:grid;
+        grid-template-columns:auto;
+      }
       // 底部数据
       .bottom-box {
         margin-top: 20px;
         display: grid;
         grid-template-columns: 4fr 4fr;
         height: 450px;
+      }
+
+      .five-box {
+        display: flex;  
+        flex-flow: row nowrap;
+        align-items: center;
+        margin-top: 20px;
       }
     }
   }

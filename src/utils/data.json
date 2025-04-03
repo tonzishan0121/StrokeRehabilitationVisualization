@@ -1,0 +1,19 @@
+{
+  "day1":{
+      "nodes": [
+        { "name": "物理治疗", "symbolSize": 20, "fixed": true, "x": 100, "y": 200, "itemStyle": {"color": "#91CC75"}, "label": {"position": "bottom"} },
+        { "name": "每2小时翻身", "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#D4E157"} },
+        { "name": "体位变换", "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#D4E157"} },
+        { "name": "被动活动训练", "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#D4E157"} },
+        { "name": "气道廓清", "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#D4E157"} }
+      ],
+      "links": [
+        { "source": "物理治疗", "target": "每2小时翻身", "value": 1 },
+        { "source": "物理治疗", "target": "体位变换", "value": 1 },
+        { "source": "物理治疗", "target": "被动活动训练", "value": 1 },
+        { "source": "物理治疗", "target": "气道廓清", "value": 1 },
+        { "source": "物理治疗", "target": "康复训练", "value": 1 }
+      ]
+    
+  }
+}

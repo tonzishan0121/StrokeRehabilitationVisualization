@@ -7,7 +7,12 @@ const routes = [{
   path: '/',
   name: 'index',
   component: () => import('../views/index.vue')
-}]
+},{
+  path: '/graph',
+  name: 'graph',
+  component: () => import('../views/graph.vue')
+}
+]
 const router = new VueRouter({
   routes
 })
