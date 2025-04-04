@@ -7,7 +7,7 @@
         </span>
         <div class="d-flex">
           <span class="font-size: 1.5rem;color: #fff;margin-left: 0.5rem;
-          margin-right: 0.5rem;">康复指标恢复情况</span>
+          margin-right: 0.5rem;">血压与心率健康状况</span>
         </div>
       </div>
       <div>

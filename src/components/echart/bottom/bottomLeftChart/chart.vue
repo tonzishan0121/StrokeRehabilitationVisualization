@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- 年度开工率 -->
+    <!-- 血压与心率 -->
     <Echart
       :options="options"
       id="bottomLeftChart"
@@ -74,10 +74,10 @@ export default {
                   color: "#B4B4B4"
                 }
               },
-
+              scale: true,
               axisLabel: {
                 formatter: "{value} "
-              }
+              },
             },
             {
               splitLine: { show: false },
@@ -86,6 +86,7 @@ export default {
                   color: "#B4B4B4"
                 }
               },
+              scale: true,
               axisLabel: {
                 formatter: "{value} "
               }

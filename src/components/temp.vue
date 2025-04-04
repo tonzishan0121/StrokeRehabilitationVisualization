@@ -1,8 +1,8 @@
 <template>
     <div class="rehabilitation-plan">
-      <h2>{{ title }}</h2>
+      <h2>{{ title }}</h2><span class="risk-point">风险点</span>
       <div class="tips">
-        <strong>{{ tips.title }}</strong>{{ tips.content }}
+        <strong style="color: red;">{{ tips.title }}</strong>{{ tips.content }}
       </div>
       <div v-for="(section, index) in sections" :key="index" class="section">
         <h3>{{ section.title }}</h3>
@@ -66,13 +66,22 @@
     margin-bottom: 20px;
     font-size: 24px;
   }
-  
+  .risk-point {
+    color: white;
+    font-size: 16px;
+    background-color: rgb(255, 0, 0,0.7);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
   .tips {
     margin-bottom: 20px;
-    color: red;
+    color: white;
     font-size: 16px;
     line-height: 1.5;
-    background-color: #fff;
+    background-color: rgba(22, 137, 209, 0.308);
     padding: 10px;
     border-radius: 4px;
     border-left: 4px solid #ff0000;

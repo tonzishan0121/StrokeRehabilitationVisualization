@@ -61,11 +61,11 @@ export default {
         },
         series: [
           {
-            name: '某指标',
+            name: '量表得分',
             type: 'radar',
             data: [
               {
-                value: [80, 50, 30, 40, 70, 60,90,100],
+                value:[60, 50, 40, 70, 25, 50,50,75],
                 fontSize: 12,
                 name: '得分',
                 areaStyle: {

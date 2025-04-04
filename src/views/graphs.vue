@@ -14,17 +14,17 @@ let commonSeriesConfig = {
   type: 'graph',
   layout: 'force',
   layoutAnimation: true,
-  force: {
-    repulsion: 100,
-    edgeLength: 50
-  },
   roam:'scale',
   label: {
     normal: {
       show: true,
       color: "inherit",
-      position: "left",
-      fontSize: 8
+      position: "bottom",
+      fontSize: 12
+    },
+    force: {
+      gravity: 0.3,
+      edgeLength: 40
     }
   },
   itemStyle: {
@@ -39,10 +39,35 @@ let commonSeriesConfig = {
   draggable: true
   };
 
+const graph_template=(left,right,data)=>{
+
+  return {
+    ...commonSeriesConfig,
+    nodes: data.nodes,
+    links: data.links,
+    left: left, top: '0%', right: right,bottom: '0%'
+  }
+}
+
+const data1=adjustedData.day1;
+const data2=adjustedData.day2;
+const data3=adjustedData.day3;
+const data4=adjustedData.day4;
+const data5=adjustedData.day5;
+
+const series_template = [
+  graph_template('0%','80%',data1),
+  graph_template('20%','60%',data2),
+  graph_template('40%','40%',data3),
+  graph_template('60%','20%',data4),
+  graph_template('80%','0%',data5)
+]
+
+
 const option = {
   grid: {
-    left: '0%',
-    right: '0%',
+    left: '5%',
+    right: '5%',
     bottom: '10%',
     top: '10%',
     containLabel: true,
@@ -50,15 +75,7 @@ const option = {
 
   tooltip: {},
 
-  series: [
-    {
-      ...commonSeriesConfig,
-      nodes: adjustedData.day1.nodes,
-      links: adjustedData.day1.links,
-       left: 0, top: 0, right: '80%'
-    },
-    
-  ]
+  series: series_template
 };
 
 // 初始化echarts实例的函数

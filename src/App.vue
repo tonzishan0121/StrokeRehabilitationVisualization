@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <router-view />
+    <nav style="position: fixed; bottom: 0; right: 0;">
+      <RouterLink to="/"><span style="color:white;font-size:x-large"><</span></RouterLink>
+      <RouterLink to="/graph"><span style="color:white;font-size:x-large">></span></RouterLink>
+    </nav>
   </div>
 </template>
 
