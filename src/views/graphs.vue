@@ -5,7 +5,7 @@
 <script setup>
 import * as echarts from 'echarts';
 import { ref, onMounted } from 'vue';
-import adjustedData from '../utils/data.json'; 
+import adjustedData from '../store/data.json'; 
 
 const chart = ref(null);
 const chartInstance = ref(null);
@@ -23,8 +23,9 @@ let commonSeriesConfig = {
       fontSize: 12
     },
     force: {
-      gravity: 0.3,
-      edgeLength: 40
+      repulsion: 100,
+      edgeLength: 12,
+      gravity: 0.05
     }
   },
   itemStyle: {
@@ -49,18 +50,28 @@ const graph_template=(left,right,data)=>{
   }
 }
 
-const data1=adjustedData.day1;
-const data2=adjustedData.day2;
-const data3=adjustedData.day3;
-const data4=adjustedData.day4;
-const data5=adjustedData.day5;
+const data1_left=adjustedData.day1.left;
+const data1_right=adjustedData.day1.right;
+const data2_left=adjustedData.day2.left;
+const data2_right=adjustedData.day2.right;
+const data3_left=adjustedData.day3.left;
+const data3_right=adjustedData.day3.right;
+const data4_left=adjustedData.day4.left;
+const data4_right=adjustedData.day4.right;
+const data5_left=adjustedData.day5.left;
+const data5_right=adjustedData.day5.right;
 
 const series_template = [
-  graph_template('0%','80%',data1),
-  graph_template('20%','60%',data2),
-  graph_template('40%','40%',data3),
-  graph_template('60%','20%',data4),
-  graph_template('80%','0%',data5)
+  graph_template('0%','90%',data1_left),
+  graph_template('10%','80%',data1_right),
+  graph_template('20%','70%',data2_left),
+  graph_template('30%','60%',data2_right),
+  graph_template('40%','50%',data3_left),
+  graph_template('50%','40%',data3_right),
+  graph_template('60%','30%',data4_left),
+  graph_template('70%','20%',data4_right),
+  graph_template('80%','10%',data5_left),
+  graph_template('90%','0%',data5_right)
 ]
 
 

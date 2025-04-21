@@ -2,11 +2,19 @@
   "name": "big-screen-vue-datav",
   "version": "1.5.1",
   "private": true,
+  "engines": {
+    "node": ">=16.0.0 <=22.14.0" ,
+    "npm": ">=6.0.0"
+  },
+
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy":"gh-pages -d dist",
+    "prepare": "husky install"
   },
+
   "dependencies": {
     "@jiaminghi/data-view": "^2.7.3",
     "@types/echarts": "^4.4.3",
@@ -26,7 +34,11 @@
     "eslint-plugin-vue": "^6.1.2",
     "sass": "^1.25.0",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "13.0.3"
   },
   "eslintConfig": {
     "root": true,
