@@ -4,7 +4,7 @@
     <Echart
       :options="options"
       id="bottomLeftChart"
-      height="400px"
+      height="350px"
       width="100%"
     ></Echart>
   </div>
@@ -51,8 +51,8 @@ export default {
             top: "0%"
           },
           grid: {
-            x: "8%",
-            width: "88%",
+            x: "6%",
+            width: "90%",
             y: "4%"
           },
           xAxis: {

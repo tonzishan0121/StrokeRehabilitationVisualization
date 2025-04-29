@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import BottomRightChart from "@/components/echart/bottom/bottomRightChart";
+import BottomRightChart from "../index/bottomRightChart/index.vue";
 export default {
   components: {
     BottomRightChart

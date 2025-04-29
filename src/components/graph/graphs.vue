@@ -5,7 +5,7 @@
 <script setup>
 import * as echarts from 'echarts';
 import { ref, onMounted } from 'vue';
-import adjustedData from '../store/data.json'; 
+import adjustedData from '../../store/data.json'; 
 
 const chart = ref(null);
 const chartInstance = ref(null);

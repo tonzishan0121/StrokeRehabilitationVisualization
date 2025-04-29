@@ -3,7 +3,7 @@
     <Echart
       :options="options"
       id="centreLeft1Chart"
-      height="400px"
+      height="350px"
       width="100%"
     ></Echart>
   </div>
@@ -113,7 +113,7 @@ export default {
               color: '#fff',
               fontSize: 16
             },
-            top: 50,
+            top: 20,
             left: 80
           },
           tooltip: {
@@ -123,7 +123,7 @@ export default {
             left: 90,
             right: 80,
             bottom: 40,
-            top: '30%'
+            top: '15%'
           },
           xAxis: {
             type: 'category',
@@ -137,7 +137,7 @@ export default {
           },
           // 下方Y轴
           yAxis: {
-            name: 'MRCsum',
+            name: '',
             nameLocation: 'end',
             nameGap: 24,
             nameTextStyle: {

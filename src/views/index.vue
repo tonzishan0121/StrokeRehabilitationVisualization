@@ -1,75 +1,44 @@
 <template>
-  <div id="index" ref="appRef">
-    <div class="bg">
-      <dv-loading v-if="loading">Loading...</dv-loading>
-      <div v-else class="host-body">
-        <div class="d-flex jc-center">
-          <dv-decoration-10 class="dv-dec-10" />
-          <div class="d-flex jc-center">
-            <dv-decoration-8 class="dv-dec-8" :color="decorationColor" />
-            <div class="title">
-              <span class="title-text">脑卒中重症康复<br/><br/>智能临床路径可视化平台</span>
-              <dv-decoration-6 class="dv-dec-6" :reverse="true" :color="['#50e3c2', '#67a1e5']" style="bottom:-10px;"/>
-            </div>
-            <dv-decoration-8 class="dv-dec-8" :reverse="true" :color="decorationColor" />
-          </div>
-          <dv-decoration-10 class="dv-dec-10-s" />
-        </div>
-        <span class="text" style="position:absolute;right:2%;">{{ dateYear }} {{ dateWeek }} {{ dateDay }}</span>        
-        <div class="body-box">
-          <!-- 信息区 -->
-        <div class="info-box">
-          <dv-border-box-12 >
-            <div class="info-item">
-              <span style="font-size:large;">姓名：张三</span>
-              <span style="font-size:large;">性别：男</span>
-              <span style="font-size:large;">年龄：65</span>
-              <span style="font-size:large;">住院号：10000</span>
-              <span style="font-size:large;">住院时间：2025.4.1</span>
-              <span style="font-size:large;">科室：重症监护室</span>
-            </div>
-          </dv-border-box-12>
-        </div>
-            <!-- 上层 数据 -->
-        <div class="content-box">
-          <div>
-            <dv-border-box-12>
-              <centerLeft1 />
-            </dv-border-box-12>
-          </div>
-          <div>
-            <centerRight2 />
-          </div>
-          <div>
-            <dv-border-box-13>
-              <centerRight1 />
-            </dv-border-box-13>
-          </div>
-        </div>
-
-        <!-- 下层 数据 -->
-        <div class="bottom-box">
-          <dv-border-box-13>
-            <bottomLeft />
-          </dv-border-box-13>
-          <dv-border-box-12>
-            <bottomRight />
-          </dv-border-box-12>
-        </div>
-        </div>
-      </div>
+  <CommonLayout>
+  <!-- 上层 数据 -->
+  <div class="content-box">
+    <div>
+      <dv-border-box-12>
+        <centerLeft />
+      </dv-border-box-12>
+    </div>
+    <div>
+      <centerRight2 />
+    </div>
+    <div>
+      <dv-border-box-13>
+        <centerRight1 />
+      </dv-border-box-13>
     </div>
   </div>
+
+  <!-- 下层 数据 -->
+  <div class="bottom-box">
+    <dv-border-box-13>
+      <bottomLeft />
+    </dv-border-box-13>
+    <dv-border-box-12>
+      <bottomRight />
+    </dv-border-box-12>
+  </div>
+  </CommonLayout>
 </template>
+
 
 <script>
 import drawMixin from "../utils/drawMixin";
 import { formatTime } from '../utils/index.js'
-import centerLeft1 from './centerLeft1'
-import centerRight1 from './centerRight1'
-import centerRight2 from './centerRight2'
-import bottomLeft from './bottomLeft'
-import bottomRight from './bottomRight'
+import centerLeft from "../components/index/centerLeft.vue"
+import centerRight1 from "../components/index/centerRight1.vue"
+import centerRight2 from "../components/index/centerRight2.vue"
+import bottomLeft from "../components/index/bottomLeft.vue"
+import bottomRight from "../components/index/bottomRight.vue"
+import CommonLayout from "../components/CommonLayout.vue"
 
 export default {
   mixins: [drawMixin],
@@ -85,11 +54,12 @@ export default {
     }
   },
   components: {
-    centerLeft1,
+    centerLeft,
     centerRight1,
     centerRight2,
     bottomLeft,
-    bottomRight
+    bottomRight,
+    CommonLayout
   },
   mounted() {
     this.timeFn()

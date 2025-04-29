@@ -5,17 +5,17 @@
         <span>
           <icon name="align-left" class="text-icon"></icon>
         </span>
-        <span class="margin-left:0.75rem;color:blue;font-weight: bold;">当前康复量表得分</span>
+        <span style="margin-left:0.75rem;color:white;font-weight:bold;font-size:25px">当前康复量表得分</span>
       </div>
       <div class="display: flex;align-items: center;flex-direction: column; body-box">
-        <centerRight2Chart1 />
+        <centerRight2Chart />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import centerRight2Chart1 from '@/components/echart/centerRight/centerRightChart'
+import centerRight2Chart from './centerRight2Chart/index.vue'
 
 export default {
   data() {
@@ -46,7 +46,7 @@ export default {
       }
     }
   },
-  components: { centerRight2Chart1 }
+  components: { centerRight2Chart }
 }
 </script>
 

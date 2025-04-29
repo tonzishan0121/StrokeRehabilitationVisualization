@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BottomLeftChart from '@/components/echart/bottom/bottomLeftChart'
+import BottomLeftChart from './bottomLeftChart/index.vue'
 export default {
   components: {
     BottomLeftChart

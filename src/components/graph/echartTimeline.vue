@@ -9,7 +9,7 @@
 <script setup>
 import {ref, onMounted } from 'vue';
 import * as echarts from 'echarts';
-import echartsGraphs from './graphs.vue';
+import echartsGraphs from "./graphs.vue";
 
 
 const chart = ref(null);

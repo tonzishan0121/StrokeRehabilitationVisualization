@@ -6,8 +6,6 @@
           <icon name="chart-bar" class="text-icon"></icon>
         </span>
         <div class="d-flex">
-          <span style="font-size: 1.0rem;color: #fff;margin-left: 0.5rem;
-          margin-right: 0.5rem;">当前值</span>
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>
@@ -19,7 +17,7 @@
         v-for="item in titleItem"
         :key="item.title"
       >
-        <p style="margin-left: 0.75rem;color: white;font-weight: bold;">{{ item.title }}</p>
+        <p style="margin-left: 0.75rem;color: white;font-weight: bold;font-size:larger">{{ item.title }}</p>
         <div>
           <dv-digital-flop
             class="dv-dig-flop ml-1 mt-2 pl-3"
@@ -33,7 +31,6 @@
 </template>
 
 <script>
-import CenterLeft1Chart from '@/components/echart/centerLeft/centerLeft1Chart'
 export default {
   data() {
     return {
@@ -148,7 +145,6 @@ export default {
     }
   },
   components: {
-    CenterLeft1Chart
   },
   mounted() {
     this.changeTiming()

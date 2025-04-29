@@ -13,7 +13,7 @@
     width: 100%;
     height: 100%;
     padding: 16px 16px 0 16px;
-    background-image: url("../assets/pageBg.png");
+    background-image: url("~@/assets/pageBg.png");
     background-size: cover;
     background-position: center center;
   }
@@ -40,10 +40,10 @@
 
       .title-text {
         font-size: 24px;
-        // position: absolute;
         bottom: 0;
         left: 50%;
         transform: translate(-50%);
+        line-height: 1.5;
       }
 
       .dv-dec-6 {
@@ -66,19 +66,19 @@
     }
     
     .body-box {
-      margin-top: 16px;
+      margin-top: 4px;
       display: flex;
       flex-direction: column;
       
       .info-box{
-        height: 10%;
+        height: 15%;
         .info-item {
           display: flex;
           flex-flow: row nowrap;
           justify-content: space-around;
-          height: 50px;
+          height: 90px;
           align-items: center;
-          margin-right: 50%;
+          margin-right: 30%;
         }
       }
 
@@ -97,14 +97,15 @@
         margin-top: 20px;
         display: grid;
         grid-template-columns: 4fr 4fr;
-        height: 450px;
+        max-height: 400px;
       }
 
       .five-box {
         display: flex;  
         flex-flow: row nowrap;
         align-items: center;
-        margin-top: 20px;
+        margin-top: 8px;
+        margin-bottom: 2px;
       }
     }
   }
