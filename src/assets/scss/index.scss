@@ -67,6 +67,7 @@
     
     .body-box {
       margin-top: 4px;
+      margin-bottom: 4px;
       display: flex;
       flex-direction: column;
       
@@ -76,7 +77,7 @@
           display: flex;
           flex-flow: row nowrap;
           justify-content: space-around;
-          height: 90px;
+          height: 65px;
           align-items: center;
           margin-right: 30%;
         }
@@ -87,25 +88,25 @@
         display: grid;
         grid-template-columns: 5fr 3fr 2fr;
       }
-      
+      //时间轴
       .graph-box {
         display:grid;
         grid-template-columns:auto;
       }
       // 底部数据
       .bottom-box {
-        margin-top: 20px;
+        margin-top: 10px;
         display: grid;
         grid-template-columns: 4fr 4fr;
-        max-height: 400px;
+        max-height: 410px;
       }
-
+      //页面2的五块
       .five-box {
         display: flex;  
         flex-flow: row nowrap;
         align-items: center;
         margin-top: 8px;
-        margin-bottom: 2px;
+        align-items:2px;
       }
     }
   }

@@ -3,10 +3,9 @@
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
         <span>
-          <icon name="chart-line" class="text-icon"></icon>
         </span>
         <div class="d-flex">
-          <span style="display: flex;align-items: center;flex-direction: column; font-size:larger">康复治疗师排班表</span>
+          <span style="margin-left:0.75rem;color:white;font-size:22px;">康复治疗师排班表</span>
         </div>
       </div>
       <div class="d-flex jc-center body-box">
@@ -24,13 +23,13 @@ export default {
       config: {
         header: [`<span style="font-size:${fontSize}">人员</span>`, `<span style="font-size:${fontSize}">床号</span>`, `<span style="font-size:${fontSize}">时间</span>`],
         data: [],
-        rowNum: 7, //表格行数
+        rowNum: 8, //表格行数
         headerHeight: 30,
         headerBGC: '#0f1325', //表头
         oddRowBGC: '#0f1325', //奇数行
         evenRowBGC: '#171c33', //偶数行
         index: true,
-        columnWidth: [50],
+        columnWidth: [58],
         align: ['center']
       }
     }
@@ -90,8 +89,8 @@ $box-width: 100%;
     border-radius: 2px;
     overflow: hidden;
     .dv-scr-board {
-      width: 270px;
-      height: 340px;
+      width: 310px;
+      height: 400px;
     }
   }
 }

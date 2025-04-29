@@ -2,28 +2,24 @@
   <div id="centerLeft1">
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
-        <span>
-          <icon name="chart-bar" class="text-icon"></icon>
-        </span>
         <div class="d-flex">
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>
-      
       <!-- 九个key和value -->
       <div class="nine-box">
         <div
-        class="bg-color-black item"
-        v-for="item in titleItem"
-        :key="item.title"
-      >
-        <p style="margin-left: 0.75rem;color: white;font-weight: bold;font-size:larger">{{ item.title }}</p>
-        <div>
-          <dv-digital-flop
-            class="dv-dig-flop ml-1 mt-2 pl-3"
-            :config="item.number"
-          />
-        </div>
+          class="bg-color-black item"
+          v-for="item in titleItem"
+          :key="item.title"
+        >
+          <p style="margin-left:0.75rem;color:white;font-size:22px">{{ item.title }}</p>
+          <div>
+            <dv-digital-flop
+              class="dv-dig-flop ml-1 mt-2 pl-3"
+              :config="item.number"
+            />
+          </div>
       </div>
       </div>
     </div>
@@ -156,7 +152,8 @@ export default {
       }, 3000)
     },
     changeNumber() {
-      this.numberData.forEach((item, index) => {
+      // Add null check before forEach
+      this.someArray?.forEach(item => { 
         item.number.number[0] += ++index
         item.number = { ...item.number }
       })
@@ -170,12 +167,12 @@ $box-width: 100%;
 $box-height: 410px;
 
 #centerLeft1 {
-  padding: 16px;
+  padding: 8px;
   height: $box-height;
   width: $box-width;
   border-radius: 10px;
   .bg-color-black {
-    height: $box-height - 30px;
+    height: $box-height - 5px;
     border-radius: 10px;
     .nine-box {
       width: 100%;
@@ -192,8 +189,8 @@ $box-height: 410px;
         width: 32%;
         height: 70px;
         .dv-dig-flop {
-          width: 150px;
-          height: 30px;
+          width: 170px;
+          height: 38px;
         }
       }
     }
@@ -221,16 +218,6 @@ $box-height: 410px;
       .dv-digital-flop {
         width: 120px;
         height: 30px;
-      }
-      // 金币
-      .coin {
-        position: relative;
-        top: 6px;
-        font-size: 20px;
-        color: #ffc107;
-      }
-      .colorYellow {
-        color: yellowgreen;
       }
       p {
         text-align: center;

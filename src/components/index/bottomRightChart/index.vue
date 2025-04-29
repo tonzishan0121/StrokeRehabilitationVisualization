@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Chart :cdata="cdata" />
+    <Chart :cdata="cdata" :chatName="chatName"/>
   </div>
 </template>
 
 <script>
-import Chart from './chart.vue'
+import Chart from './chart.vue';
 export default {
   data () {
     return {
@@ -21,8 +21,19 @@ export default {
       }
     }
   },
+  props: {
+    chatName: {
+      type: String,
+      default: '2'
+    }
+  },
   components: {
     Chart,
+  },
+  watch: {
+    chatName (val) {
+      this.drawTimingFn();
+    }
   },
   mounted () {
     this.drawTimingFn();
@@ -33,9 +44,6 @@ export default {
   methods: {
     drawTimingFn () {
       this.setData();
-      this.drawTiming = setInterval(() => {
-        this.setData();
-      }, 6000);
     },
     setData () {
       // 清空轮询数据

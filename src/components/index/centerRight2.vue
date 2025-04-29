@@ -2,10 +2,7 @@
   <div id="centerRight2">
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
-        <span>
-          <icon name="align-left" class="text-icon"></icon>
-        </span>
-        <span style="margin-left:0.75rem;color:white;font-weight:bold;font-size:25px">当前康复量表得分</span>
+        <span style="margin-left:0.75rem;color:white;font-size:22px">当前康复量表得分</span>
       </div>
       <div class="display: flex;align-items: center;flex-direction: column; body-box">
         <centerRight2Chart />

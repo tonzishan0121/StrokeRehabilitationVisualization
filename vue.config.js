@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const resolve = dir => {
@@ -11,18 +12,21 @@ module.exports = {
     config.resolve.alias
       .set('_c', resolve('src/components')) // key,value自行定义，比如.set('@@', resolve('src/components'))
   },
-  productionSourceMap: false, // 关闭 sourcemap 减小体积
+  productionSourceMap: true, 
   configureWebpack: {
     plugins: [
       new BundleAnalyzerPlugin({ 
         analyzerMode: 'static', 
         openAnalyzer: false 
+      }),
+      new webpack.DefinePlugin({
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(true)
       })
     ],
     performance: {
       hints: 'warning',
-      maxAssetSize: 2 * 1024 * 1024, // 2MB 告警阈值
-      maxEntrypointSize: 2 * 1024 * 1024
+      maxAssetSize: 8 * 1024 * 1024, // 8MB 告警阈值
+      maxEntrypointSize: 8 * 1024 * 1024
     }
   }
 }

@@ -95,23 +95,41 @@ export default {
     cdata: {
       type: Object,
       default: () => ({})
+    },
+    chatName: {
+      type: String,
+      default: ''
     }
   },
   watch: {
     cdata: {
       handler(newData) {
-        this.options = {
+        this.setData(newData)
+      },
+      immediate: true,
+      deep: true
+    },
+    chatName: {
+      handler(newName) {
+        this.setData(this.cdata, newName);
+      },
+    }
+  },
+  methods:{
+    // 修改为普通函数
+    setData(newData, newName=this.chatName) {
+      this.options = {
           title: {
-            text: '',
+            text: newName,
             textStyle: {
               color: '#D3D6DD',
-              fontSize: 22,
+              fontSize: 20,
               fontWeight: 'normal'
             },
             subtext: newData.year + '/' + newData.weekCategory[6],
             subtextStyle: {
               color: '#fff',
-              fontSize: 16
+              fontSize: 18
             },
             top: 20,
             left: 80
@@ -166,7 +184,7 @@ export default {
           },
           series: [
             {
-              name: '',
+              name: "",
               type: 'line',
               smooth: true,
               symbol: 'emptyCircle',
@@ -184,6 +202,7 @@ export default {
               },
               areaStyle: {
                 normal: {
+                  // 修改为通过 this 访问
                   color: this.colorList.areaBtoG
                 }
               },
@@ -233,9 +252,6 @@ export default {
             }
           ]
         }
-      },
-      immediate: true,
-      deep: true
     }
   }
 }

@@ -23,7 +23,9 @@ https://tonzishan0121.github.io
 源码地址: https://gitee.com/ghx952449/big-screen-vue-datav
 协议: Apache License 2.0
 修改内容:
-1. 增建了一个界面
-2. 删减了一些代码
-3. 做的是脑卒中数据大屏可视化
+1. 做的是脑卒中数据大屏可视化
+2. 增建了一个界面
+3. 删减了一些代码
+4. 转成了vue3项目
+5. 移去了所有的fortawesome
 ```

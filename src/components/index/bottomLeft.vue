@@ -2,12 +2,8 @@
   <div id="bottomLeft">
     <div class="bg-color-black">
       <div class="d-flex pt-2 pl-2">
-        <span>
-          <icon name="chart-bar" class="text-icon"></icon>
-        </span>
         <div class="d-flex">
-          <span class="font-size: 1.5rem;color: #fff;margin-left: 0.5rem;
-          margin-right: 0.5rem;">血压与心率健康状况</span>
+          <span style="margin-left:0.75rem;color:white;font-size:22px">血压与心率健康状况</span>
         </div>
       </div>
       <div>

@@ -56,15 +56,16 @@
     padding: 20px;
     border-radius: 8px;
     font-family: Arial, sans-serif;
-    width: 98%;
+    width: 96%;
     margin: 0 auto;
+    margin-bottom:5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   h2 {
     color: green;
-    margin-bottom: 20px;
-    font-size: 24px;
+    margin-bottom: 18px;
+    font-size: 22px;
   }
   .risk-point {
     color: white;
@@ -80,7 +81,7 @@
     margin-bottom: 20px;
     color: white;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.2;
     background-color: rgba(22, 137, 209, 0.308);
     padding: 10px;
     border-radius: 4px;
