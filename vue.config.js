@@ -22,11 +22,6 @@ module.exports = {
       new webpack.DefinePlugin({
         __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(true)
       })
-    ],
-    performance: {
-      hints: 'warning',
-      maxAssetSize: 8 * 1024 * 1024, // 8MB 告警阈值
-      maxEntrypointSize: 8 * 1024 * 1024
-    }
+    ]
   }
 }

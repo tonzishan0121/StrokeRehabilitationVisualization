@@ -20,7 +20,7 @@ export default {
     }
   },
   beforeDestroy() {
-    window.removeEventListener('reisze', this[resizeChartMethod]);
+    window.removeEventListener('resize', this[resizeChartMethod]);
   },
   methods: {
     // 防抖函数来控制 resize 的频率

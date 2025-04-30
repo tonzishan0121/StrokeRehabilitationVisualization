@@ -27,5 +27,5 @@ https://tonzishan0121.github.io
 2. 增建了一个界面
 3. 删减了一些代码
 4. 转成了vue3项目
-5. 移去了所有的fortawesome
+5. 移去了所有的fontAwesome
 ```

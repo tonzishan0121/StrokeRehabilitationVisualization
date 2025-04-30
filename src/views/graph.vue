@@ -9,14 +9,16 @@
       </dv-border-box-10>
     </div>
   </CommonLayout>
+  <siderBar @sliderUpdated="sliderUpdated"></siderBar>
 </template>
 
 <script>
 import drawMixin from "../utils/drawMixin";
 import echartTimeline from '../components/graph/echartTimeline.vue'
 import rehabiliPlan from "../components/graph/rehabilitationPlan.vue";
-import CommonLayout from "../components/CommonLayout.vue"
-
+import CommonLayout from "../components/CommonLayout.vue";
+import { formatTime } from "../utils/index";
+import siderBar from "../components/graph/siderBar.vue";
 export default {
   mixins: [drawMixin],
   data() {
@@ -33,11 +35,12 @@ export default {
   components: {
     echartTimeline,
     rehabiliPlan,
-    CommonLayout
+    CommonLayout,
+    siderBar
   },
   mounted() {
-    this.timeFn()
-    this.cancelLoading()
+    this.timeFn();
+    this.cancelLoading();
   },
   beforeDestroy() {
     clearInterval(this.timing)
@@ -54,6 +57,9 @@ export default {
       setTimeout(() => {
         this.loading = false
       }, 500)
+    },
+    sliderUpdated(extractedNumber) {
+      console.log(extractedNumber); // 在这里处理 extractedNumber
     }
   }
 }

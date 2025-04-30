@@ -16,7 +16,8 @@
     "@jiaminghi/data-view": "^2.7.3",
     "@types/echarts": "^4.4.3",
     "core-js": "^3.6.4",
-    "echarts": "^4.6.0",
+    "echarts": "^5.4.3",
+    "nouislider": "^15.8.1",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vuex": "^4.1.0"

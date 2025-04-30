@@ -46,7 +46,7 @@ export default {
             data: ["舒张压", "收缩压", "心率"],
             textStyle: {
               color: "#B4B4B4",
-              fontSize: 14
+              fontSize: 16
             },
             top: "0%"
           },

@@ -17,7 +17,6 @@
     background-size: cover;
     background-position: center center;
   }
-
   .host-body {
     .dv-dec-10,
     .dv-dec-10-s {
@@ -55,22 +54,12 @@
         transform: translate(-50%);
       }
     }
-
-    // 第二行
-    .aside-width {
-      width: 40%;
-    }
-    .react-r-s,
-    .react-l-s {
-      background-color: #0f1325;
-    }
-    
     .body-box {
       margin-top: 4px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
       display: flex;
       flex-direction: column;
-      
+      //个人信息栏
       .info-box{
         height: 15%;
         .info-item {
@@ -82,7 +71,6 @@
           margin-right: 30%;
         }
       }
-
       //下方区域的布局
       .content-box {
         display: grid;
@@ -105,8 +93,9 @@
         display: flex;  
         flex-flow: row nowrap;
         align-items: center;
-        margin-top: 8px;
-        align-items:2px;
+        margin-top: 45px;
+        gap: 10px;
+        justify-content: space-around;
       }
     }
   }

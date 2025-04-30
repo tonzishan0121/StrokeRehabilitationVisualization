@@ -17,7 +17,8 @@
           </div>
           <dv-decoration-10 class="dv-dec-10-s" />
         </div>
-        <span class="text" style="position:absolute;right:2%;top:2%">{{ dateYear }} {{ dateWeek }} {{ dateDay }}</span>        
+        <span class="text" style="position:absolute;right:2%;top:2%">
+          {{ dateYear }} {{ dateWeek }} {{ dateDay }}</span>        
         <div class="body-box">
           <!-- 信息区 -->
           <div class="info-box">

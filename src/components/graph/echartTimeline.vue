@@ -2,27 +2,33 @@
   <dv-border-box-12>
     <div class="chart-container">
       <div ref="chart" class="chart"></div>
-      <div class="chart"><echartsGraphs/></div>
+      <echartsGraphs class="chart"></echartsGraphs>
     </div>
   </dv-border-box-12>
 </template>
 <script setup>
-import {ref, onMounted } from 'vue';
+import {ref, onMounted, defineProps } from 'vue';
 import * as echarts from 'echarts';
 import echartsGraphs from "./graphs.vue";
 
-
+const props = defineProps({
+  date:{
+    type:Array,
+    default:[0, 3]
+  }
+})
 const chart = ref(null);
 const chartInstance = ref(null);
 
-console.log(echartsGraphs);
 const option = {
   title: {
     text: '2024-1-1~2024-1-5',
     textStyle: {
       color: '#FFF',
-      fontSize: 20,
-    }
+      fontSize: 22,
+    },
+    left: 20,
+    top: 16
   },
   tooltip: {},
   grid: {
@@ -128,12 +134,16 @@ onMounted(() => {
   width: 100%;
   height: 400px;
 }
-
 .chart {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+#siderBar {
+  position: absolute;
+  top: 50%;
+  right: 50%;
 }
 </style>

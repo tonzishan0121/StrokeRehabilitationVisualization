@@ -57,8 +57,7 @@
     border-radius: 8px;
     font-family: Arial, sans-serif;
     width: 96%;
-    margin: 0 auto;
-    margin-bottom:5px;
+
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   

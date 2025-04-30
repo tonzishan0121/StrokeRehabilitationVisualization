@@ -1,19 +1,24 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router' // 导入 createWebHashHistory
+
 const routes = [
   {
     path: '/',
-    name: 'Home',  // 新增命名路由
+    redirect: '/index'
+  },
+  {
+    path: '/index',
+    name: 'Home',
     component: () => import('../views/index.vue')
   },
   {
     path: '/graph',
-    name: 'Graph',  // 新增命名路由
+    name: 'Graph',
     component: () => import('../views/graph.vue')
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(), 
   routes
 })
 

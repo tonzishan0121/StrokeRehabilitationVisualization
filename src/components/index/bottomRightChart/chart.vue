@@ -116,20 +116,19 @@ export default {
     }
   },
   methods:{
-    // 修改为普通函数
     setData(newData, newName=this.chatName) {
       this.options = {
           title: {
             text: newName,
             textStyle: {
               color: '#D3D6DD',
-              fontSize: 20,
+              fontSize: 16,
               fontWeight: 'normal'
             },
             subtext: newData.year + '/' + newData.weekCategory[6],
             subtextStyle: {
               color: '#fff',
-              fontSize: 18
+              fontSize: 14
             },
             top: 20,
             left: 80
@@ -149,7 +148,7 @@ export default {
             axisLine: true,
             axisLabel: {
               color: 'rgba(255,255,255,.8)',
-              fontSize: 16
+              fontSize: 18
             },
             data: newData.weekCategory
           },
@@ -160,7 +159,7 @@ export default {
             nameGap: 24,
             nameTextStyle: {
               color: 'rgba(255,255,255,.5)',
-              fontSize: 18
+              fontSize: 16
             },
             max: newData.maxData,
             splitNumber: 4,
@@ -179,7 +178,7 @@ export default {
             },
             axisLabel: {
               color: 'rgba(255,255,255,.8)',
-              fontSize: 12
+              fontSize: 16
             }
           },
           series: [
@@ -218,7 +217,10 @@ export default {
                 ],
                 precision: 0,
                 label: {
-                  normal: {
+                normal: {
+                  textStyle: {
+                    fontSize: 16
+                  },
                     formatter: '平均值: \n {c}'
                   }
                 },
