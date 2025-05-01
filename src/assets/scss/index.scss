@@ -80,6 +80,7 @@
       .graph-box {
         display:grid;
         grid-template-columns:auto;
+        height: 410px;
       }
       // 底部数据
       .bottom-box {
@@ -92,8 +93,8 @@
       .five-box {
         display: flex;  
         flex-flow: row nowrap;
-        align-items: center;
-        margin-top: 45px;
+        align-items: flex-start;
+        margin-top: 60px;
         gap: 10px;
         justify-content: space-around;
       }
