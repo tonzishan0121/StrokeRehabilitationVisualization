@@ -10,7 +10,7 @@
         </div>
       </div>
       <div>
-        <BottomRightChart :chatName="tableName" />
+        <BottomRightChart :chatName="tableName" :currentData="tableDataList[tableName]"/>
       </div>
       <!-- 新增按钮容器，使用绝对定位到右上角 -->
       <div class="bottom-container">
@@ -23,8 +23,15 @@
 </template>
 
 <script>
+import { apiConfig, requestf } from '../../utils/apiConfig';
 import BottomRightChart from "../index/bottomRightChart/index.vue";
 import { ref } from "vue";
+const cdata = ref({});
+requestf(apiConfig.getscoreList,
+  {"id":localStorage.getItem("id")},
+  'POST',(res) => {
+    cdata.value = res;
+  });
 export default {
   components: {
     BottomRightChart
@@ -34,8 +41,9 @@ export default {
       tableName: ref("MRCsum"),
       bottomList : [
         "SQ5","FOIS","RASS","MMASA","BBS1","BBS2","BBS3","MRC"
-      ]
-    }
+      ],
+      tableDataList:cdata.value
+    };        
   },
   methods: {
     handleButtonClick(index) {

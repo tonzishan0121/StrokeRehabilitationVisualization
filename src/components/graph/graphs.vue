@@ -8,7 +8,7 @@ import { debounce } from '../../utils/index';
 const props = defineProps({
   date:{
     type:Array,
-    default:["0", "3"]
+    default:["0", "5"]
   } 
 });
 // 监听 props.date 的变化

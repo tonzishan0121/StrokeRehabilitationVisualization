@@ -8,11 +8,8 @@
     "#ed3f14"
   ],
   "backgroundColor": "rgba(0,0,0,0)",
-  "textStyle": {},
   "title": {
-    "textStyle": {
-      "color": "#516b91"
-    },
+    "color": "#516b91",
     "subtextStyle": {
       "color": "#93b7e3"
     }
@@ -117,9 +114,7 @@
       "#cbb0e3"
     ],
     "label": {
-      "textStyle": {
-        "color": "#eee"
-      }
+      "color": "#eee"
     }
   },
   "map": {
@@ -135,15 +130,11 @@
         "borderWidth": 1
       },
       "label": {
-        "textStyle": {
-          "color": "rgb(81,107,145)"
-        }
+        "color": "rgb(81,107,145)" 
       }
     },
     "label": {
-      "textStyle": {
-        "color": "#000"
-      }
+      "color": "#000"
     }
   },
   "geo": {
@@ -159,15 +150,11 @@
         "borderWidth": 1
       },
       "label": {
-        "textStyle": {
-          "color": "rgb(81,107,145)"
-        }
+        "color": "rgb(81,107,145)"
       }
     },
     "label": {
-      "textStyle": {
-        "color": "#000"
-      }
+      "color": "#000" 
     }
   },
   "categoryAxis": {
@@ -185,9 +172,7 @@
     },
     "axisLabel": {
       "show": true,
-      "textStyle": {
-        "color": "#fff"
-      }
+      "color": "#fff"
     },
     "splitLine": {
       "show": false,
@@ -222,9 +207,7 @@
     },
     "axisLabel": {
       "show": true,
-      "textStyle": {
-        "color": "#fff"
-      }
+      "color": "#fff" 
     },
     "splitLine": {
       "show": false,
@@ -259,9 +242,7 @@
     },
     "axisLabel": {
       "show": true,
-      "textStyle": {
-        "color": "#999999"
-      }
+      "color": "#999999" 
     },
     "splitLine": {
       "show": true,
@@ -296,9 +277,7 @@
     },
     "axisLabel": {
       "show": true,
-      "textStyle": {
-        "color": "#999999"
-      }
+      "color": "#999999" 
     },
     "splitLine": {
       "show": true,
@@ -320,59 +299,16 @@
   },
   "toolbox": {
     "iconStyle": {
-      "borderColor": "#999",
-      "emphasis": {
+      "borderColor": "#999"
+    },
+    "emphasis": {
+      "iconStyle": {
         "borderColor": "#666"
       }
     }
   },
   "legend": {
-    "textStyle": {
-      "color": "#fff"
-    }
-  },
-  "tooltip": {
-    "axisPointer": {
-      "lineStyle": {
-        "color": "#ccc",
-        "width": 1
-      },
-      "crossStyle": {
-        "color": "#ccc",
-        "width": 1
-      }
-    }
-  },
-  "timeline": {
-    "lineStyle": {
-      "color": "#8fd3e8",
-      "width": 1
-    },
-    "itemStyle": {
-      "color": "#8fd3e8",
-      "borderWidth": 1
-    },
-    "controlStyle": {
-      "color": "#8fd3e8",
-      "borderColor": "#8fd3e8",
-      "borderWidth": 0.5
-    },
-    "checkpointStyle": {
-      "color": "#8fd3e8",
-      "borderColor": "rgba(138,124,168,0.37)"
-    },
-    "label": {
-      "textStyle": {
-        "color": "#8fd3e8"
-      }
-    }
-  },
-  "visualMap": {
-    "color": [
-      "#516b91",
-      "#59c4e6",
-      "#a5e7f0"
-    ]
+    "color": "#fff"
   },
   "dataZoom": {
     "backgroundColor": "rgba(0,0,0,0)",
@@ -380,15 +316,14 @@
     "fillerColor": "rgba(167,183,204,0.4)",
     "handleColor": "#a7b7cc",
     "handleSize": "100%",
-    "textStyle": {
-      "color": "#333"
+ 
+    "label": {
+      "color": "#333" 
     }
   },
   "markPoint": {
     "label": {
-      "textStyle": {
-        "color": "#eee"
-      }
+      "color": "#eee" 
     }
   }
 }

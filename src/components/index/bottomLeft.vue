@@ -7,18 +7,32 @@
         </div>
       </div>
       <div>
-        <BottomLeftChart />
+        <BottomLeftChart :cdata="cdata" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import BottomLeftChart from './bottomLeftChart/index.vue'
+import BottomLeftChart from './bottomLeftChart/index.vue';
+import { apiConfig, requestf } from '../../utils/apiConfig';
+import { ref }  from 'vue';
+const cdata = ref({});
+requestf(apiConfig.getBloodPressure,
+  {"id":localStorage.getItem("id")},
+  'POST',(res) => {
+    cdata.value = res;
+  });
 export default {
   components: {
     BottomLeftChart
+  },
+  data() {
+    return {
+      cdata: cdata.value,
+    }
   }
+
 }
 </script>
 

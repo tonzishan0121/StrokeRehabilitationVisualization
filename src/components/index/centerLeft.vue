@@ -1,8 +1,10 @@
 <template>
   <div id="centerLeft1">
     <div class="bg-color-black">
-      <div class="d-flex pt-2 pl-2">
+
+      <div class="d-flex pt-2 pl-2" style="margin-top: 10px;">
         <div class="d-flex">
+          <span style="margin-left:0.75rem;color:white;font-size:22px">基本生理指标</span>
           <dv-decoration-3 class="dv-dec-3" />
         </div>
       </div>
@@ -27,6 +29,17 @@
 </template>
 
 <script>
+import {ref} from 'vue';
+import { requestf,apiConfig } from '../../utils/apiConfig';
+
+let patientData = ref(null);
+const patientId = {"id":localStorage.getItem("id")}
+requestf(apiConfig.getVitals,
+  patientId,
+  'POST',(res) => {
+    patientData.value = res;
+  });
+
 export default {
   data() {
     return {
@@ -34,7 +47,7 @@ export default {
         {
           title: '心率 (HR):',
           number: {
-            number: [80],
+            number: [patientData.value.HR],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -46,7 +59,7 @@ export default {
         {
           title: '收缩压 (SBP):',
           number: {
-            number: [100],
+            number: [patientData.value.SBP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -58,7 +71,7 @@ export default {
         {
           title: '颅内压 (ICP):',
           number: {
-            number: [10],
+            number: [patientData.value.ICP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -70,7 +83,7 @@ export default {
         {
           title: '平均动脉压 (MAP):',
           number: {
-            number: [100],
+            number: [patientData.value.MAP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -82,7 +95,7 @@ export default {
         {
           title: '体温 (T):',
           number: {
-            number: [37.1],
+            number: [patientData.value.T],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -94,7 +107,7 @@ export default {
         {
           title: '呼吸频率 (RR):',
           number: {
-            number: [18],
+            number: [patientData.value.RR],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -106,7 +119,7 @@ export default {
         {
           title: '血氧饱和度 (SpO2):',
           number: {
-            number: [100],
+            number: [patientData.value.SpO2],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -117,7 +130,7 @@ export default {
         },{
           title: '呼气末正压 (PEEP):',
           number: {
-            number: [12],
+            number: [patientData.value.PEEP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -128,7 +141,7 @@ export default {
         },{
           title: '吸入氧浓度 (FiO2)',
           number: {
-            number: [0.21],
+            number: [patientData.value.FiO2],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -203,6 +216,7 @@ $box-height: 410px;
     width: 100px;
     height: 20px;
     top: -3px;
+    color: white;
   }
 
   .bottom-data {

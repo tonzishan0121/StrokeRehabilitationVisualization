@@ -94,11 +94,15 @@ export default {
   props: {
     cdata: {
       type: Object,
-      default: () => ({})
+      default: () => {}
     },
     chatName: {
       type: String,
       default: ''
+    },
+    currentData: {
+      type: Array,
+      default: () => []
     }
   },
   watch: {
@@ -189,21 +193,15 @@ export default {
               symbol: 'emptyCircle',
               symbolSize: 8,
               itemStyle: {
-                normal: {
-                  color: '#fff'
-                }
+                color: '#fff'
               },
               lineStyle: {
-                normal: {
-                  color: this.colorList.linearBtoG,
-                  width: 3
-                }
+                color: this.colorList.linearBtoG,
+                width: 3
               },
               areaStyle: {
-                normal: {
-                  // 修改为通过 this 访问
-                  color: this.colorList.areaBtoG
-                }
+                // 修改为通过 this 访问
+                color: this.colorList.areaBtoG
               },
               data: newData.weekLineData,
               lineSmooth: true,
@@ -217,17 +215,14 @@ export default {
                 ],
                 precision: 0,
                 label: {
-                normal: {
-                  textStyle: {
-                    fontSize: 16
-                  },
-                    formatter: '平均值: \n {c}'
-                  }
+                    fontSize: 18,
+                    formatter: '平均值: \n\n {c}'
+                  
                 },
                 lineStyle: {
-                  normal: {
+              
                     color: 'rgba(248,211,81,.7)'
-                  }
+                
                 }
               },
               tooltip: {
@@ -241,11 +236,9 @@ export default {
               name: '占位背景',
               type: 'bar',
               itemStyle: {
-                normal: {
-                  show: true,
-                  color: '#000',
-                  opacity: 0
-                }
+                show: true,
+                color: '#000',
+                opacity: 0
               },
               silent: true,
               barWidth: '50%',

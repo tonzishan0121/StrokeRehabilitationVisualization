@@ -14,7 +14,8 @@ import echartsGraphs from "./graphs.vue";
 const props = defineProps({
   date:{
     type:Array,
-    default:["0", "5"]
+    required: true,
+    default: ["0", "5"]
   }
 })
 const chart = ref(null);
@@ -22,13 +23,13 @@ const chartInstance = ref(null);
 
 const option = {
   title: {
-    text: '1day~5day',
+    text: `1day~${props.date[1]}day`,
     textStyle: {
       color: '#FFF',
       fontSize: 22,
-    },
-    left: 20,
-    top: 16
+      left: 20,
+      top: 18
+    }
   },
   tooltip: {},
   grid: {

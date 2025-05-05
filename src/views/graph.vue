@@ -179,6 +179,7 @@ const exprehabData = [
             ]
         }
       ];
+const days = exprehabData.length.toString();
 export default {
   mixins: [drawMixin],
   data() {
@@ -188,6 +189,7 @@ export default {
       dateDay: null,
       dateYear: null,
       dateWeek: null,
+      sliderRef: ["0",days],
       weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
       decorationColor: ['#568aea', '#000000'],
       exprehabitate: [...exprehabData]

@@ -61,8 +61,9 @@ export default {
     CommonLayout
   },
   mounted() {
-    this.timeFn()
-    this.cancelLoading()
+    this.timeFn();
+    this.cancelLoading();
+    localStorage.setItem("id","10000");
   },
   beforeDestroy() {
     clearInterval(this.timing)
