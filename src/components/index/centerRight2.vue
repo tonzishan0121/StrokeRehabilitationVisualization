@@ -16,7 +16,7 @@ import centerRight2Chart from './centerRight2Chart/index.vue';
 import {apiConfig,requestf} from '../../utils/apiConfig.js';
 
 import { ref } from 'vue';
-const cdata = ref(null);
+const cdata = ref({});
 requestf(apiConfig.getScore,
   {
     "id": localStorage.getItem("id")

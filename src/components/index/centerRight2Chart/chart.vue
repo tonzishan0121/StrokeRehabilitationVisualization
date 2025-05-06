@@ -10,7 +10,16 @@ export default {
   props: {
     cdata: {
       type: Object,
-      default: () => ({})
+      default: () => ({
+        S5Q: 0,
+        RASS: 0,
+        MMASA: 0,
+        MRCsum: 0,
+        BBS_sit_to_stand: 0,
+        BBS_standing: 0,
+        BBS_sitting: 0,
+        FOIS: 0
+      })
     }
   },
   data() {

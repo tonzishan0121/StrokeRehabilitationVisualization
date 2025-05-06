@@ -48,5 +48,7 @@ export const apiConfig = {
   // 获取一周康复量表的总表
   getscoreList: `${ip_address}/scoreList`,
   //获取指定日期康复方案
-  getRehab: `${ip_address}/rehab`
+  getRehab: `${ip_address}/rehab`,
+  //获取康复路径
+  getPath: `${ip_address}/pathways`
 };

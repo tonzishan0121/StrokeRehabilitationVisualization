@@ -25,37 +25,39 @@
 <script>
 import { apiConfig, requestf } from '../../utils/apiConfig';
 import BottomRightChart from "../index/bottomRightChart/index.vue";
-import { ref } from "vue";
-const cdata = ref({});
-requestf(apiConfig.getscoreList,
-  {"id":localStorage.getItem("id")},
-  'POST',(res) => {
-    cdata.value = res;
-  });
+
 export default {
   components: {
     BottomRightChart
   },
   data() {
     return {
-      tableName: ref("MRCsum"),
+      tableName: "",
       bottomList : [
         "SQ5","FOIS","RASS","MMASA","BBS1","BBS2","BBS3","MRC"
       ],
-      tableDataList:cdata.value
+      tableDataList: {}
     };        
   },
   methods: {
     handleButtonClick(index) {
-      this.tableName=index;
+      this.tableName = index;
     },
     tableNameAutoChange() {
       setInterval(() => {
         this.tableName = this.bottomList[Math.floor(Math.random() * this.bottomList.length)];
-      }, 6000);
+      }, 10000);
     }
   },
   beforeMount() {
+    requestf(apiConfig.getscoreList,
+      {"id":localStorage.getItem("id")},
+      'POST',(res) => {
+        this.tableDataList = res;
+        this.handleButtonClick("MRC")
+      });
+  },
+  mounted() {
     this.tableNameAutoChange();
   }
 };

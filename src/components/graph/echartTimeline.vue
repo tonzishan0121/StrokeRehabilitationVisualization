@@ -28,7 +28,7 @@ const option = {
       color: '#FFF',
       fontSize: 22,
       left: 20,
-      top: 18
+      top: 20
     }
   },
   tooltip: {},

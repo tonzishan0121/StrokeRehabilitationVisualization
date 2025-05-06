@@ -34,19 +34,20 @@ export default {
   },
   watch: {
     chatName () {
-      this.drawTimingFn();
+      this.setData();
+    },
+    currentData () {
+      this.setData();
     }
   },
   mounted () {
-    this.drawTimingFn();
+    this.setData();
   },
   beforeDestroy () {
     clearInterval(this.drawTiming);
   },
   methods: {
-    drawTimingFn () {
-      this.setData();
-    },
+
     setData () {
       // 清空轮询数据
       this.cdata.weekCategory = [];

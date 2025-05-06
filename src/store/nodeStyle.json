@@ -1,0 +1,64 @@
+{
+    "node100":{
+        "symbolSize": 20,
+         "fixed": true,  
+         "itemStyle": {
+            "color": "#ea700d"
+            },
+        "value":2, 
+        "y": 200,
+        "label": {
+            "position": "bottom"
+        }
+    },
+    "node010":{
+        "symbolSize": 12, 
+        "fixed": false, 
+        "itemStyle": {
+            "color": "#ffd7d2"
+            },
+        "value":6
+    },
+    "node001":{
+        "symbolSize": 12, 
+        "fixed": false, 
+        "itemStyle": {
+            "color": "#ffd7d2"
+            },
+        "value": 16
+    },
+    "node200":{
+        "symbolSize": 20, 
+        "fixed": true,  
+        "itemStyle": {"color": "#91CC75"},
+        "value":2, 
+        "y": 200,
+        "label": {
+            "position": "bottom"
+        }
+    },
+    "node020":{
+        "symbolSize": 12, 
+        "fixed": false, 
+        "itemStyle": {
+            "color": "#D4E157"
+            },
+        "value":6
+    },
+    "node002":{
+        "symbolSize": 12,
+        "fixed": false,
+        "itemStyle": {
+            "color": "#D4E157"
+            },
+        "value": 16
+    },
+   "links":{ 
+        "value":10,
+        "lineStyle": {
+            "color": "white", 
+            "width": 2,
+            "type": "solid"
+        }
+    }
+}

@@ -2,16 +2,16 @@
   "day1":{
       "left": {
         "nodes":[
-          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 65, "y": 200,"label": {"position": "bottom"}},
-          { "name": "物理评估",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
+          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 80, "y": 200,"label": {"position": "bottom"}},
+          { "name": "物理评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "作业评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "吞咽评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
-          { "name": "S5Q",          "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 20},
-          { "name": "MRC",          "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 20},
-          { "name": "BBS",          "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 20},
-          { "name": "RASS",         "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 20},
-          { "name": "MMASA",        "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 20},
-          { "name": "FOIS",         "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 20}
+          { "name": "S5Q",          "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 16},
+          { "name": "MRC",          "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 16},
+          { "name": "BBS",          "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 16},
+          { "name": "RASS",         "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 16},
+          { "name": "MMASA",        "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 16},
+          { "name": "FOIS",         "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value": 16}
       ],
         "links":[
           { "source": "康复评估", "target": "物理评估"   ,"value":5,"lineStyle": {"color": "white", "width": 2,"type": "solid"}},
@@ -34,19 +34,19 @@
           { "source": "物理治疗", "target": "气道廓清"   ,"value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}}
         ],
         "nodes": [
-          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 290, "y": 200,"label": {"position": "bottom"} },
-          { "name": "物理治疗",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "##D4E157"},"value":6},
-          { "name": "每2小时翻身",   "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
-          { "name": "体位变换",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
-          { "name": "被动活动训练",  "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
-          { "name": "气道廓清",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 }
+          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 320, "y": 200,"label": {"position": "bottom"} },
+          { "name": "物理治疗",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":6},
+          { "name": "每2小时翻身",   "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":16 },
+          { "name": "体位变换",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":16 },
+          { "name": "被动活动训练",  "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":16 },
+          { "name": "气道廓清",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":16 }
       ]
     }
   },
   "day2":{
       "left": {
         "nodes":[
-          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 440, "y": 200,"label": {"position": "bottom"}},
+          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 460, "y": 200,"label": {"position": "bottom"}},
           { "name": "物理评估",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "作业评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "吞咽评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
@@ -71,14 +71,14 @@
     },
       "right":{ 
         "links":[
-          { "source": "康复训练", "target": "物理治疗"   ,"value":5,"lineStyle": {"color": "white", "width": 2,"type": "solid"}},
+          { "source": "康复训练", "target": "物理治疗"   ,"value":20,"lineStyle": {"color": "white", "width": 2,"type": "solid"}},
           { "source": "物理治疗", "target": "每2小时翻身","value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}},
           { "source": "物理治疗", "target": "体位变换"   ,"value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}},
           { "source": "物理治疗", "target": "被动活动训练","value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}},
           { "source": "物理治疗", "target": "气道廓清"   ,"value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}}
         ],
         "nodes": [
-          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 680, "y": 200,"label": {"position": "bottom"} },
+          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 700, "y": 200,"label": {"position": "bottom"} },
           { "name": "物理治疗",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "##D4E157"},"value":6},
           { "name": "每2小时翻身",   "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
           { "name": "体位变换",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
@@ -90,7 +90,7 @@
   "day3":{
       "left": {
         "nodes":[
-          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 860, "y": 200,"label": {"position": "bottom"}},
+          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 840, "y": 200,"label": {"position": "bottom"}},
           { "name": "物理评估",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "作业评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "吞咽评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
@@ -122,7 +122,7 @@
           { "source": "物理治疗", "target": "气道廓清"   ,"value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}}
         ],
         "nodes": [
-          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 1100, "y": 200,"label": {"position": "bottom"} },
+          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 1080, "y": 200,"label": {"position": "bottom"} },
           { "name": "物理治疗",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "##D4E157"},"value":6},
           { "name": "每2小时翻身",   "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
           { "name": "体位变换",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
@@ -134,7 +134,7 @@
   "day4":{
       "left": {
         "nodes":[
-          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 1200, "y": 200,"label": {"position": "bottom"}},
+          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 1220, "y": 200,"label": {"position": "bottom"}},
           { "name": "物理评估",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "作业评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "吞咽评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
@@ -166,7 +166,7 @@
           { "source": "物理治疗", "target": "气道廓清"   ,"value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}}
         ],
         "nodes": [
-          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 1400, "y": 200,"label": {"position": "bottom"} },
+          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 1460, "y": 200,"label": {"position": "bottom"} },
           { "name": "物理治疗",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "##D4E157"},"value":6},
           { "name": "每2小时翻身",   "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
           { "name": "体位变换",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
@@ -178,7 +178,7 @@
   "day5":{
       "left": {
         "nodes":[
-          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 1560, "y": 200,"label": {"position": "bottom"}},
+          { "name": "康复评估",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#ea700d"},"value":2, "x": 1600, "y": 200,"label": {"position": "bottom"}},
           { "name": "物理评估",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "作业评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
           { "name": "吞咽评估",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#ffd7d2"},"value":6 },
@@ -210,7 +210,7 @@
           { "source": "物理治疗", "target": "气道廓清"   ,"value":10,"lineStyle": {"color": "white", "width": 2,"type": "solid"}}
         ],
         "nodes": [
-          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 1800, "y": 200,"label": {"position": "bottom"} },
+          { "name": "康复训练",      "symbolSize": 20, "fixed": true,  "itemStyle": {"color": "#91CC75"},"value":2, "x": 1840, "y": 200,"label": {"position": "bottom"} },
           { "name": "物理治疗",      "symbolSize": 15, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":6},
           { "name": "每2小时翻身",   "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },
           { "name": "体位变换",      "symbolSize": 12, "fixed": false, "itemStyle": {"color": "#D4E157"},"value":20 },

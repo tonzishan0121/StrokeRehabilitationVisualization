@@ -32,7 +32,17 @@
 import {ref} from 'vue';
 import { requestf,apiConfig } from '../../utils/apiConfig';
 
-let patientData = ref(null);
+let patientData = ref({
+  "HR": 0,
+  "SBP": 0,
+  "ICP": 0,
+  "MAP": 0,
+  "T": 0,
+  "RR": 0,
+  "SpO2": 0,
+  "PEEP": 0,
+  "FiO2": 0
+});
 const patientId = {"id":localStorage.getItem("id")}
 requestf(apiConfig.getVitals,
   patientId,
