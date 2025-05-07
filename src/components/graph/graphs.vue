@@ -45,14 +45,13 @@ let commonSeriesConfig = {
   },
   force: {
     repulsion: 100,
-    edgeLength: 15,
+    edgeLength: 14,
     gravity: 0.01
   },
   itemStyle: {
     borderColor: '#fff',
     borderWidth: 1,
-    shadowBlur: 10,
-    shadowColor: "white"
+    shadowBlur: 10
   },
   scaleLimit: { max: 2, min: 0.5 },
   draggable: true

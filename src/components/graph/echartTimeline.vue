@@ -15,7 +15,7 @@ const props = defineProps({
   date:{
     type:Array,
     required: true,
-    default: ["0", "5"]
+    default: ["1", "5"]
   }
 })
 const chart = ref(null);
@@ -23,13 +23,13 @@ const chartInstance = ref(null);
 
 const option = {
   title: {
-    text: `1day~${props.date[1]}day`,
+    text: `第1天~第${props.date[1]}天`,
     textStyle: {
       color: '#FFF',
-      fontSize: 22,
-      left: 20,
-      top: 20
-    }
+      fontSize: 22
+    },
+    left: 20,
+    top: 18
   },
   tooltip: {},
   grid: {
@@ -43,7 +43,13 @@ const option = {
     {
       type: 'category',
       boundaryGap: true,
-      data: ["1day", "2day", "3day", "4day", "5day"],
+      data: [  // 修改数据项格式
+      { value: "第1天", textStyle: { fontSize: 18 } },
+      { value: "第2天", textStyle: { fontSize: 18 } },
+      { value: "第3天", textStyle: { fontSize: 18 } },
+      { value: "第4天", textStyle: { fontSize: 18 } },
+      { value: "第5天", textStyle: { fontSize: 18 } }
+    ],
       position: 'bottom',
       axisLine: {
         symbol: ['none', 'arrow'],
@@ -118,13 +124,13 @@ watch(() => props.date, (newDate) => {
   const start = parseInt(newDate[0]);
   const xData = [];
   // 生成连续5天的day标签（包含起始和结束日期）
-  for (let i = 0; i < 5; i++) {
-    xData.push(`${start + i}day`);
+  for (let i = start; i <start + 5; i++) {
+    xData.push({ value: `第${i}天`, textStyle: { fontSize: 18 } });
   }
   option.xAxis[0].data = xData;
   
   // 更新标题显示范围
-  option.title.text = `${xData[0]}~${xData[4]}`;
+  option.title.text = `第${start}天~第${start+4}天`;
   
   // 重新渲染图表
   if (chartInstance.value) {
@@ -158,10 +164,5 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-}
-#siderBar {
-  position: absolute;
-  top: 50%;
-  right: 50%;
 }
 </style>

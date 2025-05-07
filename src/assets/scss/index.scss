@@ -81,6 +81,7 @@
         display:grid;
         grid-template-columns:auto;
         height: 410px;
+        margin-top: 80px;
       }
       // 底部数据
       .bottom-box {
@@ -94,7 +95,7 @@
         display: flex;  
         flex-flow: row nowrap;
         align-items: flex-start;
-        margin-top: 60px;
+        margin-top: 10px;
         gap: 10px;
         justify-content: space-around;
       }
