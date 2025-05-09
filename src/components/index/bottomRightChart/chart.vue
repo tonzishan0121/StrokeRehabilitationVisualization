@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Echart from '@/common/echart'
+import Echart from '@/common/echart';
 export default {
   data() {
     return {

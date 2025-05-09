@@ -50,5 +50,11 @@ export const apiConfig = {
   //获取指定日期康复方案
   getRehab: `${ip_address}/rehab`,
   //获取康复路径
-  getPath: `${ip_address}/pathways`
+  getPath: `${ip_address}/pathways`,
+  //病人详细个人信息
+  patientInfo: `${ip_address}/patientInfo`,
+  //病人详细生理数据
+  patientData:  `${ip_address}/patientData`,
+  //事件路径
+  eventRoute: `${ip_address}/eventRoute`
 };

@@ -14,6 +14,11 @@ const routes = [
     path: '/graph',
     name: 'Graph',
     component: () => import('../views/graph.vue')
+  },
+  {
+    path: '/eventGraph',
+    name: 'EventGraph',
+    component: () => import('../views/eventGraph.vue')
   }
 ]
 

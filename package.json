@@ -1,6 +1,6 @@
 {
-  "name": "big-screen",
-  "version": "1.5.1",
+  "name": "vssr",
+  "version": "2.1.0",
   "private": true,
   "engines": {
     "node": ">=16.0.0 <=22.14.0",
@@ -18,11 +18,13 @@
     "core-js": "^3.6.4",
     "echarts": "^5.4.3",
     "nouislider": "^15.8.1",
+    "vis-network": "^9.1.9",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
     "@vue/cli-plugin-babel": "^4.2.0",
     "@vue/cli-plugin-eslint": "^4.2.0",
     "@vue/cli-service": "^4.2.0",

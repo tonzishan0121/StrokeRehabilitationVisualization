@@ -1,7 +1,7 @@
 <template>
   <div id="bottomRight">
     <div class="bg-color-black">
-      <div class="d-flex pt-2 pl-2">
+     
         <div class="d-flex">
           <span style="margin-left:0.75rem;color:white;font-size:22px">{{tableName}}得分情况</span>
           <div class="decoration2">
@@ -12,13 +12,12 @@
       <div>
         <BottomRightChart :chatName="tableName" :currentData="tableDataList[tableName]"/>
       </div>
-      <!-- 新增按钮容器，使用绝对定位到右上角 -->
       <div class="bottom-container">
         <button v-for="item in bottomList" @click="handleButtonClick(item)">
            {{ item }}
         </button>
       </div>
-    </div>
+    
   </div>
 </template>
 
