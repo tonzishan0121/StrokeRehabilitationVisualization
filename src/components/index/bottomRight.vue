@@ -1,7 +1,7 @@
 <template>
   <div id="bottomRight">
     <div class="bg-color-black">
-      <div class="d-flex pt-2 pl-2">
+     
         <div class="d-flex">
           <span style="margin-left:0.75rem;color:white;font-size:22px">{{tableName}}得分情况</span>
           <div class="decoration2">
@@ -10,44 +10,53 @@
         </div>
       </div>
       <div>
-        <BottomRightChart :chatName="tableName" />
+        <BottomRightChart :chatName="tableName" :currentData="tableDataList[tableName]"/>
       </div>
-      <!-- 新增按钮容器，使用绝对定位到右上角 -->
       <div class="bottom-container">
         <button v-for="item in bottomList" @click="handleButtonClick(item)">
            {{ item }}
         </button>
       </div>
-    </div>
+    
   </div>
 </template>
 
 <script>
+import { apiConfig, requestf } from '../../utils/apiConfig';
 import BottomRightChart from "../index/bottomRightChart/index.vue";
-import { ref } from "vue";
+
 export default {
   components: {
     BottomRightChart
   },
   data() {
     return {
-      tableName: ref("MRCsum"),
+      tableName: "",
       bottomList : [
         "SQ5","FOIS","RASS","MMASA","BBS1","BBS2","BBS3","MRC"
-      ]
-    }
+      ],
+      tableDataList: {}
+    };        
   },
   methods: {
     handleButtonClick(index) {
-      this.tableName=index;
+      this.tableName = index;
     },
     tableNameAutoChange() {
       setInterval(() => {
         this.tableName = this.bottomList[Math.floor(Math.random() * this.bottomList.length)];
-      }, 6000);
+      }, 10000);
     }
   },
   beforeMount() {
+    requestf(apiConfig.getscoreList,
+      {"id":localStorage.getItem("id")},
+      'POST',(res) => {
+        this.tableDataList = res;
+        this.handleButtonClick("MRC")
+      });
+  },
+  mounted() {
     this.tableNameAutoChange();
   }
 };

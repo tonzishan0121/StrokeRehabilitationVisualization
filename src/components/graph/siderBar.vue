@@ -18,10 +18,10 @@ let sliderInstance = null;
 const formatTooltip = (value) => {
   const numValue = typeof value === 'number' ? value : parseFloat(value);
   return `<span style="color:rgb(0, 100, 128, 0.6);
-  font-size: 16px;font-weight: 600;">${Math.floor(numValue)}day</span>`;
+  font-size: 16px;font-weight: 600;">第${Math.floor(numValue)}天</span>`;
 };
 const handleUpdate = (values) => {
-  const regex = />(\d+)day</;
+  const regex = />第(\d+)天</;
   const match1 = values[0].match(regex);
   const match2 = values[1].match(regex);
   let extractedNumber = [];
@@ -43,7 +43,7 @@ const initSlider = () => {
     const aspectRatio = Math.min(windowWidth, windowHeight);
 
     // 动态计算 left 和 right 的值
-    const sideMargin = 0.2 * aspectRatio; // 8% 的边距
+    const sideMargin = 0.15 * aspectRatio; // 8% 的边距
     const left = sideMargin;
     const right = sideMargin;
 
@@ -53,15 +53,15 @@ const initSlider = () => {
 
     sliderInstance = noUiSlider.create(sliderRef.value, {
       // 设置滑块的初始值，这里表示两个滑块分别初始在 0 和 3 的位置
-      start: [0, 3],
+      start: [1, 5],
       connect: true,
       // 两个滑块之间的最小间隔值为 5
-      margin: 5,
+      margin: 4,
       // 两个滑块之间的最大间隔值为 5
-      limit: 5,
+      limit: 4,
       // 滑块的取值范围，最小值为 0，最大值为 10
       range: {
-        'min': 0,
+        'min': 1,
         'max': 10
       },
       // 滑块的行为模式为可拖动
@@ -101,8 +101,8 @@ onUnmounted(() => {
 <style lang="css" scoped>
 #slider {
     position: absolute;
-    bottom: 43%;
-    height: 35px;
+    bottom: 78%;
+    height: 20px;
     opacity: 0.8;
   }
 </style>

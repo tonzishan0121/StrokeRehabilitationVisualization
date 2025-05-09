@@ -7,6 +7,21 @@ import * as echarts from 'echarts';
 
 export default {
   name: 'RadarChart',
+  props: {
+    cdata: {
+      type: Object,
+      default: () => ({
+        S5Q: 0,
+        RASS: 0,
+        MMASA: 0,
+        MRCsum: 0,
+        BBS_sit_to_stand: 0,
+        BBS_standing: 0,
+        BBS_sitting: 0,
+        FOIS: 0
+      })
+    }
+  },
   data() {
     return {
       myChart: null, // 用于存储 ECharts 实例
@@ -20,27 +35,18 @@ export default {
       // 获取 DOM 元素
       const chartDom = this.$refs.chartRef;
       this.myChart = echarts.init(chartDom);
-
+      const data = Object.values(this.cdata);
       // 雷达图配置
       const option = {
         title: {
           text: '',
           left: 'center',
-          textStyle: {
-            color: '#ffffff', // 修改标题颜色
-            fontSize: 18, // 修改标题字体大小
-            fontWeight: 'bold' // 修改标题字体粗细
-          }
+          color: '#ffffff', // 修改标题颜色
+          fontSize: 18, // 修改标题字体大小
+          fontWeight: 'bold' // 修改标题字体粗细
+          
         },
         tooltip: {},
-        legend: {
-          data: ['康复量表得分'],
-          align: 'left',
-          textStyle: {
-            color: '#ffffff', // 修改图例文字颜色
-            fontSize: 18 // 修改图例文字大小
-          }
-        },
         radar: {
           indicator: [
             { name: 'S5Q', max: 100 },
@@ -52,11 +58,9 @@ export default {
             { name: 'BBS sitting', max: 100 },
             { name: 'FOIS', max: 100 }
           ],
-          name: {
-            textStyle: {
+          axisName: {
               color: '#ffffff', // 修改指示器名称颜色
               fontSize: 16 // 修改指示器名称大小
-            }
           }
         },
         series: [
@@ -65,7 +69,7 @@ export default {
             type: 'radar',
             data: [
               {
-                value:[60, 50, 40, 70, 25, 50,50,75],
+                value:data,
                 fontSize: 12,
                 name: '得分',
                 areaStyle: {
@@ -100,5 +104,4 @@ export default {
 </script>
 
 <style scoped>
-/* 可以根据需要添加样式 */
 </style>

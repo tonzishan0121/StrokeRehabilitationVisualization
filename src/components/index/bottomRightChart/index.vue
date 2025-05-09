@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Chart :cdata="cdata" :chatName="chatName"/>
+    <Chart :cdata="cdata" :chatName="chatName" :currentData="currentData" />
   </div>
 </template>
 
@@ -13,9 +13,7 @@ export default {
       cdata: {
         year: null,
         weekCategory: [],
-        radarData: [],
-        radarDataAvg: [],
-        maxData: 60,
+        maxData: 100,
         weekMaxData: [],
         weekLineData: []
       }
@@ -25,26 +23,31 @@ export default {
     chatName: {
       type: String,
       default: '2'
+    },
+    currentData: {
+      type: Array,
+      default: () => []
     }
   },
   components: {
     Chart,
   },
   watch: {
-    chatName (val) {
-      this.drawTimingFn();
+    chatName () {
+      this.setData();
+    },
+    currentData () {
+      this.setData();
     }
   },
   mounted () {
-    this.drawTimingFn();
+    this.setData();
   },
   beforeDestroy () {
     clearInterval(this.drawTiming);
   },
   methods: {
-    drawTimingFn () {
-      this.setData();
-    },
+
     setData () {
       // 清空轮询数据
       this.cdata.weekCategory = [];
@@ -61,10 +64,8 @@ export default {
 
         // 折线图数据
         this.cdata.weekMaxData.push(this.cdata.maxData);
-        let distance = Math.round(Math.random() * 20 + 30);
-        this.cdata.weekLineData.push(distance);
       }
-
+      this.cdata.weekLineData = this.currentData;
     }
   }
 };

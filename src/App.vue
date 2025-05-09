@@ -3,7 +3,8 @@
     <router-view />
     <nav style="position: fixed; bottom: 0; right: 0;">
       <RouterLink to="/index"><span style="color:white;font-size:x-large"><</span></RouterLink>
-      <RouterLink to="/graph"><span style="color:white;font-size:x-large">></span></RouterLink>
+      <RouterLink to="/graph"><span style="color:white;font-size:x-large">|</span></RouterLink>
+      <RouterLink to="/eventGraph"><span style="color:white;font-size:x-large">></span></RouterLink>
     </nav>
   </div>
 </template>
