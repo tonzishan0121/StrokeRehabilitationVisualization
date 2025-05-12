@@ -24,8 +24,8 @@ https://tonzishan0121.github.io
 协议: Apache License 2.0
 修改内容:
 1. 做的是脑卒中数据大屏可视化
-2. 增建了一个界面
+2. 从纯单页应用变更成三个页面的单页应用
 3. 删减了一些代码
 4. 转成了vue3项目
-5. 移去了所有的fontAwesome
+5. 移去了所有的fontAweSome
 ```
