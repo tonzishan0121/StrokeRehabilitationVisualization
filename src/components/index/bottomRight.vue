@@ -1,17 +1,17 @@
 <template>
   <div id="bottomRight">
     <div class="bg-color-black">
-     
-        <div class="d-flex">
-          <span style="margin-left:0.75rem;color:white;font-size:22px">{{tableName}}得分情况</span>
-          <div class="decoration2">
-            <dv-decoration-2 :reverse="true" style="width:5px;height:6rem;" />
-          </div>
+      <div class="d-flex">
+        <span style="margin-left:0.75rem;color:white;font-size:22px">{{tableName}}得分情况</span>
+        <div class="decoration2">
+          <dv-decoration-2 :reverse="true" style="width:5px;height:6rem;" />
         </div>
       </div>
       <div>
         <BottomRightChart :chatName="tableName" :currentData="tableDataList[tableName]"/>
       </div>
+    </div>
+      
       <div class="bottom-container">
         <button v-for="item in bottomList" @click="handleButtonClick(item)">
            {{ item }}

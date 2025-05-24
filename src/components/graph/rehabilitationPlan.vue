@@ -1,5 +1,6 @@
 <script setup>
 import { defineProps, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const showItems = ref([]);
 
@@ -46,16 +47,13 @@ const toggleItems = (index, show) => {
   showItems.value[index] = show;
 };
 
-const handleTitleClick = () => {
-  if (window.confirm('风险点！')) {
-    console.log('确认执行操作');
-  }
-};
 </script>
 
 <template>
   <div class="rehabilitation-plan">
-    <h2>{{ title }}</h2><span class="risk-point" @click.stop="handleTitleClick">风险点</span>
+    <RouterLink to="/eventGraph">
+      <h2>{{ title }}</h2><span class="risk-point">风险点</span>
+    </RouterLink>
     <div class="tips">
       <strong style="color: red;">{{ tips.title }}</strong>{{ tips.content }}
     </div>

@@ -15,7 +15,7 @@
         <div class="patient-info">
           <!-- 左侧：患者头像 -->
           <div class="avatar-container">
-            <img :src="avatar" alt="患者头像" class="patient-avatar" />
+            <img src="../../assets/patient.png" alt="患者头像" class="patient-avatar" />
           </div>
 
           <!-- 右侧：患者其他信息 -->

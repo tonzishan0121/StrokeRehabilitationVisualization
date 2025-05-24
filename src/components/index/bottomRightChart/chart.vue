@@ -167,7 +167,7 @@ export default {
             },
             max: newData.maxData,
             splitNumber: 4,
-
+            scale: true,
             axisLine: {
               lineStyle: {
                 opacity: 0

@@ -1,18 +1,11 @@
 <script setup>
-// 引入 ECharts 库
 import * as echarts from 'echarts';
-// 引入 Vue 相关的响应式 API 和生命周期钩子
 import { ref, onMounted, defineProps, watch } from 'vue';
-// 引入自定义工具函数
 import { debounce, nodeBuilder } from '../../utils/index';
-// 引入 API 配置和请求函数
 import { apiConfig, requestf } from '../../utils/apiConfig';
-// 引入节点样式配置文件
 import nodeStyle from '../../store/nodeStyle.json';
-// 引入节点内容配置文件
 import nodeList from '../../store/nodeContent.json';
 
-// 定义组件的 props
 const props = defineProps({
   // 日期范围，默认为 ["0", "5"]
   date: {
@@ -21,7 +14,7 @@ const props = defineProps({
   } 
 });
 
-// 定义响应式数据，存储请求返回的数据
+// 存储请求返回的数据
 let res_data = ref(nodeList);
 
 // 定义请求数据对象，包含请求所需的参数
@@ -233,7 +226,8 @@ function getNewData(data) {
     // 修复层级设置（新增）
     chart1.style.zIndex = 2;
     chart2.style.zIndex = 1;
-  }
+  };
+  initChart();
   // 更新上一次的日期范围
   prevDate = data;
 }
