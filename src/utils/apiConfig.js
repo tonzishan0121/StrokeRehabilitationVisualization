@@ -1,5 +1,6 @@
 const ip_address = "http://127.0.0.1:4523/m1/4229826-0-default";
 
+
 /**
  * 发起HTTP请求，并通过回调函数返回响应结果
  * 
@@ -56,5 +57,7 @@ export const apiConfig = {
   //病人详细生理数据
   patientData:  `${ip_address}/patientData`,
   //事件路径
-  eventRoute: `${ip_address}/eventRoute`
+  eventRoute: `${ip_address}/eventRoute`,
+  //测试
+  test: (id) => `${ip_address}/api/${id}/json`,
 };

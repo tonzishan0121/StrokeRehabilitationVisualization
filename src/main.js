@@ -6,8 +6,16 @@ import dataV from '@jiaminghi/data-view';
 import './assets/scss/style.scss';
 //引入echart
 import * as echarts from 'echarts'
-const app = createApp(App);
-app.config.globalProperties.$echarts = echarts;
-app.use(dataV);
-app.use(router);
-app.mount('#app');
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get('id');
+if (!id) {
+    // 如果没有id参数，跳转到错误页面
+  window.location.href = './error.html';
+} else {
+    localStorage.setItem('id', id);
+    const app = createApp(App);
+    app.config.globalProperties.$echarts = echarts;
+    app.use(dataV);
+    app.use(router);
+    app.mount('#app');
+}

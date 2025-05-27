@@ -2,7 +2,7 @@
   <dv-border-box-12>
     <div class="chart-container">
       <div ref="chart" class="chart"></div>
-      <echartsGraphs class="chart" :date="date"></echartsGraphs>
+      <echartsGraphs class="chart" :date="props.date"></echartsGraphs>
     </div>
   </dv-border-box-12>
 </template>

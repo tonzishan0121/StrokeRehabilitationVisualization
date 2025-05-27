@@ -7,22 +7,15 @@ import nodeStyle from '../../store/nodeStyle.json';
 import nodeList from '../../store/nodeContent.json';
 
 const props = defineProps({
-  // 日期范围，默认为 ["0", "5"]
+  // 日期范围，默认为 ["1", "5"]
   date: {
     type: Array,
-    default: () => ["0", "5"]
+    default: () => ["1", "5"]
   } 
 });
 
 // 存储请求返回的数据
-let res_data = ref(nodeList);
-
-// 定义请求数据对象，包含请求所需的参数
-let requestData = {
-  id: "10000",
-  start: props.date[0],
-  end: props.date[1]
-};
+const res_data = ref(nodeList);
 
 // 定义图表的公共配置
 let commonSeriesConfig = { 
@@ -50,9 +43,6 @@ let commonSeriesConfig = {
   draggable: true
 };
 
-// 定义存储图表系列配置的数组
-let series_template = [];
-
 // 存储上一次的日期范围
 let prevDate = props.date;
 
@@ -71,11 +61,18 @@ const activeInstance = ref(null);
  */
 watch(() => props.date, (newDate) => {
   if (newDate) {
-    // 发起数据请求
+    let requestData = {
+      id: "10000",
+      start: props.date[0],
+      end: props.date[1]
+    };
     requestf(apiConfig.getPath, requestData, 'POST', (res) => { 
       res_data.value = res;
+      console.log(requestData);
+      console.log("请求返回数据：", res_data.value);
+      let datas = update_series_template(res_data.value);
       // 防抖调用 getNewData 函数
-      getNewDataDebounce(newDate);
+      getNewDataDebounce(newDate,datas);
     });
   }
 }, {
@@ -101,50 +98,53 @@ function graph_template(left, right, data) {
   };
 }
 
+function update_series_template(data){
+  let series_template = [];
 // 生成 5 天的图表系列配置
-for (let i = 1; i <= 5; i++) {
-  const left1Index = (i - 1) * 20;
-  const right1Index = 100 - left1Index + 10;
-  const left2Index = left1Index + 10;
-  const right2Index = right1Index - 10;
-  // 调用 nodeBuilder 函数生成节点和链接数据
-  const _ = nodeBuilder(res_data.value, nodeStyle, i);
-  let left = {
-    links: _.assessmentLinks,
-    nodes: _.assessmentNodes
+  for (let i = 1; i <= 5; i++) {
+    const left1Index = (i - 1) * 20;
+    const right1Index = 100 - left1Index + 10;
+    const left2Index = left1Index + 10;
+    const right2Index = right1Index - 10;
+    // 调用 nodeBuilder 函数生成节点和链接数据
+    const _ = nodeBuilder(data, nodeStyle, i);
+    let left = {
+      links: _.assessmentLinks,
+      nodes: _.assessmentNodes
+    };
+    let right = {
+      nodes: _.treatmentNodes,
+      links: _.treatmentLinks
+    };
+    // 将生成的图表配置添加到 series_template 数组中
+    series_template.push(graph_template(`${left1Index}%`, `${right1Index}%`, left));
+    series_template.push(graph_template(`${left2Index}%`, `${right2Index}%`, right));
+  }
+  // 定义 ECharts 配置对象
+  const option = {
+    grid: {
+      left: '5%',
+      right: '5%',
+      bottom: '5%',
+      top: '5%',
+      containLabel: true
+    },
+    series: series_template
   };
-  let right = {
-    nodes: _.treatmentNodes,
-    links: _.treatmentLinks
-  };
-  // 将生成的图表配置添加到 series_template 数组中
-  series_template.push(graph_template(`${left1Index}%`, `${right1Index}%`, left));
-  series_template.push(graph_template(`${left2Index}%`, `${right2Index}%`, right));
+  return option;
 }
 
-// 定义 ECharts 配置对象
-const option = {
-  grid: {
-    left: '5%',
-    right: '5%',
-    bottom: '5%',
-    top: '5%',
-    containLabel: true
-  },
-  series: series_template
-};
 
 /**
  * 根据日期范围更新图表
  * @param {Array} data - 新的日期范围
  */
-function getNewData(data) {
+function getNewData(data,option) {
   const chart1 = chart1Ref.value;
   const chart2 = chart2Ref.value;
   const isNextLarger = data[0] > prevDate[0]; 
   // 如果日期范围没有变化，则直接返回
   if (data[0] === prevDate[0]) return;
-
   // Case 1: chart1 活动时左滑
   if (currentPosition.value === 0 && isNextLarger) {
     // 初始化新位置（禁用过渡）
@@ -227,7 +227,6 @@ function getNewData(data) {
     chart1.style.zIndex = 2;
     chart2.style.zIndex = 1;
   };
-  initChart();
   // 更新上一次的日期范围
   prevDate = data;
 }
@@ -239,6 +238,7 @@ const getNewDataDebounce = debounce(getNewData, 1000);
  * 初始化图表
  */
 const initChart = () => {
+  let option = update_series_template(res_data.value);
   [chart1Ref.value, chart2Ref.value].forEach((chartEl, index) => {
     if (!chartEl) return;
     const instance = echarts.getInstanceByDom(chartEl) || echarts.init(chartEl);
@@ -250,9 +250,15 @@ const initChart = () => {
 
 // 在组件挂载后调用初始化函数
 onMounted(() => {
+  let requestData = {
+    id: "10000",
+    start: props.date[0],
+    end: props.date[1]
+  };
   // 组件初始化时发起数据请求
   requestf(apiConfig.getPath, requestData, 'POST', (res) => { 
     res_data.value = res;
+    update_series_template(res_data.value);
     initChart();
   });
 });
