@@ -5,7 +5,6 @@
 <script>
 import { Network } from 'vis-network';
 import 'vis-network/styles/vis-network.css';
-import { requestf,apiConfig } from '../../../utils/apiConfig';
 
 export default {
   name: 'VisNetwork',
@@ -530,7 +529,7 @@ export default {
   { id: 140, label: "强化降压联合溶栓治疗",  group: 5, opacity: 1},
   { id: 141, label: "静脉抗高血压药物",  group: 5, opacity: 1}
 ]
-  
+    console.log(nodes);
     // 高血压
     if (sbp > 140) {
       console.log("举头望明月2"+this.nodes.filter(node =>
@@ -751,6 +750,7 @@ if (temperature > 39) {
     nodesToDisplay.forEach(node => {
       uniqueNodesMap.set(node.id, node);
     });
+
     this.filteredNodes = Array.from(uniqueNodesMap.values());
     // 返回筛选后的节点
   return this.filteredNodes;
@@ -759,70 +759,87 @@ if (temperature > 39) {
     
     initializeNetwork() {
     const container = this.$refs.networkContainer;
+
+    //const sbp = this.sbp || 150;
+    const sbp = 180;
+    console.log(sbp);
+    const glucose = this.glucose || 0;
+    const sodium = this.sodium || 140;
+    const potassium = this.potassium || 5;
+    const calcium = this.calcium || 3;
+    const diagnosisList = this.diagnosisList || [];
+    const triglyceride = this.triglyceride || 0;
+    const lipoprotein = this.lipoprotein || 0;
+    const creatinine = this.creatinine || 65;
+    const ureaNitrogen = this.ureaNitrogen || 3;
+    const totalBilirubin = this.totalBilirubin || 10;
+    const albumin = this.albumin || 40;
+    const alt = this.alt || 8;
+    const troponinT = this.troponinT || 0;
+    const ckmb = this.ckmb || 0;
+    const dDimer = this.dDimer || 0;
+    const mechanicalVentilationTime = this.mechanicalVentilationTime || 0;
+    const crp = this.crp || 180;
+    const il2 = this.il2 || 14;
+    const temperature = this.temperature || 36;
     
-    requestf(
-      apiConfig.eventRoute,
-      {
-        patientId: localStorage.getItem("id")
-      },
-      'POST',
-      (res) => {
-        // 在回调函数中处理返回数据
-        const cdata = {
-          sbp: res.sbp || 0,
-          glucose: res.glucose || 0,
-          sodium: res.sodium || 0,
-          potassium: res.potassium || 0,
-          calcium: res.calcium || 0,
-          diagnosisList: res.diagnosisList || [],
-          triglyceride: res.triglyceride || 0,
-          lipoprotein: res.lipoprotein || 0,
-          creatinine: res.creatinine || 0,
-          ureaNitrogen: res.ureaNitrogen || 0,
-          totalBilirubin: res.totalBilirubin || 0,
-          albumin: res.albumin || 0,
-          alt: res.alt || 0,
-          troponinT: res.troponinT || 0,
-          ckmb: res.ckmb || 0,
-          dDimer: res.dDimer || 0,
-          mechanicalVentilationTime: res.mechanicalVentilationTime || 0,
-          crp: res.crp || 0,
-          il2: res.il2 || 0,
-          temperature: res.temperature || 0
-        };
 
-        const nodesToDisplay = this.filterNodesByAllConditions(
-          cdata.sbp,
-          cdata.glucose,
-          cdata.sodium,
-          cdata.potassium,
-          cdata.calcium,
-          cdata.diagnosisList,
-          cdata.triglyceride,
-          cdata.lipoprotein,
-          cdata.creatinine,
-          cdata.ureaNitrogen,
-          cdata.totalBilirubin,
-          cdata.albumin,
-          cdata.alt,
-          cdata.troponinT,
-          cdata.ckmb,
-          cdata.dDimer,
-          cdata.mechanicalVentilationTime,
-          cdata.crp,
-          cdata.il2,
-          cdata.temperature
-        );
-
-        const data = {
-          nodes: nodesToDisplay,
-          edges: this.edges
-        };
-        
-        this.network = new Network(container, data, this.options);
-      }
+    const nodesToDisplay = this.filterNodesByAllConditions(
+      sbp,
+      glucose,
+      sodium,
+      potassium,
+      calcium,
+      diagnosisList,
+      triglyceride,
+      lipoprotein,
+      creatinine,
+      ureaNitrogen,
+      totalBilirubin,
+      albumin,
+      alt,
+      troponinT,
+      ckmb,
+      dDimer,
+      mechanicalVentilationTime,
+      crp,
+      il2,
+      temperature
     );
-}
+    console.log("为什么还没出现")
+    console.log(this.filterNodesByAllConditions(
+      sbp,
+      glucose,
+      sodium,
+      potassium,
+      calcium,
+      diagnosisList,
+      triglyceride,
+      lipoprotein,
+      creatinine,
+      ureaNitrogen,
+      totalBilirubin,
+      albumin,
+      alt,
+      troponinT,
+      ckmb,
+      dDimer,
+      mechanicalVentilationTime,
+      crp,
+      il2,
+      temperature
+    ))
+    console.log("为什么还没出现")
+      //const container = this.$refs.networkContainer;
+      const data = {
+        nodes: nodesToDisplay,
+        //nodes: this.nodes,
+        edges: this.edges
+      };
+      
+      this.network = new Network(container, data, this.options);
+      console.log("Network initialized with nodes:", nodesToDisplay);
+    }
   }
   };
 </script>
@@ -830,7 +847,7 @@ if (temperature > 39) {
 <style scoped>
 .network-container {
   width: 100%;
-  height: 350px;
+  height: 400px;
   /*border: 1px solid #eee;*/
   border-radius: 4px;
   /*background-color: gray;*/

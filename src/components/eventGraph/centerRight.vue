@@ -9,10 +9,7 @@
             v-for="(item, index) in physiologicalData"
             :key="index"
           >
-            <div class="card-content">
-              <div class="data-value">{{ item.number }}</div>
-              <div class="data-title">{{ item.title }}</div>
-            </div>
+            <div class="data-title">{{ item.title }}</div>
           </div>
         </div>
       </div>
@@ -50,13 +47,12 @@
     data() {
       return {
         physiologicalData: [
-          { title: '心率', number: '80'+" bpm" },
-          { title: '收缩压', number: '120'+" mmHg" },
-          { title: '舒张压', number: '80'+" mmHg" },
-          { title: '血氧饱和度', number: '98%' },
-          
-          { title: '体温', number: '36.7' +" ℃"},
-          { title: '呼吸频率', number: '16' +" 次/分"}
+          { title: '肺部感染' },
+          { title: '心源性损伤'},
+          { title: '肝肾功能异常'},
+          { title: '房颤'},
+          { title: '应激性溃疡'},
+          { title: '尿路感染'}
         ],
         riskPoints: [
           {
@@ -99,33 +95,7 @@
         id:"10000"
       },"POST",(res)=>{
         const data = res;
-        // 更新生理数据
-        this.physiologicalData = [
-          { 
-            title: '心率', 
-            number: `${data.physiological.heartRate} bpm` 
-          },
-          { 
-            title: '收缩压', 
-            number: `${data.physiological.systolicPressure} mmHg` 
-          },
-          { 
-            title: '舒张压', 
-            number: `${data.physiological.diastolicPressure} mmHg` 
-          },
-          { 
-            title: '血氧饱和度', 
-            number: `${data.physiological.bloodOxygen}%` 
-          },
-          { 
-            title: '体温', 
-            number: `${data.physiological.temperature} ℃` 
-          },
-          { 
-            title: '呼吸频率', 
-            number: `${data.physiological.respiratoryRate} 次/分` 
-          }
-        ];
+        this.physiologicalData=data.physiological;
 
         // 更新风险指标
         this.riskPoints = [
@@ -184,16 +154,10 @@
             transform: translateY(-4px);
           }
   
-          .data-value {
-            font-size: 28px;
-            font-weight: bold;
-            color: #00eaff;
-            margin-bottom: 18px;
-          }
-  
           .data-title {
-            font-size: 20px;
-            color: #a1d7ff;
+            font-size: 28px;
+            color: #ffd54f;
+            margin: 24px;
           }
         }
       }

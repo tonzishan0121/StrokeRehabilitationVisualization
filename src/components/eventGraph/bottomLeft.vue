@@ -4,29 +4,31 @@
       <div class="bg-color-black">
         <div class="d-flex pt-2 pl-2">
           <span class="d-flex">
-            <span class="text"><b>基于事理图谱的并发症风险预测路径</b></span>
+           <span class="text"><b>基于事理图谱的并发症风险预测路径</b></span>
 
-            <br/>
-            <!-- 粉红色圆形 -->
-            <div class="circle pink-circle"></div>
-            <span class="text">临床措施</span>
+          <br/>
+          <!-- 粉红色圆形 -->
+          <div class="circle yellow-circle"></div>
+          <span class="text">临床措施</span>
 
-            <!-- 绿色圆形 -->
-            <div class="circle green-circle"></div>
-            <span class="text">药物</span>
+          <!-- 绿色圆形 -->
+          <div class="circle red-circle"></div>
+          <span class="text">药物</span>
 
-            <!-- 红色圆形 -->
-            <div class="circle red-circle"></div>
-            <span class="text">检查</span>
+          <!-- 红色圆形 -->
+          <div class="circle pink-circle"></div>
+          <span class="text">检查</span>
 
-            <!-- 黄色圆形 -->
-            <div class="circle yellow-circle"></div>
-            <span class="text">风险因素</span>
+          <!-- 黄色圆形 -->
+          <div class="circle green-circle"></div>
+          <span class="text">风险因素</span>
 
-            <!-- 蓝色圆形 -->
-            <div class="circle blue-circle"></div>
-            <span class="text">临床问题</span>
-          </span>
+          <!-- 蓝色圆形 -->
+          <div class="circle blue-circle"></div>
+          <span class="text">临床问题</span>
+
+          <icon name="chart-bar" class="text-icon"></icon>
+        </span>
           
         </div>
         <div>
