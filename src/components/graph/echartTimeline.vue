@@ -2,28 +2,20 @@
   <dv-border-box-12>
     <div class="chart-container">
       <div ref="chart" class="chart"></div>
-      <echartsGraphs class="chart" :date="props.date"></echartsGraphs>
+      <echartsGraphs class="chart"></echartsGraphs>
     </div>
   </dv-border-box-12>
 </template>
 <script setup>
-import {ref, onMounted, defineProps, watch } from 'vue';
+import {ref, onMounted, watch } from 'vue';
 import * as echarts from 'echarts';
 import echartsGraphs from "./graphs.vue";
-
-const props = defineProps({
-  date:{
-    type:Array,
-    required: true,
-    default: ["1", "5"]
-  }
-})
 const chart = ref(null);
 const chartInstance = ref(null);
 
 const option = {
   title: {
-    text: `第1天~第${props.date[1]}天`,
+    text: `治疗与评估路径可视化`,
     textStyle: {
       color: '#FFF',
       fontSize: 22
@@ -44,11 +36,9 @@ const option = {
       type: 'category',
       boundaryGap: true,
       data: [  // 修改数据项格式
-      { value: "第1天", textStyle: { fontSize: 18 } },
-      { value: "第2天", textStyle: { fontSize: 18 } },
-      { value: "第3天", textStyle: { fontSize: 18 } },
-      { value: "第4天", textStyle: { fontSize: 18 } },
-      { value: "第5天", textStyle: { fontSize: 18 } }
+      { value: "入院", textStyle: { fontSize: 18 } },
+      { value: "中期", textStyle: { fontSize: 18 } },
+      { value: "出院", textStyle: { fontSize: 18 } }
     ],
       position: 'bottom',
       axisLine: {
@@ -120,23 +110,6 @@ const option = {
   ]
 };
 
-watch(() => props.date, (newDate) => {
-  const start = parseInt(newDate[0]);
-  const xData = [];
-  // 生成连续5天的day标签（包含起始和结束日期）
-  for (let i = start; i <start + 5; i++) {
-    xData.push({ value: `第${i}天`, textStyle: { fontSize: 18 } });
-  }
-  option.xAxis[0].data = xData;
-  
-  // 更新标题显示范围
-  option.title.text = `第${start}天~第${start+4}天`;
-  
-  // 重新渲染图表
-  if (chartInstance.value) {
-    chartInstance.value.setOption(option);
-  }
-})
 // 初始化echarts实例的函数
 const initChart = () => {
   if (chartInstance.value == null && chart.value != null) {

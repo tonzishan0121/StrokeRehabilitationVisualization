@@ -71,7 +71,7 @@ export function nodeBuilder(nodeList,nodeStyle,dateDay){
   const assessmentAnchorNode = {
     ...nodeStyle['node100'],
     name: '康复评估',
-    x:130+380*(dateDay-1)
+    x:-300+600*dateDay
   };
   assessmentNodes.push(assessmentAnchorNode);
 
@@ -79,7 +79,7 @@ export function nodeBuilder(nodeList,nodeStyle,dateDay){
   const treatmentAnchorNode = {
     ...nodeStyle['node200'],
     name: '康复训练',
-    x:320+380*(dateDay-1)
+    x:-100+600*dateDay
   };
   treatmentNodes.push(treatmentAnchorNode);
 

@@ -71,17 +71,13 @@
           margin-right: 30%;
         }
       }
+      .graph-box{
+        margin-top: 20px;
+      }
       //下方区域的布局
       .content-box {
         display: grid;
         grid-template-columns: 5fr 3fr 2fr;
-      }
-      //时间轴
-      .graph-box {
-        display:grid;
-        grid-template-columns:auto;
-        height: 410px;
-        margin-top: 80px;
       }
       // 底部数据
       .bottom-box {
@@ -90,12 +86,12 @@
         grid-template-columns: 4fr 4fr;
         max-height: 410px;
       }
-      //页面2的五块
-      .five-box {
+      //页面2的三块
+      .three-box {
         display: flex;  
         flex-flow: row nowrap;
         align-items: flex-start;
-        margin-top: 10px;
+        margin-top: 30px;
         gap: 10px;
         justify-content: space-around;
       }
