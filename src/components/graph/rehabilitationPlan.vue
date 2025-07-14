@@ -58,18 +58,12 @@ const toggleItems = (index, show) => {
       <strong style="color: red;">{{ tips.title }}</strong>{{ tips.content }}
     </div>
     <div v-for="(section, index) in sections" :key="index" class="section">
-      <h3 
-        @mouseenter="toggleItems(index, true)"
-        @mouseleave="toggleItems(index, false)">
+      <h3>
         {{ section.title }}
       </h3>
-      <div 
-        v-show="showItems[index]" 
-        class="popup-content"
-        @mouseenter="toggleItems(index, true)"
-        @mouseleave="toggleItems(index, false)">
+      <div style="position: relative; left: 10%; width: 90%;">
         <ul>
-          <li v-for="(item, itemIndex) in section.items" :key="itemIndex">{{ item }}</li>
+          <li v-for="(item, itemIndex) in section.items" :key="itemIndex">● {{ item }}</li>
         </ul>
       </div>
     </div>
@@ -83,7 +77,7 @@ const toggleItems = (index, show) => {
   border-radius: 8px;
   font-family: Arial, sans-serif;
   width: 96%;
-  height: 400px;  
+  height: 450px;  
   overflow-y: auto;    
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -119,18 +113,7 @@ h2 {
   position: relative;
   display: flex;
   justify-content: flex-start;
-}
-
-.popup-content {
-  position: absolute;
-  z-index: 9;
-  background: rgba(0, 50, 50, 0.9);
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  min-width: 300px;
-  color: white;
-  border: 1px solid #00ffea;
+  flex-direction: column;
 }
 .section h3 {
   color: green;

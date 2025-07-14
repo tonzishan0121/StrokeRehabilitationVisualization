@@ -62,24 +62,29 @@
 <script>
 import {requestf,apiConfig} from "../../utils/apiConfig";
 let patient =  {
-        name: "张三",
-        age: 65,
-        gender: "男",
-        hospitalNumber: "123456789", 
-        attendingPhysician: "李医生", 
-        headNurse: "王护士", 
-        condition: "脑卒中恢复期",
-        rehabilitationdoc: "赵医生" 
+        name: "",
+        age: 0,
+        gender: "",
+        hospitalNumber: "", 
+        attendingPhysician: "", 
+        headNurse: "", 
+        condition: "",
+        rehabilitationdoc: "" 
       };
 export default {
   data() {
     return {
       avatar: "../../assets/patient.webp",
       patient: patient,
-      healthData: [
+      data: [0,0,0,0]
+    };
+  },
+  computed:{
+    healthData(){
+      return [
         {
           number: {
-            number: [25],
+            number: [this.data[0]],
             toFixed: 0,
             textAlign: "left",
             content: "{nt}",
@@ -89,7 +94,7 @@ export default {
         },
         {
           number: {
-            number: [95],
+            number: [this.data[1]],
             toFixed: 1,
             textAlign: "left",
             content: "{nt}",
@@ -99,7 +104,7 @@ export default {
         },
         {
           number: {
-            number: [75],
+            number: [this.data[2]],
             toFixed: 1,
             textAlign: "left",
             content: "{nt}",
@@ -109,7 +114,7 @@ export default {
         },
         {
           number: {
-            number: [36],
+            number: [this.data[3]],
             toFixed: 0,
             textAlign: "left",
             // content: "{nt}",
@@ -118,13 +123,14 @@ export default {
           text: "卒中量表评分(NIHSS)"
         }
       ]
-    };
+    }
   },
-   mounted:  function () {
+  mounted:  function () {
     requestf(apiConfig.patientInfo,{
       name: "张三"
     },"POST",(res)=>{
       this.patient=res;
+      this.data = res?.data;
     })
   },
 };

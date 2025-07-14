@@ -101,9 +101,7 @@ const initChart = () => {
 // 在组件挂载后调用初始化函数
 onMounted(() => {
   let requestData = {
-    id: "10000",
-    start: "1",
-    end: "5"
+    id: "10000"
   };
   // 组件初始化时发起数据请求
   requestf(apiConfig.getPath, requestData, 'POST', (res) => { 

@@ -92,11 +92,10 @@
     },
     mounted() {
       requestf(apiConfig.patientData,{
-        id:"10000"
+        id: localStorage.getItem('id'),
       },"POST",(res)=>{
         const data = res;
         this.physiologicalData=data.physiological;
-
         // 更新风险指标
         this.riskPoints = [
           {

@@ -49,12 +49,10 @@ export default {
     this.timeFn();
     this.cancelLoading();
     requestf(apiConfig.getRehab,
-      {"id":id,
-        "start":"1",
-        "end":"5"
-      },
+      {"id":id },
       'POST',(res) => {
         this.exprehabitate = res;
+        console.table(this.exprehabitate);
       });
       
   },

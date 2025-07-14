@@ -49,9 +49,9 @@ export const apiConfig = {
   // 获取一周康复量表的总表
   getscoreList: `${ip_address}/scoreList`,
   //获取指定日期康复方案
-  getRehab: `${ip_address}/rehab`,
+  getRehab: `${ip_address}/rehabs`,
   //获取康复路径
-  getPath: `${ip_address}/pathways`,
+  getPath: `${ip_address}/pathway`,
   //病人详细个人信息
   patientInfo: `${ip_address}/patientInfo`,
   //病人详细生理数据
@@ -60,4 +60,6 @@ export const apiConfig = {
   eventRoute: `${ip_address}/eventRoute`,
   //测试
   test: (id) => `${ip_address}/api/${id}/json`,
+  //排班表
+  timetables: `${ip_address}/timetables`,
 };

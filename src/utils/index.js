@@ -84,7 +84,7 @@ export function nodeBuilder(nodeList,nodeStyle,dateDay){
   treatmentNodes.push(treatmentAnchorNode);
 
   // 获取指定日期（dayn）的数据
-  const daynData = nodeList[`day${dateDay}`];
+  const daynData = nodeList[`part${dateDay}`];
   // 检查是否存在指定日期的数据
   if (daynData) {
     // 遍历指定日期下的每个父节点（如康复评估、康复训练）
