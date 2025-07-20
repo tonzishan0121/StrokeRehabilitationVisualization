@@ -1,4 +1,4 @@
-const ip_address = "http://127.0.0.1:8000/api/v1/";
+const ip_address = process.env.VUE_APP_API_HOST || "http://127.0.0.1:8000/api/v1";
 
 
 /**
@@ -12,7 +12,7 @@ export const requestf = async (url, callback) => {
     redirect: "follow"
   };
   const id = localStorage.getItem("id");
-  fetch(ip_address+apiConfig[url]+"/"+id, requestOptions)
+  fetch(ip_address+"/"+apiConfig[url]+"/"+id, requestOptions)
     .then((response) => response.text())
     .then((result) => JSON.parse(result))
     .then((result) => callback(result))
