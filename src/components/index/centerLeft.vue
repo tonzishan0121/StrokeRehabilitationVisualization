@@ -29,25 +29,21 @@
 </template>
 
 <script>
-import { requestf,apiConfig } from '../../utils/apiConfig';
+import { requestf } from '../../utils/apiConfig';
 
 let patientData = {
   "HR": 0,
   "SBP": 0,
   "ICP": 0,
   "MAP": 0,
-  "T": 0,
+  "temperature": 0,
   "RR": 0,
   "SpO2": 0,
   "PEEP": 0,
   "FiO2": 0
 };
 const patientId = {"id":localStorage.getItem("id")}
-requestf(apiConfig.getVitals,
-  patientId,
-  'POST',(res) => {
-    patientData = res;
-  });
+requestf(12, res => {patientData = res;});
 
 export default {
   data() {
@@ -102,9 +98,9 @@ export default {
           }
         },
         {
-          title: '体温 (T):',
+          title: '体温 (Temperature):',
           number: {
-            number: [patientData.T],
+            number: [patientData.temperature],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -193,7 +189,7 @@ $box-height: 410px;
   width: $box-width;
   border-radius: 10px;
   .bg-color-black {
-    height: $box-height - 5px;
+    height: $box-height - 2px;
     border-radius: 10px;
     .nine-box {
       width: 100%;

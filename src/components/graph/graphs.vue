@@ -19,11 +19,11 @@ let commonSeriesConfig = {
     show: true,
     color: "inherit",
     position: "bottom",
-    fontSize: 12
+    fontSize: 16
   },
   force: {
     repulsion: 100,
-    edgeLength: 14,
+    edgeLength: 16,
     gravity: 0.01
   },
   itemStyle: {
@@ -100,11 +100,8 @@ const initChart = () => {
 
 // 在组件挂载后调用初始化函数
 onMounted(() => {
-  let requestData = {
-    id: "10000"
-  };
   // 组件初始化时发起数据请求
-  requestf(apiConfig.getPath, requestData, 'POST', (res) => { 
+  requestf(21, (res) => { 
     res_data.value = res;
     update_series_template(res_data.value);
     initChart();

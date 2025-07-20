@@ -91,9 +91,7 @@
       };
     },
     mounted() {
-      requestf(apiConfig.patientData,{
-        id: localStorage.getItem('id'),
-      },"POST",(res)=>{
+      requestf(32,(res)=>{
         const data = res;
         this.physiologicalData=data.physiological;
         // 更新风险指标

@@ -45,12 +45,10 @@ export default {
     rehabiliPlan,
     CommonLayout
   },
-  mounted() {
+  async mounted() {
     this.timeFn();
     this.cancelLoading();
-    requestf(apiConfig.getRehab,
-      {"id":id },
-      'POST',(res) => {
+    await requestf(22,(res) => {
         this.exprehabitate = res;
         console.table(this.exprehabitate);
       });

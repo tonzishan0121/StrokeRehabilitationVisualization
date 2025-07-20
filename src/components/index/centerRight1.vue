@@ -14,14 +14,13 @@
 </template>
 
 <script>
-import { requestf,apiConfig } from '../../utils/apiConfig';
 export default {
   data() {
-    let names = [];
+    let datas = [];
 
     return {
       fontSize:'20px',
-      names: names,
+      datas: datas,
     }
   },
   computed:{
@@ -29,13 +28,12 @@ export default {
         const fontSize = this.fontSize;
         return {
           header: [`<span style="font-size:${fontSize}">治疗师</span>`, `<span style="font-size:${fontSize}">科室</span>`, `<span style="font-size:${fontSize}">时间</span>`],
-          data: this.names.map((item, index) => {
-            const bedNumber = String(index + 1).padStart(2, '0');
-            const hour = (index + 2) % 24;
+          data: this.datas.map((item, index) => {
+            const hour = (index + 1) % 24;
             const time = String(hour).padStart(2, '0') + ':00';
             return [
-              `<span style="font-size:${fontSize}">${item.therapistName}</span>`,
-              `<span style="font-size:18px">${item.apartment}</span>`,
+              `<span style="font-size:${fontSize}">${item.name}</span>`,
+              `<span style="font-size:18px">${item.department}</span>`,
               `<span style="font-size:${fontSize};color:${this.getRGBColorByTime(index)}">${time}</span>`
             ];
           }),
@@ -50,10 +48,17 @@ export default {
         };
     },
   },
-  mounted() {
-    const temp = requestf(apiConfig.timetables, { id: localStorage.getItem("id") }, 'POST', res => {
-      this.names = res;
-    });
+  async mounted() {
+    const requestOptions = {
+    method: "GET",
+    redirect: "follow"
+  };
+
+  await fetch("http://127.0.0.1:8000/api/v1/doctors/assigned", requestOptions)
+    .then((response) => response.text())
+    .then((result) => JSON.parse(result))
+    .then((result) => this.datas = result.splice(0,23))
+    .catch((error) => console.error(error));
   },
   methods: {
     getRGBColorByTime: (t) => {
