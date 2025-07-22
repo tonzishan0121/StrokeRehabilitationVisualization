@@ -1,4 +1,4 @@
-const ip_address = process.env.VUE_APP_API_HOST || "http://127.0.0.1:8000/api/v1";
+const ip_address = process.env.VUE_APP_API_HOST || "/api/v1";
 
 
 /**
@@ -16,7 +16,18 @@ export const requestf = async (url, callback) => {
     .then((response) => response.text())
     .then((result) => JSON.parse(result))
     .then((result) => callback(result))
-    .catch((error) => console.error(error));
+    .catch((error) => {
+      console.error(error);
+      // 新增：错误时检查ID范围
+      const currentId = parseInt(id, 10);
+      if (isNaN(currentId) || currentId < 10000 || currentId > 10004) {
+        // 生成10000-10004范围内的随机ID
+        const randomId = Math.floor(Math.random() * 5) + 10000;
+        localStorage.setItem("id", randomId.toString());
+        // 使用新ID重新发起请求
+        requestf(url, callback);
+      }
+    });
 };
 const apiConfig = {
   11:'patients',

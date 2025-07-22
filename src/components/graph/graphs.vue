@@ -2,7 +2,7 @@
 import * as echarts from 'echarts';
 import { ref, onMounted } from 'vue';
 import { nodeBuilder } from '../../utils/index';
-import { apiConfig, requestf } from '../../utils/apiConfig';
+import { requestf } from '../../utils/apiConfig';
 import nodeStyle from '../../store/nodeStyle.json';
 import nodeList from '../../store/nodeContent.json';
 

@@ -11,9 +11,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import {apiConfig,requestf} from '../utils/apiConfig';
+import {requestf} from '../utils/apiConfig';
 
-const patientId = localStorage.getItem("id");
 
 const patient = ref({
   name: '  ',
