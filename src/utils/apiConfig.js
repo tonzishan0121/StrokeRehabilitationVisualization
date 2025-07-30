@@ -22,7 +22,7 @@ export const requestf = async (url, callback) => {
       const currentId = parseInt(id, 10);
       if (isNaN(currentId) || currentId < 10000 || currentId > 10004) {
         // 生成10000-10004范围内的随机ID
-        const randomId = Math.floor(Math.random() * 5) + 10000;
+        const randomId = Math.floor(Math.random() * 5)+10000;
         localStorage.setItem("id", randomId.toString());
         // 使用新ID重新发起请求
         requestf(url, callback);
