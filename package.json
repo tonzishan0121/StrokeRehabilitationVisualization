@@ -13,7 +13,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@jiaminghi/data-view": "^2.7.3",
+    "@jiaminghi/data-view": "latest",
     "@types/echarts": "^4.4.3",
     "core-js": "^3.6.4",
     "echarts": "^5.4.3",

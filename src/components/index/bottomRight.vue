@@ -49,10 +49,9 @@ export default {
     }
   },
   beforeMount() {
-    requestf(apiConfig.getscoreList,
-      {"id":localStorage.getItem("id")},
-      'POST',(res) => {
+    requestf(15,(res) => {
         this.tableDataList = res;
+        console.log(this.tableDataList);
         this.handleButtonClick("MRC")
       });
   },

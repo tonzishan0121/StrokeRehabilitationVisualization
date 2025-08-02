@@ -13,15 +13,11 @@
 
 <script>
 import centerRight2Chart from './centerRight2Chart/index.vue';
-import {apiConfig,requestf} from '../../utils/apiConfig.js';
+import {requestf} from '../../utils/apiConfig.js';
 
 import { ref } from 'vue';
 const cdata = ref({});
-requestf(apiConfig.getScore,
-  {
-    "id": localStorage.getItem("id")
-  },
-  'POST',(res) => {
+requestf(13,(res) => {
     cdata.value = res;
   })
 export default {

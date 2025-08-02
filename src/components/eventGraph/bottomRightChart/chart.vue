@@ -340,16 +340,6 @@ export default {
           width: 2,
           smooth: true
         }
-        /*physics: {
-      stabilization: true,
-      wind: { x: 0, y: 0 },
-    },
-    physics: {
-          enabled: false   
-        }
-    */
-        
-        
       })
     }
   },
@@ -529,19 +519,18 @@ export default {
   { id: 140, label: "强化降压联合溶栓治疗",  group: 5, opacity: 1},
   { id: 141, label: "静脉抗高血压药物",  group: 5, opacity: 1}
 ]
-    console.log(nodes);
+    
     // 高血压
     if (sbp > 140) {
-      console.log("举头望明月2"+this.nodes.filter(node =>
+      this.nodes.filter(node =>
         [138, 139, 140, 141].includes(node.id)
-      ));
-      console.log("举头望明月1"+this.nodes.filter(node =>
+      );
+      this.nodes.filter(node =>
         [138, 139, 140, 141].includes(node.id)
-      ));
+      );
       nodesToDisplay = this.nodes.filter(node =>
         [138, 139, 140, 141].includes(node.id)
       );
-      console.log("举头望明月"+nodesToDisplay);
     }
 
     // 高血糖（> 8.3）
@@ -762,7 +751,6 @@ if (temperature > 39) {
 
     //const sbp = this.sbp || 150;
     const sbp = 180;
-    console.log(sbp);
     const glucose = this.glucose || 0;
     const sodium = this.sodium || 140;
     const potassium = this.potassium || 5;
@@ -806,30 +794,7 @@ if (temperature > 39) {
       il2,
       temperature
     );
-    console.log("为什么还没出现")
-    console.log(this.filterNodesByAllConditions(
-      sbp,
-      glucose,
-      sodium,
-      potassium,
-      calcium,
-      diagnosisList,
-      triglyceride,
-      lipoprotein,
-      creatinine,
-      ureaNitrogen,
-      totalBilirubin,
-      albumin,
-      alt,
-      troponinT,
-      ckmb,
-      dDimer,
-      mechanicalVentilationTime,
-      crp,
-      il2,
-      temperature
-    ))
-    console.log("为什么还没出现")
+ 
       //const container = this.$refs.networkContainer;
       const data = {
         nodes: nodesToDisplay,
@@ -838,7 +803,6 @@ if (temperature > 39) {
       };
       
       this.network = new Network(container, data, this.options);
-      console.log("Network initialized with nodes:", nodesToDisplay);
     }
   }
   };

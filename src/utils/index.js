@@ -71,7 +71,7 @@ export function nodeBuilder(nodeList,nodeStyle,dateDay){
   const assessmentAnchorNode = {
     ...nodeStyle['node100'],
     name: '康复评估',
-    x:130+380*(dateDay-1)
+    x:-300+600*dateDay
   };
   assessmentNodes.push(assessmentAnchorNode);
 
@@ -79,12 +79,12 @@ export function nodeBuilder(nodeList,nodeStyle,dateDay){
   const treatmentAnchorNode = {
     ...nodeStyle['node200'],
     name: '康复训练',
-    x:320+380*(dateDay-1)
+    x:-100+600*dateDay
   };
   treatmentNodes.push(treatmentAnchorNode);
 
   // 获取指定日期（dayn）的数据
-  const daynData = nodeList[`day${dateDay}`];
+  const daynData = nodeList[`part${dateDay}`];
   // 检查是否存在指定日期的数据
   if (daynData) {
     // 遍历指定日期下的每个父节点（如康复评估、康复训练）

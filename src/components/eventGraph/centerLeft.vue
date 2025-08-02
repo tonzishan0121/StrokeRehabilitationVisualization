@@ -25,15 +25,15 @@
                 <div class="column">
                   <p><strong>姓名：</strong>{{ patient.name }} </p>
                   <p><strong>性别：</strong>{{ patient.gender }}</p>
-                  <p><strong>主治医师：</strong>{{ patient.attendingPhysician }}</p>
-                  <p><strong>病情：</strong>{{ patient.condition }}</p>
+                  <p><strong>主治医师：</strong>{{ patient.attending_physician }}</p>
+                  <p><strong>病情：</strong>{{ patient.diagnosis }}</p>
                 </div>
 
                 <div class="column">
                   <p><strong>年龄：</strong>{{ patient.age }} 岁</p>
-                  <p><strong>住院编号：</strong>{{ patient.hospitalNumber }}</p>
-                  <p><strong>主管护士：</strong>{{ patient.headNurse }}</p>
-                  <p><strong>康复医师：</strong>{{ patient.rehabilitationdoc }}</p>
+                  <p><strong>住院编号：</strong>{{ patient.hospital_number}}</p>
+                  <p><strong>主管护士：</strong>{{ patient.head_nurse }}</p>
+                  <p><strong>康复医师：</strong>{{ patient.rehabilitation_doctor }}</p>
                 </div>
               </div>
             </div>
@@ -62,24 +62,34 @@
 <script>
 import {requestf,apiConfig} from "../../utils/apiConfig";
 let patient =  {
-        name: "张三",
-        age: 65,
-        gender: "男",
-        hospitalNumber: "123456789", 
-        attendingPhysician: "李医生", 
-        headNurse: "王护士", 
-        condition: "脑卒中恢复期",
-        rehabilitationdoc: "赵医生" 
-      };
+  name: '',
+  gender: '',
+  attending_physician: '',
+  diagnosis: '',
+  age: '',
+  hospital_number: '',
+  head_nurse: '',
+  rehabilitation_doctor: '',
+  rehab_count: 10,
+  physical_recovery: 10,
+  completion_rate: 10,
+  NIHSS_score: 10
+};
 export default {
   data() {
     return {
       avatar: "../../assets/patient.webp",
-      patient: patient,
-      healthData: [
+      patient: patient
+    };
+  },
+  computed:{
+    healthData(){
+      const _ = this.patient;
+      console.log(this.patient);
+      return [
         {
           number: {
-            number: [25],
+            number: [_.rehab_count],
             toFixed: 0,
             textAlign: "left",
             content: "{nt}",
@@ -89,7 +99,7 @@ export default {
         },
         {
           number: {
-            number: [95],
+            number:[ _.physical_recovery],
             toFixed: 1,
             textAlign: "left",
             content: "{nt}",
@@ -99,7 +109,7 @@ export default {
         },
         {
           number: {
-            number: [75],
+            number: [_.completion_rate],
             toFixed: 1,
             textAlign: "left",
             content: "{nt}",
@@ -109,7 +119,7 @@ export default {
         },
         {
           number: {
-            number: [36],
+            number: [_.NIHSS_score],
             toFixed: 0,
             textAlign: "left",
             // content: "{nt}",
@@ -118,12 +128,10 @@ export default {
           text: "卒中量表评分(NIHSS)"
         }
       ]
-    };
+    }
   },
-   mounted:  function () {
-    requestf(apiConfig.patientInfo,{
-      name: "张三"
-    },"POST",(res)=>{
+  mounted: async function () {
+    await requestf(31,(res)=>{
       this.patient=res;
     })
   },

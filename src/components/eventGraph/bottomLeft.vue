@@ -26,8 +26,6 @@
           <!-- 蓝色圆形 -->
           <div class="circle blue-circle"></div>
           <span class="text">临床问题</span>
-
-          <icon name="chart-bar" class="text-icon"></icon>
         </span>
           
         </div>

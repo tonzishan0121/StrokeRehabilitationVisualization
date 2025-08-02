@@ -10,12 +10,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('id');
 if (!id) {
     // 如果没有id参数，跳转到错误页面
-  window.location.href = './error.html';
+  localStorage.setItem('id', Math.floor(Math.random() * 5) + 10000);
 } else {
-    localStorage.setItem('id', id);
-    const app = createApp(App);
-    app.config.globalProperties.$echarts = echarts;
-    app.use(dataV);
-    app.use(router);
-    app.mount('#app');
+  localStorage.setItem('id', id);
 }
+const app = createApp(App);
+app.config.globalProperties.$echarts = echarts;
+app.use(dataV);
+app.use(router);
+app.mount('#app');

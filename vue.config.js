@@ -6,7 +6,7 @@ const resolve = dir => {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  publicPath: './',
+  publicPath: '/',
   lintOnSave: false,
   chainWebpack: config => {
     config.resolve.alias

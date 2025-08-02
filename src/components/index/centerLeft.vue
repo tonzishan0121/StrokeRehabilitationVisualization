@@ -29,26 +29,21 @@
 </template>
 
 <script>
-import {ref} from 'vue';
-import { requestf,apiConfig } from '../../utils/apiConfig';
+import { requestf } from '../../utils/apiConfig';
 
-let patientData = ref({
+let patientData = {
   "HR": 0,
   "SBP": 0,
   "ICP": 0,
   "MAP": 0,
-  "T": 0,
+  "temperature": 0,
   "RR": 0,
   "SpO2": 0,
   "PEEP": 0,
   "FiO2": 0
-});
+};
 const patientId = {"id":localStorage.getItem("id")}
-requestf(apiConfig.getVitals,
-  patientId,
-  'POST',(res) => {
-    patientData.value = res;
-  });
+requestf(12, res => {patientData = res;});
 
 export default {
   data() {
@@ -57,7 +52,7 @@ export default {
         {
           title: '心率 (HR):',
           number: {
-            number: [patientData.value.HR],
+            number: [patientData.HR],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -69,7 +64,7 @@ export default {
         {
           title: '收缩压 (SBP):',
           number: {
-            number: [patientData.value.SBP],
+            number: [patientData.SBP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -81,7 +76,7 @@ export default {
         {
           title: '颅内压 (ICP):',
           number: {
-            number: [patientData.value.ICP],
+            number: [patientData.ICP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -93,7 +88,7 @@ export default {
         {
           title: '平均动脉压 (MAP):',
           number: {
-            number: [patientData.value.MAP],
+            number: [patientData.MAP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -103,9 +98,9 @@ export default {
           }
         },
         {
-          title: '体温 (T):',
+          title: '体温 (Temperature):',
           number: {
-            number: [patientData.value.T],
+            number: [patientData.temperature],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -117,7 +112,7 @@ export default {
         {
           title: '呼吸频率 (RR):',
           number: {
-            number: [patientData.value.RR],
+            number: [patientData.RR],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -129,7 +124,7 @@ export default {
         {
           title: '血氧饱和度 (SpO2):',
           number: {
-            number: [patientData.value.SpO2],
+            number: [patientData.SpO2],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -140,7 +135,7 @@ export default {
         },{
           title: '呼气末正压 (PEEP):',
           number: {
-            number: [patientData.value.PEEP],
+            number: [patientData.PEEP],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -151,7 +146,7 @@ export default {
         },{
           title: '吸入氧浓度 (FiO2)',
           number: {
-            number: [patientData.value.FiO2],
+            number: [patientData.FiO2],
             toFixed: 1,
             textAlign: 'left',
             content: '{nt}',
@@ -163,8 +158,7 @@ export default {
       ],
     }
   },
-  components: {
-  },
+  
   mounted() {
     this.changeTiming()
   },
@@ -195,7 +189,7 @@ $box-height: 410px;
   width: $box-width;
   border-radius: 10px;
   .bg-color-black {
-    height: $box-height - 5px;
+    height: $box-height - 2px;
     border-radius: 10px;
     .nine-box {
       width: 100%;

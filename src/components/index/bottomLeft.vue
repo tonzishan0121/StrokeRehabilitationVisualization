@@ -18,10 +18,9 @@ import BottomLeftChart from './bottomLeftChart/index.vue';
 import { apiConfig, requestf } from '../../utils/apiConfig';
 import { ref }  from 'vue';
 const cdata = ref({});
-requestf(apiConfig.getBloodPressure,
-  {"id":localStorage.getItem("id")},
-  'POST',(res) => {
+requestf(14,(res) => {
     cdata.value = res;
+    console.log(cdata.value);
   });
 export default {
   components: {

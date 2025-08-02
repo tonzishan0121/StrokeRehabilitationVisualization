@@ -91,12 +91,9 @@
       };
     },
     mounted() {
-      requestf(apiConfig.patientData,{
-        id:"10000"
-      },"POST",(res)=>{
+      requestf(32,(res)=>{
         const data = res;
         this.physiologicalData=data.physiological;
-
         // 更新风险指标
         this.riskPoints = [
           {

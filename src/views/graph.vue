@@ -1,10 +1,10 @@
 <template>
   <CommonLayout>
     <div class="graph-box">
-      <echartTimeline :date="sliderRef"></echartTimeline>
+      <echartTimeline></echartTimeline>
     </div>
-    <div class="five-box">
-      <dv-border-box-10 v-for="(_, index) in 5" :key="index">
+    <div class="three-box">
+      <dv-border-box-10 v-for="(_, index) in 3" :key="index">
         <rehabiliPlan 
           :title="exprehabitate[index]?.title" 
           :tips="exprehabitate[index]?.tips"
@@ -13,7 +13,7 @@
       </dv-border-box-10>
     </div>
   </CommonLayout>
-  <siderBar @sliderUpdated="sliderUpdated"></siderBar>
+
 </template>
 
 <script>
@@ -22,7 +22,6 @@ import echartTimeline from '../components/graph/echartTimeline.vue';
 import rehabiliPlan from "../components/graph/rehabilitationPlan.vue";
 import CommonLayout from "../components/CommonLayout.vue";
 import { formatTime } from "../utils/index";
-import siderBar from "../components/graph/siderBar.vue";
 import { apiConfig, requestf } from '../utils/apiConfig';
 
 const id = localStorage.getItem("id");
@@ -44,19 +43,14 @@ export default {
   components: {
     echartTimeline,
     rehabiliPlan,
-    CommonLayout,
-    siderBar
+    CommonLayout
   },
-  mounted() {
+  async mounted() {
     this.timeFn();
     this.cancelLoading();
-    requestf(apiConfig.getRehab,
-      {"id":id,
-        "start":"0",
-        "end":"5"
-      },
-      'POST',(res) => {
+    await requestf(22,(res) => {
         this.exprehabitate = res;
+        console.table(this.exprehabitate);
       });
       
   },
@@ -75,17 +69,6 @@ export default {
       setTimeout(() => {
         this.loading = false
       }, 500)
-    },
-    sliderUpdated(extractedNumber) {
-      requestf(apiConfig.getRehab,
-        {"id":id,
-          "start":extractedNumber[0],
-          "end":extractedNumber[1]
-        },
-        'POST',(res) => {
-          this.exprehabitate = res; 
-        });
-      this.sliderRef=extractedNumber;
     }
   }
 }

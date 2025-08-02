@@ -35,7 +35,8 @@ export default {
       // 获取 DOM 元素
       const chartDom = this.$refs.chartRef;
       this.myChart = echarts.init(chartDom);
-      const data = Object.values(this.cdata);
+      const {patient_id,assessment_date,...temp} = this.cdata;
+      const data = Object.values(temp);
       // 雷达图配置
       const option = {
         title: {
