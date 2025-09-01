@@ -54,7 +54,7 @@ export default {
     redirect: "follow"
   };
 
-  await fetch("api/v1/doctors/assigned", requestOptions)
+  await fetch("http://localhost:8000/api/v1/doctors/assigned", requestOptions)
     .then((response) => response.text())
     .then((result) => JSON.parse(result))
     .then((result) => this.datas = result.splice(0,23))
