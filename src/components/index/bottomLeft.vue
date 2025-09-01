@@ -15,13 +15,8 @@
 
 <script>
 import BottomLeftChart from './bottomLeftChart/index.vue';
-import { apiConfig, requestf } from '../../utils/apiConfig';
 import { ref }  from 'vue';
 const cdata = ref({});
-requestf(14,(res) => {
-    cdata.value = res;
-    console.log(cdata.value);
-  });
 export default {
   components: {
     BottomLeftChart

@@ -291,11 +291,31 @@ const graph_3_fangan = (id) => {
     ]
 } 
 
-export default {
+const patient_info = async(id) => { 
+  const res = await fetch('http://221.6.205.110:7500/prod-api/api/patient',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': "Bearer sk_4e8fdefc1a87b8d7a0b3e6f5"
+    },
+    body: JSON.stringify({
+      id: id,
+    })
+  })
+  const data = await res.json();
+  if (data.code == 200) {
+    return JSON.stringify(data)
+  }else {
+    console.error(data.msg)
+  }
+}
+
+export {
     today_9_zhibiao,
     today_8_liangbiao,
     week_3_zhibiao,
     paibanbiao,
     graph_3_fangan,
-    graph_3_node
+    graph_3_node,
+    patient_info,
 }

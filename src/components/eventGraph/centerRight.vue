@@ -42,7 +42,6 @@
   </template>
   
   <script>
-  import { requestf,apiConfig } from "../../utils/apiConfig.js";
   export default {
     data() {
       return {
@@ -91,31 +90,6 @@
       };
     },
     mounted() {
-      requestf(32,(res)=>{
-        const data = res;
-        this.physiologicalData=data.physiological;
-        // 更新风险指标
-        this.riskPoints = [
-          {
-            title: '二聚体指数',
-            index: `D-二聚体指数：${data.riskIndicators.dDimer} mg/L`,
-            riskPoint: '血栓风险',
-            suggestions: data.riskIndicators.dDimerSuggestions
-          },
-          {
-            title: '营养评分',
-            index: `营养量表评分：${data.riskIndicators.nutritionScore}`,
-            riskPoint: '营养风险',
-            suggestions: data.riskIndicators.nutritionSuggestions
-          },
-          {
-            title: '血糖水平',
-            index: `血糖：${data.riskIndicators.bloodSugar} mmol/L`,
-            riskPoint: '血糖风险',
-            suggestions: data.riskIndicators.bloodSugarSuggestions
-          }
-        ];
-      })
     }
   };
   </script>

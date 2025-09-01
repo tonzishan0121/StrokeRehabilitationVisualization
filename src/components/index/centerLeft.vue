@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import { requestf } from '../../utils/apiConfig';
 
 let patientData = {
   "HR": 0,
@@ -43,7 +42,6 @@ let patientData = {
   "FiO2": 0
 };
 const patientId = {"id":localStorage.getItem("id")}
-requestf(12, res => {patientData = res;});
 
 export default {
   data() {

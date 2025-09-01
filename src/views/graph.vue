@@ -22,7 +22,6 @@ import echartTimeline from '../components/graph/echartTimeline.vue';
 import rehabiliPlan from "../components/graph/rehabilitationPlan.vue";
 import CommonLayout from "../components/CommonLayout.vue";
 import { formatTime } from "../utils/index";
-import { apiConfig, requestf } from '../utils/apiConfig';
 
 const id = localStorage.getItem("id");
 export default {
@@ -48,11 +47,6 @@ export default {
   async mounted() {
     this.timeFn();
     this.cancelLoading();
-    await requestf(22,(res) => {
-        this.exprehabitate = res;
-        console.table(this.exprehabitate);
-      });
-      
   },
   beforeDestroy() {
     clearInterval(this.timing)

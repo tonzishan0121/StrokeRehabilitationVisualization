@@ -38,6 +38,8 @@ import centerRight2 from "../components/index/centerRight2.vue"
 import bottomLeft from "../components/index/bottomLeft.vue"
 import bottomRight from "../components/index/bottomRight.vue"
 import CommonLayout from "../components/CommonLayout.vue"
+import { patient_info } from "../common/dataSource/index.js";
+import { provide } from 'vue';
 
 export default {
   mixins: [drawMixin],
@@ -60,9 +62,11 @@ export default {
     bottomRight,
     CommonLayout
   },
-  mounted() {
+  async mounted() {
     this.timeFn();
     this.cancelLoading();
+    const resp = await patient_info("7357954258957766656")
+    provide('patient_info', resp.data)
   },
   beforeDestroy() {
     clearInterval(this.timing)

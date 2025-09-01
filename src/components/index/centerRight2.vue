@@ -13,13 +13,9 @@
 
 <script>
 import centerRight2Chart from './centerRight2Chart/index.vue';
-import {requestf} from '../../utils/apiConfig.js';
 
 import { ref } from 'vue';
 const cdata = ref({});
-requestf(13,(res) => {
-    cdata.value = res;
-  })
 export default {
   data() {
     return {

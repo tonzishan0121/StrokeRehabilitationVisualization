@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import { apiConfig, requestf } from '../../utils/apiConfig';
 import BottomRightChart from "../index/bottomRightChart/index.vue";
 
 export default {
@@ -49,11 +48,7 @@ export default {
     }
   },
   beforeMount() {
-    requestf(15,(res) => {
-        this.tableDataList = res;
-        console.log(this.tableDataList);
-        this.handleButtonClick("MRC")
-      });
+    
   },
   mounted() {
     this.tableNameAutoChange();

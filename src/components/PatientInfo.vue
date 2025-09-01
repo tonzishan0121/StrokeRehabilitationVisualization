@@ -11,8 +11,6 @@
 
 <script setup>
 import { ref } from 'vue';
-import {requestf} from '../utils/apiConfig';
-
 
 const patient = ref({
   name: '  ',
@@ -22,7 +20,7 @@ const patient = ref({
   unit: '重症监护室'
 });
 
-requestf(11,(res)=>{patient.value=res});
+
 </script>
 
 <style scoped>

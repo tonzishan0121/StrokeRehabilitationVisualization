@@ -60,7 +60,6 @@
 </template>
 
 <script>
-import {requestf,apiConfig} from "../../utils/apiConfig";
 let patient =  {
   name: '',
   gender: '',
@@ -131,9 +130,7 @@ export default {
     }
   },
   mounted: async function () {
-    await requestf(31,(res)=>{
-      this.patient=res;
-    })
+    
   },
 };
 </script>
