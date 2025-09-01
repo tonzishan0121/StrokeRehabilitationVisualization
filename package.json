@@ -18,6 +18,7 @@
     "core-js": "^3.6.4",
     "echarts": "^5.4.3",
     "nouislider": "^15.8.1",
+    "seedrandom": "^3.0.5",
     "vis-network": "^9.1.9",
     "vue": "^3.2.47",
     "vue-router": "^4.1.6",
