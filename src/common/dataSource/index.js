@@ -301,12 +301,12 @@ const patient_info = async(id) => {
     body: JSON.stringify({
       id: id,
     })
-  })
-  const data = await res.json();
-  if (data.code == 200) {
-    return JSON.stringify(data)
+  }).then(res => res.json())
+
+  if (res.code == 200) {
+    return res.data;
   }else {
-    console.error(data.msg)
+    console.error(res.msg)
   }
 }
 

@@ -13,14 +13,34 @@
 
 <script>
 import centerRight2Chart from './centerRight2Chart/index.vue';
+import { today_8_liangbiao } from '@/common/dataSource/index.js';
+import { ref, inject, onMounted } from 'vue';
 
-import { ref } from 'vue';
-const cdata = ref({});
 export default {
-  data() {
+  setup() {
+    const cdata = ref({});
+    const id = inject('id');
+    
+    const fetchData = () => {
+      if (id.value) {
+        try {
+          const resp = today_8_liangbiao(id.value);
+          cdata.value = resp || {};
+        } catch (error) {
+          console.error('获取量表数据失败:', error);
+          cdata.value = {};
+        }
+      }
+    };
+    
+    // 组件挂载后获取数据
+    onMounted(() => {
+      fetchData();
+    });
+    
     return {
-      cdata: cdata
-    }
+      cdata
+    };
   },
   components: { centerRight2Chart }
 }

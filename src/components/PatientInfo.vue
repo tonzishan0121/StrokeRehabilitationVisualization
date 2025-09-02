@@ -1,25 +1,18 @@
 <template>
   <div class="info-item">
-    <span style="font-size:x-large;">姓名：{{patient.name}}</span>
-    <span style="font-size:x-large;">性别：{{patient.gender}}</span>
-    <span style="font-size:x-large;">年龄：{{patient.age}}</span>
-    <span style="font-size:x-large;">住院号：10000</span>
-    <span style="font-size:x-large;">住院时间：{{patient.admission_date}}</span>
-    <span style="font-size:x-large;">科室：{{patient.department}}</span>
+    <span style="font-size:x-large;">姓名：{{data.value.name}}</span>
+    <span style="font-size:x-large;">性别：{{data.value.gender}}</span>
+    <span style="font-size:x-large;">年龄：{{data.value.age}}</span>
+    <span style="font-size:x-large;">住院号：{{data.value.hospitalNumber}}</span>
+    <span style="font-size:x-large;">症状：{{data.value.condition}}</span>
+    <span style="font-size:x-large;">科室：重症监护室</span>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const patient = ref({
-  name: '  ',
-  gender: '  ',
-  age: 0,
-  date: '2025-05-05',
-  unit: '重症监护室'
-});
-
+import { inject,ref } from 'vue';
+let data = ref({});
+data.value.value = inject('patient_info').value;
 
 </script>
 

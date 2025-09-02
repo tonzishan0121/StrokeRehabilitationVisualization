@@ -13,10 +13,6 @@ export default {
       required: true
     }
   },
-  data () {
-    return {
-    }
-  },
   components: {
     Chart,
   }
