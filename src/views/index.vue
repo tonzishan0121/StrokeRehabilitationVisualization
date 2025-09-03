@@ -38,8 +38,8 @@ import centerRight2 from "../components/index/centerRight2.vue"
 import bottomLeft from "../components/index/bottomLeft.vue"
 import bottomRight from "../components/index/bottomRight.vue"
 import CommonLayout from "../components/CommonLayout.vue"
+import { ref, onMounted, onBeforeUnmount, inject, provide } from 'vue';
 import { patient_info } from "../common/dataSource/index.js";
-import { provide, ref, onMounted, onBeforeUnmount, inject } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
@@ -60,9 +60,21 @@ export default {
     const dateWeek = ref(null);
     const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
     const decorationColor = ['#568aea', '#000000'];
+    
+    // 从父组件注入数据
+    
+    const route = useRoute();
     const patientInfo = ref(null);
     const id = ref(null);
-    const route = useRoute();
+    // 获取路由参数并请求数据
+    const fetchPatientData = async () => {
+      id.value = route.query.id;
+      if (id.value) {
+        const resp = await patient_info(id.value);
+        patientInfo.value = resp;
+      }
+    };
+    
     provide('patient_info', patientInfo);
     provide('id', id);
     const timeFn = () => {
@@ -80,12 +92,10 @@ export default {
     };
 
     onMounted(
-      async () => {
+      () => {
         timeFn();
         cancelLoading();
-        id.value = route.query.id;
-        const resp = await patient_info(id.value);
-        patientInfo.value = resp;
+        fetchPatientData();
       }
     );
     onBeforeUnmount(() => {
@@ -101,7 +111,9 @@ export default {
       weekday,
       decorationColor,
       timeFn,
-      cancelLoading
+      cancelLoading,
+      patientInfo,
+      id
     };
   }
 };

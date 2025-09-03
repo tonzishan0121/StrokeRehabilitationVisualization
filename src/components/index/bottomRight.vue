@@ -21,39 +21,36 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import BottomRightChart from "../index/bottomRightChart/index.vue";
+import { week_8_zhibiao } from '../../common/dataSource';
+import { ref, onMounted, inject } from 'vue'
 
-export default {
-  components: {
-    BottomRightChart
-  },
-  data() {
-    return {
-      tableName: "",
-      bottomList : [
-        "SQ5","FOIS","RASS","MMASA","BBS1","BBS2","BBS3","MRC"
-      ],
-      tableDataList: {}
-    };        
-  },
-  methods: {
-    handleButtonClick(index) {
-      this.tableName = index;
-    },
-    tableNameAutoChange() {
-      setInterval(() => {
-        this.tableName = this.bottomList[Math.floor(Math.random() * this.bottomList.length)];
-      }, 10000);
-    }
-  },
-  beforeMount() {
-    
-  },
-  mounted() {
-    this.tableNameAutoChange();
-  }
-};
+// 响应式数据
+const tableName = ref("")
+const bottomList = ref([
+  "SQ5","FOIS","RASS","MMASA","BBS1","BBS2","BBS3","MRC"
+])
+const tableDataList = ref({})
+
+// 方法
+const handleButtonClick = (index) => {
+  tableName.value = index;
+}
+
+const tableNameAutoChange = () => {
+  setInterval(() => {
+    tableName.value = bottomList.value[Math.floor(Math.random() * bottomList.value.length)];
+  }, 10000);
+}
+
+// 生命周期
+onMounted(() => {
+  // 修改: 正确使用 inject 获取响应式数据
+  const id = inject('id');
+  tableDataList.value = week_8_zhibiao(id);
+  tableNameAutoChange();
+})
 </script>
 
 <style lang="scss" scoped>

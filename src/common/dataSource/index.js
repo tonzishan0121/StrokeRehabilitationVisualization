@@ -35,14 +35,27 @@ const today_8_liangbiao = (id) => {
 }
 
 
-const week_3_zhibiao = (id) => {
+const hours_3_zhibiao = (id) => {
     return {
-        "heartRate": generate_random_number(id, 7, 140, 180),
-        "systolicPressure": generate_random_number(id, 7, 70, 100),
-        "diastolicPressure": generate_random_number(id, 7, 60, 100)
+        "heartRate": generate_random_number(id, 24, 140, 180),
+        "systolicPressure": generate_random_number(id, 24, 70, 100),
+        "diastolicPressure": generate_random_number(id, 24, 60, 100)
     }
 }
 
+const week_8_zhibiao = (id) => { 
+    const data = generate_random_number(id, 56, 5, 60);
+    return {
+    "SQ5": data.splice(0, 7),
+    "MRC": data.splice(0, 7),
+    "FOIS": data.splice(0, 7),
+    "RASS": data.splice(0, 7),
+    "MMASA": data.splice(0, 7),
+    "BBS1": data.splice(0, 7),
+    "BBS2": data.splice(0, 7),
+    "BBS3": data.splice(0, 7),
+}
+}
 const paibanbiao = () => {
     return [
     {
@@ -313,9 +326,10 @@ const patient_info = async(id) => {
 export {
     today_9_zhibiao,
     today_8_liangbiao,
-    week_3_zhibiao,
+    hours_3_zhibiao,
     paibanbiao,
     graph_3_fangan,
     graph_3_node,
     patient_info,
+    week_8_zhibiao
 }

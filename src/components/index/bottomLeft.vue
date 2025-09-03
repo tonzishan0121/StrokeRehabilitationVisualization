@@ -15,17 +15,21 @@
 
 <script>
 import BottomLeftChart from './bottomLeftChart/index.vue';
-import { ref }  from 'vue';
+import { ref, inject }  from 'vue';
+import { hours_3_zhibiao } from '../../common/dataSource';
 const cdata = ref({});
 export default {
   components: {
     BottomLeftChart
   },
-  data() {
+  setup() {
+  const id = inject('id');
+  const value = id?.value;
+  cdata.value = hours_3_zhibiao(value);
     return {
-      cdata: cdata.value,
+      cdata
     }
-  }
+  },
 
 }
 </script>

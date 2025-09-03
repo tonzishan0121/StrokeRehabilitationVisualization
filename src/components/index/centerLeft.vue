@@ -157,7 +157,7 @@ export default {
 
 <style lang="scss" scoped>
 $box-width: 100%;
-$box-height: 410px;
+$box-height: 420px;
 
 #centerLeft1 {
   padding: 8px;

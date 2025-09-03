@@ -119,6 +119,7 @@ const initChart = () => {
 };
 // 在组件挂载后调用初始化函数
 onMounted(() => {
+  watch(() => chart.value, initChart);
   initChart();
 });
 

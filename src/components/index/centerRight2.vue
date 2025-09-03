@@ -5,6 +5,7 @@
         <span style="margin-left:0.75rem;color:white;font-size:22px">当前康复量表得分</span>
       </div>
       <div class="display: flex;align-items: center;flex-direction: column; body-box">
+        <!-- 修改: 直接传递响应式对象而不是.value -->
         <centerRight2Chart :cdata="cdata"/>
       </div>
     </div>
@@ -21,8 +22,8 @@ export default {
     const cdata = ref({});
     const id = inject('id');
     
-    const fetchData = () => {
-      if (id.value) {
+    const getData = () => {
+      if (id?.value) {
         try {
           const resp = today_8_liangbiao(id.value);
           cdata.value = resp || {};
@@ -35,11 +36,12 @@ export default {
     
     // 组件挂载后获取数据
     onMounted(() => {
-      fetchData();
+      getData();
     });
     
     return {
-      cdata
+      cdata,
+      id
     };
   },
   components: { centerRight2Chart }

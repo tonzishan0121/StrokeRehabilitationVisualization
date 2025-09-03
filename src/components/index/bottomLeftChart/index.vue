@@ -36,9 +36,9 @@ export default {
     combinedData() {
       return {
         category: this.category,
-        lineData: this.cdata.systolic_pressure, // 收缩压
-        barData: this.cdata.diastolic_pressure, // 舒张压
-        rateData: this.cdata.heart_rate // 心率
+        lineData: this.cdata.systoliPpressure, // 收缩压
+        barData: this.cdata.diastolicPressure, // 舒张压
+        rateData: this.cdata.heartRate // 心率
       };
     }
   },
