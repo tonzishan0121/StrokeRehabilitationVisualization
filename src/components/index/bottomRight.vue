@@ -27,7 +27,7 @@ import { week_8_zhibiao } from '../../common/dataSource';
 import { ref, onMounted, inject } from 'vue'
 
 // 响应式数据
-const tableName = ref("")
+const tableName = ref("SQ5")
 const bottomList = ref([
   "SQ5","FOIS","RASS","MMASA","BBS1","BBS2","BBS3","MRC"
 ])

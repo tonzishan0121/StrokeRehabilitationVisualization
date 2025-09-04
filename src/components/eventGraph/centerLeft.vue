@@ -25,15 +25,15 @@
                 <div class="column">
                   <p><strong>姓名：</strong>{{ patient.name }} </p>
                   <p><strong>性别：</strong>{{ patient.gender }}</p>
-                  <p><strong>主治医师：</strong>{{ patient.attending_physician }}</p>
-                  <p><strong>病情：</strong>{{ patient.diagnosis }}</p>
+                  <p><strong>主治医师：</strong>{{ patient.attendingPhysician }}</p>
+                  <p><strong>病情：</strong>{{ patient.condition }}</p>
                 </div>
 
                 <div class="column">
                   <p><strong>年龄：</strong>{{ patient.age }} 岁</p>
-                  <p><strong>住院编号：</strong>{{ patient.hospital_number}}</p>
-                  <p><strong>主管护士：</strong>{{ patient.head_nurse }}</p>
-                  <p><strong>康复医师：</strong>{{ patient.rehabilitation_doctor }}</p>
+                  <p><strong>住院编号：</strong>{{ patient.hospitalNumber}}</p>
+                  <p><strong>主管护士：</strong>{{ patient.headNurse }}</p>
+                  <p><strong>康复医师：</strong>{{ patient.rehabilitationdoc }}</p>
                 </div>
               </div>
             </div>
@@ -60,35 +60,34 @@
 </template>
 
 <script>
-let patient =  {
-  name: '',
-  gender: '',
-  attending_physician: '',
-  diagnosis: '',
-  age: '',
-  hospital_number: '',
-  head_nurse: '',
-  rehabilitation_doctor: '',
-  rehab_count: 10,
-  physical_recovery: 10,
-  completion_rate: 10,
-  NIHSS_score: 10
-};
+import { ref, computed, inject, onMounted } from 'vue'
+
 export default {
-  data() {
-    return {
-      avatar: "../../assets/patient.webp",
-      patient: patient
-    };
-  },
-  computed:{
-    healthData(){
-      const _ = this.patient;
-      console.log(this.patient);
+  setup() {
+    const patientInfo = inject('patient_info')
+    
+    const patient = ref({
+      name: '',
+      gender: '',
+      attendingPhysician: '',
+      diagnosis: '',
+      age: '',
+      hospitalNumber: '',
+      headNurse: '',
+      rehabilitationdoc: '',
+      train_times: 10,
+      stroke_scale_rating: 10,
+      physical_recovery: 10,
+      completion_rate: 10
+    });
+    
+    const healthData = computed(() => {
+      const _ = patient.value;
+      console.log(patient.value);
       return [
         {
           number: {
-            number: [_.rehab_count],
+            number: [_.train_times],
             toFixed: 0,
             textAlign: "left",
             content: "{nt}",
@@ -98,7 +97,7 @@ export default {
         },
         {
           number: {
-            number:[ _.physical_recovery],
+            number:[ _.completion_rate],
             toFixed: 1,
             textAlign: "left",
             content: "{nt}",
@@ -108,7 +107,7 @@ export default {
         },
         {
           number: {
-            number: [_.completion_rate],
+            number: [_.physical_recovery],
             toFixed: 1,
             textAlign: "left",
             content: "{nt}",
@@ -118,7 +117,7 @@ export default {
         },
         {
           number: {
-            number: [_.NIHSS_score],
+            number: [_.stroke_scale_rating],
             toFixed: 0,
             textAlign: "left",
             // content: "{nt}",
@@ -127,11 +126,21 @@ export default {
           text: "卒中量表评分(NIHSS)"
         }
       ]
-    }
-  },
-  mounted: async function () {
+    });
     
-  },
+    onMounted(() => {
+      console.log(patientInfo);
+      // 监听 patientInfo 的变化并更新 patient 数据
+      if (patientInfo && patientInfo.value) {
+        Object.assign(patient.value, patientInfo.value);
+      }
+    });
+    
+    return {
+      patient,
+      healthData
+    };
+  }
 };
 </script>
 
