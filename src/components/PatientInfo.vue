@@ -1,28 +1,31 @@
 <template>
   <div class="info-item">
-    <span style="font-size:x-large;">姓名：{{patient.name}}</span>
-    <span style="font-size:x-large;">性别：{{patient.gender}}</span>
-    <span style="font-size:x-large;">年龄：{{patient.age}}</span>
-    <span style="font-size:x-large;">住院号：10000</span>
-    <span style="font-size:x-large;">住院时间：{{patient.admission_date}}</span>
-    <span style="font-size:x-large;">科室：{{patient.department}}</span>
+    <span style="font-size:x-large;">姓名：{{patientInfo.name}}</span>
+    <span style="font-size:x-large;">性别：{{patientInfo.gender}}</span>
+    <span style="font-size:x-large;">年龄：{{patientInfo.age}}</span>
+    <span style="font-size:x-large;">住院号：{{patientInfo.hospitalNumber}}</span>
+    <span style="font-size:x-large;">症状：{{patientInfo.condition}}</span>
+    <span style="font-size:x-large;">科室：重症监护室</span>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
-import {requestf} from '../utils/apiConfig';
+import { inject, computed } from 'vue';
 
+// 修改: 使用正确的inject名称
+const patientInfoInject = inject('patient_info');
 
-const patient = ref({
-  name: '  ',
-  gender: '  ',
-  age: 0,
-  date: '2025-05-05',
-  unit: '重症监护室'
+// 修改: 正确处理ref值的访问
+const patientInfo = computed(() => {
+  // 当inject的值存在且有value属性时，返回value，否则返回默认对象
+    return patientInfoInject?.value || {
+      name: '',
+      gender: '',
+      age: '',
+      hospitalNumber: '',
+      condition: ''
+    };
 });
-
-requestf(11,(res)=>{patient.value=res});
 </script>
 
 <style scoped>

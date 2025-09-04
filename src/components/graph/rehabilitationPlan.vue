@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, ref } from 'vue';
+import { defineProps, ref, onMounted } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const showItems = ref([]);
@@ -10,11 +10,8 @@ defineProps({
     default: '康复方案'
   },
   tips: {
-    type: Object,
-    default: () => ({
-      title: 'Tips1：',
-      content: '请仔细检查病人是否有不稳定性骨折、急性手术、精神不稳定、不稳定性心律失常、活动性出血、气道不安全等康复训练禁忌症'
-    })
+    type: String,
+    default: () => '请仔细检查病人是否有不稳定性骨折、急性手术、精神不稳定、不稳定性心律失常、活动性出血、气道不安全等康复训练禁忌症'
   },
   sections: {
     type: Array,
@@ -55,7 +52,7 @@ const toggleItems = (index, show) => {
       <h2>{{ title }}</h2><span class="risk-point">风险点</span>
     </RouterLink>
     <div class="tips">
-      <strong style="color: red;">{{ tips.title }}</strong>{{ tips.content }}
+      <strong style="color: red;">Tips：</strong>{{ tips}}
     </div>
     <div v-for="(section, index) in sections" :key="index" class="section">
       <h3>
@@ -100,7 +97,7 @@ h2 {
 .tips {
   margin-bottom: 20px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.2;
   background-color: rgba(22, 137, 209, 0.308);
   padding: 10px;

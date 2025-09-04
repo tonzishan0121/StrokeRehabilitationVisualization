@@ -29,159 +29,135 @@
 </template>
 
 <script>
-import { requestf } from '../../utils/apiConfig';
-
-let patientData = {
-  "HR": 0,
-  "SBP": 0,
-  "ICP": 0,
-  "MAP": 0,
-  "temperature": 0,
-  "RR": 0,
-  "SpO2": 0,
-  "PEEP": 0,
-  "FiO2": 0
-};
-const patientId = {"id":localStorage.getItem("id")}
-requestf(12, res => {patientData = res;});
+import { today_9_zhibiao } from '../../common/dataSource';
+import { inject, ref, onMounted } from 'vue';
 
 export default {
-  data() {
-    return {
-      titleItem: [
-        {
-          title: '心率 (HR):',
-          number: {
-            number: [patientData.HR],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },
-        {
-          title: '收缩压 (SBP):',
-          number: {
-            number: [patientData.SBP],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },
-        {
-          title: '颅内压 (ICP):',
-          number: {
-            number: [patientData.ICP],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },
-        {
-          title: '平均动脉压 (MAP):',
-          number: {
-            number: [patientData.MAP],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },
-        {
-          title: '体温 (Temperature):',
-          number: {
-            number: [patientData.temperature],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },
-        {
-          title: '呼吸频率 (RR):',
-          number: {
-            number: [patientData.RR],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },
-        {
-          title: '血氧饱和度 (SpO2):',
-          number: {
-            number: [patientData.SpO2],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },{
-          title: '呼气末正压 (PEEP):',
-          number: {
-            number: [patientData.PEEP],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
-          }
-        },{
-          title: '吸入氧浓度 (FiO2)',
-          number: {
-            number: [patientData.FiO2],
-            toFixed: 1,
-            textAlign: 'left',
-            content: '{nt}',
-            style: {
-              fontSize: 26
-            }
+  setup() {
+    const id = inject('id');
+    const patientData = today_9_zhibiao(id);
+    
+    const titleItem = ref([
+      {
+        title: '心率 (HR):',
+        number: {
+          number: [patientData.HR],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
           }
         }
-      ],
-    }
-  },
-  
-  mounted() {
-    this.changeTiming()
-  },
-  methods: {
-    changeTiming() {
-      setInterval(() => {
-        this.changeNumber()
-      }, 3000)
-    },
-    changeNumber() {
-      // Add null check before forEach
-      this.someArray?.forEach(item => { 
-        item.number.number[0] += ++index
-        item.number = { ...item.number }
-      })
-    }
+      },
+      {
+        title: '收缩压 (SBP):',
+        number: {
+          number: [patientData.SBP],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '颅内压 (ICP):',
+        number: {
+          number: [patientData.ICP],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '平均动脉压 (MAP):',
+        number: {
+          number: [patientData.MAP],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '体温 (Temperature):',
+        number: {
+          number: [patientData.T],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '呼吸频率 (RR):',
+        number: {
+          number: [patientData.RR],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '血氧饱和度 (SpO2):',
+        number: {
+          number: [patientData.SpO2],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '呼气末正压 (PEEP):',
+        number: {
+          number: [patientData.PEEP],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      },
+      {
+        title: '吸入氧浓度 (FiO2)',
+        number: {
+          number: [patientData.FiO2],
+          toFixed: 1,
+          textAlign: 'left',
+          content: '{nt}',
+          style: {
+            fontSize: 26
+          }
+        }
+      }
+    ]);
+
+    return {
+      titleItem
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 $box-width: 100%;
-$box-height: 410px;
+$box-height: 420px;
 
 #centerLeft1 {
   padding: 8px;

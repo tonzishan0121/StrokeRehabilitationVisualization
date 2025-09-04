@@ -3,24 +3,26 @@ import { createRouter, createWebHashHistory } from 'vue-router' // 导入 create
 const routes = [
   {
     path: '/',
-    redirect: '/index'
+    redirect: (to) => {
+      return { path: '/index', query: { id: '7357954258957766656' } };
+    }
   },
   {
-    path: '/index',
+    path: '/index/:id?',
     name: 'Home',
     component: () => import('../views/index.vue')
   },
   {
-    path: '/graph',
+    path: '/graph/:id?',
     name: 'Graph',
     component: () => import('../views/graph.vue')
   },
   {
-    path: '/eventGraph',
+    path: '/eventGraph/:id?',
     name: 'EventGraph',
     component: () => import('../views/eventGraph.vue')
   }
-]
+];
 
 const router = createRouter({
   history: createWebHashHistory(), 

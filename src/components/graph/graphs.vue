@@ -2,9 +2,10 @@
 import * as echarts from 'echarts';
 import { ref, onMounted } from 'vue';
 import { nodeBuilder } from '../../utils/index';
-import { requestf } from '../../utils/apiConfig';
 import nodeStyle from '../../store/nodeStyle.json';
 import nodeList from '../../store/nodeContent.json';
+import { graph_3_node } from '../../common/dataSource/index';
+import { useRoute } from 'vue-router';
 
 // 存储请求返回的数据
 const res_data = ref(nodeList);
@@ -101,11 +102,12 @@ const initChart = () => {
 // 在组件挂载后调用初始化函数
 onMounted(() => {
   // 组件初始化时发起数据请求
-  requestf(21, (res) => { 
+  const id = useRoute().query.id;
+  if (id) {
+    const res = graph_3_node(id);
     res_data.value = res;
-    update_series_template(res_data.value);
     initChart();
-  });
+  }
 });
 </script>
 <template>

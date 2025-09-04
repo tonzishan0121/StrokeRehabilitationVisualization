@@ -21,60 +21,53 @@ import drawMixin from "../utils/drawMixin";
 import echartTimeline from '../components/graph/echartTimeline.vue';
 import rehabiliPlan from "../components/graph/rehabilitationPlan.vue";
 import CommonLayout from "../components/CommonLayout.vue";
-import { formatTime } from "../utils/index";
-import { apiConfig, requestf } from '../utils/apiConfig';
+import { ref, onMounted, provide } from 'vue';
+import { useRoute } from 'vue-router';
+import { patient_info, graph_3_fangan } from "../common/dataSource/index.js";
 
-const id = localStorage.getItem("id");
 export default {
   mixins: [drawMixin],
-  data() {
-    return {
-      timing: null,
-      loading: true,
-      dateDay: null,
-      dateYear: null,
-      dateWeek: null,
-      sliderRef: ["0","5"],
-      weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-      exprehabitate: []
-    }
-  },
-
   components: {
     echartTimeline,
     rehabiliPlan,
     CommonLayout
   },
-  async mounted() {
-    this.timeFn();
-    this.cancelLoading();
-    await requestf(22,(res) => {
-        this.exprehabitate = res;
-        console.table(this.exprehabitate);
-      });
-      
+  setup() {
+    const exprehabitate = ref([]);
+    
+    // 添加路由参数和患者信息相关逻辑
+    const route = useRoute();
+    const patientInfo = ref(null);
+    const id = ref(null);
+    
+    // 获取路由参数并请求数据
+    const fetchPatientData = async () => {
+      id.value = route.query.id;
+      if (id.value) {
+        const resp = await patient_info(id.value);
+        patientInfo.value = resp;
+      }
+    };
+    
+    provide('patient_info', patientInfo);
+    provide('id', id);
+    
+
+    
+    onMounted(() => {
+      fetchPatientData();
+      const data = graph_3_fangan(id.value);
+      exprehabitate.value = data;
+    });
+    
+
+    return {
+      exprehabitate
+    };
   },
-  beforeDestroy() {
-    clearInterval(this.timing)
-  },
-  methods: {
-    timeFn() {
-      this.timing = setInterval(() => {
-        this.dateDay = formatTime(new Date(), 'HH: mm: ss')
-        this.dateYear = formatTime(new Date(), 'yyyy-MM-dd')
-        this.dateWeek = this.weekday[new Date().getDay()]
-      }, 1000)
-    },
-    cancelLoading() {
-      setTimeout(() => {
-        this.loading = false
-      }, 500)
-    }
-  }
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../assets/scss/index.scss';
 </style>
-  

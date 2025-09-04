@@ -5,6 +5,7 @@
         <span style="margin-left:0.75rem;color:white;font-size:22px">当前康复量表得分</span>
       </div>
       <div class="display: flex;align-items: center;flex-direction: column; body-box">
+        <!-- 修改: 直接传递响应式对象而不是.value -->
         <centerRight2Chart :cdata="cdata"/>
       </div>
     </div>
@@ -13,18 +14,35 @@
 
 <script>
 import centerRight2Chart from './centerRight2Chart/index.vue';
-import {requestf} from '../../utils/apiConfig.js';
+import { today_8_liangbiao } from '@/common/dataSource/index.js';
+import { ref, inject, onMounted } from 'vue';
 
-import { ref } from 'vue';
-const cdata = ref({});
-requestf(13,(res) => {
-    cdata.value = res;
-  })
 export default {
-  data() {
+  setup() {
+    const cdata = ref({});
+    const id = inject('id');
+    
+    const getData = () => {
+      if (id?.value) {
+        try {
+          const resp = today_8_liangbiao(id.value);
+          cdata.value = resp || {};
+        } catch (error) {
+          console.error('获取量表数据失败:', error);
+          cdata.value = {};
+        }
+      }
+    };
+    
+    // 组件挂载后获取数据
+    onMounted(() => {
+      getData();
+    });
+    
     return {
-      cdata: cdata
-    }
+      cdata,
+      id
+    };
   },
   components: { centerRight2Chart }
 }

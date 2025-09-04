@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import {paibanbiao} from '../../common/dataSource'
 export default {
   data() {
     let datas = [];
@@ -32,7 +33,7 @@ export default {
             const hour = (index + 1) % 24;
             const time = String(hour).padStart(2, '0') + ':00';
             return [
-              `<span style="font-size:${fontSize}">${item.name}</span>`,
+              `<span style="font-size:${fontSize}">${item.therapistName}</span>`,
               `<span style="font-size:18px">${item.department}</span>`,
               `<span style="font-size:${fontSize};color:${this.getRGBColorByTime(index)}">${time}</span>`
             ];
@@ -48,17 +49,8 @@ export default {
         };
     },
   },
-  async mounted() {
-    const requestOptions = {
-    method: "GET",
-    redirect: "follow"
-  };
-
-  await fetch("api/v1/doctors/assigned", requestOptions)
-    .then((response) => response.text())
-    .then((result) => JSON.parse(result))
-    .then((result) => this.datas = result.splice(0,23))
-    .catch((error) => console.error(error));
+  mounted() {
+    this.datas = paibanbiao();
   },
   methods: {
     getRGBColorByTime: (t) => {
@@ -94,16 +86,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$box-height: 410px;
+$box-height: 400px;
 $box-width: 100%;
 #centerRight1 {
   padding: 16px;
-  padding-top: 20px;
   height: $box-height;
   width: $box-width;
   border-radius: 5px;
   .bg-color-black {
-    height: $box-height - 10px;
+    height: $box-height;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -114,7 +105,9 @@ $box-width: 100%;
   }
   .body-box {
     border-radius: 2px;
-    overflow: hidden;
+    position: relative;
+    top: 5px;
+    height: 400px;
     .dv-scr-board {
       width: 310px;
       height: 400px;

@@ -24,7 +24,15 @@
           >
             <div class="risk-content">
               <div class="risk-point">临床风险点：{{ risk.riskPoint }}</div>
-              <div class="risk-subtitle">{{ risk.index }}</div>
+              <div class="risk-subtitle" v-if="risk.title === '二聚体指数'">
+                D-二聚体指数：{{ risk.index }} mg/L
+              </div>
+              <div class="risk-subtitle" v-else-if="risk.title === '营养评分'">
+                营养量表评分：{{ risk.index }}
+              </div>
+              <div class="risk-subtitle" v-else-if="risk.title === '血糖水平'">
+                血糖：{{ risk.index }} mmol/L
+              </div>
               <div class="risk-advice">
                 建议：
                 <ul>
@@ -42,80 +50,69 @@
   </template>
   
   <script>
-  import { requestf,apiConfig } from "../../utils/apiConfig.js";
+  import { ref, inject, onMounted } from 'vue'
+  import {event_graph} from '../../common/dataSource/index'
   export default {
-    data() {
-      return {
-        physiologicalData: [
-          { title: '肺部感染' },
-          { title: '心源性损伤'},
-          { title: '肝肾功能异常'},
-          { title: '房颤'},
-          { title: '应激性溃疡'},
-          { title: '尿路感染'}
-        ],
-        riskPoints: [
-          {
-            title: '二聚体指数',
-            index: "D-二聚体指数："+'0.8'+" mg/L",
-            riskPoint: '血栓风险',
-            suggestions: [
-              '肝素类药物',
-              '肢体运动疗法',
-              '凝血功能检测',
-              '局部淋巴按摩'
-            ]
-          },
-          {
-            title: '营养评分',
-            index: "营养量表评分："+'2',
-            riskPoint: '营养风险',
-            suggestions: [
-              '肠内营养',
-              '肠外营养',
-              '营养咨询'
-            ]
-          },
-          {
-            title: '血糖水平',
-            index: "血糖："+'9.4'+ " mmol/L",
-            riskPoint: '血糖风险',
-            suggestions: [
-              '定期监测血糖',
-              '控制饮食',
-              '胰岛素药物',
-              '合理锻炼'
-            ]
-          }
-        ]
-      };
-    },
-    mounted() {
-      requestf(32,(res)=>{
-        const data = res;
-        this.physiologicalData=data.physiological;
-        // 更新风险指标
-        this.riskPoints = [
-          {
-            title: '二聚体指数',
-            index: `D-二聚体指数：${data.riskIndicators.dDimer} mg/L`,
-            riskPoint: '血栓风险',
-            suggestions: data.riskIndicators.dDimerSuggestions
-          },
-          {
-            title: '营养评分',
-            index: `营养量表评分：${data.riskIndicators.nutritionScore}`,
-            riskPoint: '营养风险',
-            suggestions: data.riskIndicators.nutritionSuggestions
-          },
-          {
-            title: '血糖水平',
-            index: `血糖：${data.riskIndicators.bloodSugar} mmol/L`,
-            riskPoint: '血糖风险',
-            suggestions: data.riskIndicators.bloodSugarSuggestions
-          }
-        ];
+    setup() {
+      const physiologicalData = ref([
+        { title: '肺部感染' },
+        { title: '心源性损伤'},
+        { title: '肝肾功能异常'},
+        { title: '房颤'},
+        { title: '应激性溃疡'},
+        { title: '尿路感染'}
+      ])
+      
+      const riskPoints = ref([
+        {
+          title: '二聚体指数',
+          index: 0.8,
+          riskPoint: '血栓风险',
+          suggestions: [
+            '肝素类药物',
+            '肢体运动疗法',
+            '凝血功能检测',
+            '局部淋巴按摩'
+          ]
+        },
+        {
+          title: '营养评分',
+          index: 2,
+          riskPoint: '营养风险',
+          suggestions: [
+            '肠内营养',
+            '肠外营养',
+            '营养咨询'
+          ]
+        },
+        {
+          title: '血糖水平',
+          index: 9.4,
+          riskPoint: '血糖风险',
+          suggestions: [
+            '定期监测血糖',
+            '控制饮食',
+            '胰岛素药物',
+            '合理锻炼'
+          ]
+        }
+      ])
+      onMounted(() => { 
+        const id = inject('id');
+        const data = event_graph(id);
+        console.log(data);
+        physiologicalData.value = data.physiological;
+        riskPoints.value[0].index = data.riskIndicators.dDimer;
+        riskPoints.value[0].suggestions = data.riskIndicators.dDimerSuggestions;
+        riskPoints.value[1].index = data.riskIndicators.nutritionScore;
+        riskPoints.value[1].suggestions = data.riskIndicators.nutritionSuggestions;
+        riskPoints.value[2].index = data.riskIndicators.bloodSugar;
+        riskPoints.value[2].suggestions = data.riskIndicators.bloodSugarSuggestions;
       })
+      return {
+        physiologicalData,
+        riskPoints
+      }
     }
   };
   </script>
