@@ -15,7 +15,7 @@ const chartInstance = ref(null);
 
 const option = {
   title: {
-    text: `治疗与评估路径可视化`,
+    text: `评估与治疗路径可视化`,
     textStyle: {
       color: '#FFF',
       fontSize: 22
