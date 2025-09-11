@@ -11,7 +11,7 @@ export default {
     return {
       drawTiming: null,
       cdata: {
-        year: null,
+        year: 2025,
         weekCategory: [],
         maxData: 100,
         weekMaxData: [],
@@ -53,14 +53,12 @@ export default {
       this.cdata.weekCategory = [];
       this.cdata.weekMaxData = [];
       this.cdata.weekLineData = [];
-      this.cdata.maxData = Math.max(...this.currentData)
-      let dateBase = new Date();
-      this.cdata.year = dateBase.getFullYear();
+      this.cdata.maxData = parseInt(Math.max(...this.currentData))+Math.round
       // 周数据
-      for (let i = 0; i < 7; i++) {
+      for (let i = 0; i < 3; i++) {
         // 日期
         let date = new Date();
-        this.cdata.weekCategory.unshift([date.getMonth() , date.getDate()-i+7].join("/"));
+        this.cdata.weekCategory.unshift([date.getMonth() , date.getDate()-i*14+7].join("/"));
 
         // 折线图数据
         this.cdata.weekMaxData.push(this.cdata.maxData);

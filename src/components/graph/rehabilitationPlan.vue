@@ -52,7 +52,7 @@ const toggleItems = (index, show) => {
       <h2>{{ title }}</h2><span class="risk-point">风险点</span>
     </RouterLink>
     <div class="tips">
-      <strong style="color: red;">Tips：</strong>{{ tips}}
+      <strong style="color: red;">禁忌症提示：</strong>{{ tips}}
     </div>
     <div v-for="(section, index) in sections" :key="index" class="section">
       <h3>

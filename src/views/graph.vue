@@ -54,9 +54,10 @@ export default {
     
 
     
-    onMounted(() => {
+    onMounted(async() => {
       fetchPatientData();
-      const data = graph_3_fangan(id.value);
+      const data =await graph_3_fangan(id.value);
+      console.log(data);
       exprehabitate.value = data;
     });
     

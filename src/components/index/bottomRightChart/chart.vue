@@ -129,11 +129,6 @@ export default {
               fontSize: 16,
               fontWeight: 'normal'
             },
-            subtext: newData.year + '/' + newData.weekCategory[6],
-            subtextStyle: {
-              color: '#fff',
-              fontSize: 14
-            },
             top: 20,
             left: 80
           },
@@ -154,7 +149,7 @@ export default {
               color: 'rgba(255,255,255,.8)',
               fontSize: 18
             },
-            data: newData.weekCategory
+            data: ['2025-08-02', '2025-08-22', '2025-09-11']
           },
           // 下方Y轴
           yAxis: {
@@ -162,7 +157,7 @@ export default {
             nameLocation: 'end',
             nameGap: 24,
             nameTextStyle: {
-              color: 'rgba(255,255,255,.5)',
+              color: 'rgba(255,255,255,0.5)',
               fontSize: 16
             },
             max: newData.maxData,
@@ -200,7 +195,6 @@ export default {
                 width: 3
               },
               areaStyle: {
-                // 修改为通过 this 访问
                 color: this.colorList.areaBtoG
               },
               data: newData.weekLineData,
@@ -214,20 +208,13 @@ export default {
                   }
                 ],
                 precision: 0,
-                label: {
-                    fontSize: 18,
-                    formatter: '平均值: \n\n {c}'
-                  
-                },
                 lineStyle: {
-              
                     color: 'rgba(248,211,81,.7)'
-                
                 }
               },
               tooltip: {
                 position: 'top',
-                formatter: '{c} m',
+                formatter: '',
                 backgroundColor: 'rgba(28,152,232,.2)',
                 padding: 6
               }

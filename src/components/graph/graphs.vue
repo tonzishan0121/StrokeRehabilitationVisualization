@@ -1,10 +1,9 @@
 <script setup>
 import * as echarts from 'echarts';
 import { ref, onMounted } from 'vue';
-import { nodeBuilder } from '../../utils/index';
 import nodeStyle from '../../store/nodeStyle.json';
 import nodeList from '../../store/nodeContent.json';
-import { graph_3_node } from '../../common/dataSource/index';
+import { graph_3_nodes_data } from '../../common/dataSource/index';
 import { useRoute } from 'vue-router';
 
 // 存储请求返回的数据
@@ -23,9 +22,9 @@ let commonSeriesConfig = {
     fontSize: 16
   },
   force: {
-    repulsion: 120,
+    repulsion: 660,
     edgeLength: 2,
-    gravity: 0.01
+    gravity: 0
   },
   itemStyle: {
     borderColor: '#fff',
@@ -55,24 +54,50 @@ function graph_template(left, right, data) {
   };
 }
 
-function update_series_template(data){
+function update_series_template(id){
   let series_template = [];
 // 生成 3 天的图表系列配置
   for (let i = 1; i <= 3; i++) {
-    const left1Index = (i - 1) * 35;
+    const left1Index = (i - 1) * 33;
     const right1Index = 100 - (left1Index + 15);
     const left2Index = left1Index + 15;
     const right2Index = 100 - (left2Index + 15);
-    // 调用 nodeBuilder 函数生成节点和链接数据
-    const _ = nodeBuilder(data, nodeStyle, i);
     let left = {
-      links: _.assessmentLinks,
-      nodes: _.assessmentNodes
+      links: [
+        {source: '康复评估', target: 'S5Q', ...nodeStyle['links']},
+        {source: '康复评估', target: 'FOIS', ...nodeStyle['links']},
+        {source: '康复评估', target: 'BBS sitting', ...nodeStyle['links']},
+        {source: '康复评估', target: 'BBS standing', ...nodeStyle['links']},
+        {source: '康复评估', target: 'BBS sit-to-stand', ...nodeStyle['links']},
+        {source: '康复评估', target: 'RASS', ...nodeStyle['links']},
+        {source: '康复评估', target: 'MMASA', ...nodeStyle['nodes']},
+        {source: '康复评估', target: 'MRCsum', ...nodeStyle['nodes']},
+      ],
+      nodes: [
+        {name:'康复评估',x:160+640*(i-1),...nodeStyle['node100']},
+        {name:'S5Q',...nodeStyle['node001']},
+        {name:'FOIS',...nodeStyle['node001']},
+        {name:'BBS sitting',...nodeStyle['node001']},
+        {name:'BBS standing',...nodeStyle['node001']},
+        {name:'RASS',...nodeStyle['node001']},
+        {name:'MMASA',...nodeStyle['node001']},
+        {name:'MRCsum',...nodeStyle['node001']},
+        {name:'BBS sit-to-stand',...nodeStyle['node001']}
+      ]
     };
     let right = {
-      nodes: _.treatmentNodes,
-      links: _.treatmentLinks
+      nodes: [
+        {name:'康复训练', x:460+640*(i-1), ...nodeStyle['node200']}
+      ],
+      links: []
     };
+    const data = [...(new Set(graph_3_nodes_data(id+i)))];
+    console.log(data);
+    data.map((item)=>{
+      right.nodes.push({name:item, ...nodeStyle['node002']})
+      right.links.push({source:'康复训练', target:item, ...nodeStyle['links']})
+    })
+    console.log(right);
     // 将生成的图表配置添加到 series_template 数组中
     series_template.push(graph_template(`${left1Index}%`, `${right1Index}%`, left));
     series_template.push(graph_template(`${left2Index}%`, `${right2Index}%`, right));
@@ -93,8 +118,8 @@ function update_series_template(data){
 /**
  * 初始化图表
  */
-const initChart = () => {
-  let option = update_series_template(res_data.value);
+const initChart = (id) => {
+  let option = update_series_template(id);
   let chart = echarts.init(document.getElementById('chart'));
   chart.setOption(option);
 };
@@ -104,9 +129,7 @@ onMounted(() => {
   // 组件初始化时发起数据请求
   const id = useRoute().query.id;
   if (id) {
-    const res = graph_3_node(id);
-    res_data.value = res;
-    initChart();
+    initChart(id);
   }
 });
 </script>
