@@ -5,7 +5,7 @@
          "itemStyle": {
             "color": "#ea700d"
             },
-        "value":2, 
+        "value":0.1, 
         "y": 200,
         "label": {
             "position": "bottom"
@@ -17,21 +17,21 @@
         "itemStyle": {
             "color": "#ffd7d2"
             },
-        "value":6
+        "value":1
     },
     "node001":{
-        "symbolSize": 12, 
+        "symbolSize": 10, 
         "fixed": false, 
         "itemStyle": {
             "color": "#ffd7d2"
             },
-        "value": 16
+        "value": 8
     },
     "node200":{
         "symbolSize": 20, 
         "fixed": true,  
         "itemStyle": {"color": "#91CC75"},
-        "value":2, 
+        "value":0.1, 
         "y": 200,
         "label": {
             "position": "bottom"
@@ -43,18 +43,18 @@
         "itemStyle": {
             "color": "#D4E157"
             },
-        "value":6
+        "value":1
     },
     "node002":{
-        "symbolSize": 12,
+        "symbolSize": 8,
         "fixed": false,
         "itemStyle": {
             "color": "#D4E157"
             },
-        "value": 16
+        "value": 1
     },
    "links":{ 
-        "value":8,
+        "value":10,
         "lineStyle": {
             "color": "white", 
             "width": 2,

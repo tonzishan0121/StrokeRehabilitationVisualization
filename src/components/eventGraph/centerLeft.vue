@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { ref, computed, inject, onMounted } from 'vue'
+import { ref, computed, inject, onMounted, watch } from 'vue'
 
 export default {
   setup() {
@@ -135,6 +135,13 @@ export default {
         Object.assign(patient.value, patientInfo.value);
       }
     });
+    
+    // 添加监听器，当 patientInfo 变化时更新 patient 数据
+    watch(patientInfo, (newVal) => {
+      if (newVal) {
+        Object.assign(patient.value, newVal);
+      }
+    }, { immediate: true, deep: true });
     
     return {
       patient,

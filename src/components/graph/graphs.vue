@@ -23,8 +23,8 @@ let commonSeriesConfig = {
     fontSize: 16
   },
   force: {
-    repulsion: 100,
-    edgeLength: 16,
+    repulsion: 120,
+    edgeLength: 2,
     gravity: 0.01
   },
   itemStyle: {

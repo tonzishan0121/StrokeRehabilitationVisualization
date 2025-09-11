@@ -53,7 +53,7 @@ export default {
       this.cdata.weekCategory = [];
       this.cdata.weekMaxData = [];
       this.cdata.weekLineData = [];
-
+      this.cdata.maxData = Math.max(...this.currentData)
       let dateBase = new Date();
       this.cdata.year = dateBase.getFullYear();
       // 周数据

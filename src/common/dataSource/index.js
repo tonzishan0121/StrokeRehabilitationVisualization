@@ -1,3 +1,4 @@
+import { time } from 'echarts';
 import seedrandom from 'seedrandom';
 const today_9_zhibiao = (id) =>{
     return {
@@ -5,7 +6,7 @@ const today_9_zhibiao = (id) =>{
     "SBP": generate_random_number(id,1,140,180)[0],
     "ICP": generate_random_number(id,1,5,15)[0],
     "MAP": generate_random_number(id,1,90,110)[0],
-    "T": generate_random_number(id,1,35.5,37.3)[0],
+    "T": generate_random_number(id,1,36,37.3)[0],
     "RR": generate_random_number(id,1,12,24)[0],
     "SpO2": generate_random_number(id,1,94,100)[0],
     "PEEP": generate_random_number(id,1,5,12)[0],
@@ -36,122 +37,74 @@ const today_8_liangbiao = (id) => {
 
 const hours_3_zhibiao = (id) => {
     return {
-        "heartRate": generate_random_number(id, 24, 140, 180),
-        "systolicPressure": generate_random_number(id, 24, 70, 100),
-        "diastolicPressure": generate_random_number(id, 24, 60, 100)
+        "heartRate": generate_random_number(id, 24, 100, 110),
+        "systolicPressure": generate_random_number(id, 24, 90, 100),
+        "diastolicPressure": generate_random_number(id, 24, 60, 90)
     }
 }
 
 const week_8_zhibiao = (id) => { 
-    const data = generate_random_number(id, 56, 5, 60);
     return {
-    "SQ5": data.splice(0, 7),
-    "MRC": data.splice(0, 7),
-    "FOIS": data.splice(0, 7),
-    "RASS": data.splice(0, 7),
-    "MMASA": data.splice(0, 7),
-    "BBS1": data.splice(0, 7),
-    "BBS2": data.splice(0, 7),
-    "BBS3": data.splice(0, 7),
+    "SQ5": generate_random_number(id, 7, 1, 5),
+    "MRC": generate_random_number(id, 7, 0, 5),
+    "FOIS": generate_random_number(id, 7, 1, 7),
+    "RASS": generate_random_number(id, 7, -5, 4),
+    "MMASA": generate_random_number(id, 7, 0, 100),
+    "BBS1": generate_random_number(id, 7, 10, 50),
+    "BBS2": generate_random_number(id, 7, 11, 49),
+    "BBS3": generate_random_number(id, 7, 12, 48),
 }
 }
 const paibanbiao = () => {
     return [
     {
-        "therapistName": "张伟",
-        "department": "理疗科"
+        therapistName: "张伟",
+        time: `周一8:00~11:00`
+        
     },
     {
         "therapistName": "李明",
-        "department": "康复科"
-    },
-    {
-        "therapistName": "王芳",
-        "department": "作业科"
-    },
-    {
-        "therapistName": "刘洋",
-        "department": "言语科"
+        time: `周一13:00~18:00`
     },
     {
         "therapistName": "赵丽",
-        "department": "神经科"
+        time: `周二8:00~11:00`
     },
     {
         "therapistName": "陈静",
-        "department": "心理科"
+        time: `周二13:00~18:00`
     },
     {
         "therapistName": "李强",
-        "department": "针灸科"
+        time: `周三8:00~11:00`
     },
     {
         "therapistName": "张华",
-        "department": "推拿科"
+        time:'周三13:00~18:00'
     },
     {
         "therapistName": "王丽",
-        "department": "理疗科"
+        time: `周四8:00~11:00`
     },
     {
         "therapistName": "刘敏",
-        "department": "康复科"
-    },
-    {
-        "therapistName": "赵刚",
-        "department": "作业科"
-    },
-    {
-        "therapistName": "陈伟",
-        "department": "言语科"
+        time: `周四13:00~18:00`
     },
     {
         "therapistName": "张伟",
-        "department": "神经科"
+        time: `周五8:00~11:00`
     },
     {
         "therapistName": "李明",
-        "department": "心理科"
+        time: `周五13:00~18:00`
     },
     {
         "therapistName": "王芳",
-        "department": "针灸科"
+        time: `周六8:00~11:00`
     },
     {
         "therapistName": "刘洋",
-        "department": "推拿科"
-    },
-    {
-        "therapistName": "赵丽",
-        "department": "理疗科"
-    },
-    {
-        "therapistName": "陈静",
-        "department": "康复科"
-    },
-    {
-        "therapistName": "李强",
-        "department": "作业科"
-    },
-    {
-        "therapistName": "张华",
-        "department": "言语科"
-    },
-    {
-        "therapistName": "王丽",
-        "department": "神经科"
-    },
-    {
-        "therapistName": "刘敏",
-        "department": "心理科"
-    },
-    {
-        "therapistName": "赵刚",
-        "department": "针灸科"
-    },
-    {
-        "therapistName": "陈伟",
-        "department": "推拿科"
+        time: `周六13:00~18:00`
     }
     ]
 }

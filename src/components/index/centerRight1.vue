@@ -28,23 +28,20 @@ export default {
     config() {
         const fontSize = this.fontSize;
         return {
-          header: [`<span style="font-size:${fontSize}">治疗师</span>`, `<span style="font-size:${fontSize}">科室</span>`, `<span style="font-size:${fontSize}">时间</span>`],
+          header: [`<span style="font-size:${fontSize}">治疗师</span>`, `<span style="font-size:${fontSize}">排班日期</span>`],
           data: this.datas.map((item, index) => {
-            const hour = (index + 1) % 24;
-            const time = String(hour).padStart(2, '0') + ':00';
             return [
               `<span style="font-size:${fontSize}">${item.therapistName}</span>`,
-              `<span style="font-size:18px">${item.department}</span>`,
-              `<span style="font-size:${fontSize};color:${this.getRGBColorByTime(index)}">${time}</span>`
+              `<span style="font-size:${'16px'};color:${this.getRGBColorByTime(index)}">${item.time}</span>`
             ];
           }),
-          rowNum: 8, //表格行数
+          rowNum: 4, //表格行数
           headerHeight: 30,
           headerBGC: '#0f1325', //表头
           oddRowBGC: '#0f1325', //奇数行
           evenRowBGC: '#171c33', //偶数行
           index: true,
-          columnWidth: [58],
+          columnWidth: [50,100],
           align: ['center']
         };
     },
