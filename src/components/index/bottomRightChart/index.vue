@@ -53,7 +53,7 @@ export default {
       this.cdata.weekCategory = [];
       this.cdata.weekMaxData = [];
       this.cdata.weekLineData = [];
-      this.cdata.maxData = parseInt(Math.max(...this.currentData))+Math.round
+      this.cdata.maxData = parseInt(Math.max(...this.currentData))
       // 周数据
       for (let i = 0; i < 3; i++) {
         // 日期
@@ -64,6 +64,7 @@ export default {
         this.cdata.weekMaxData.push(this.cdata.maxData);
       }
       this.cdata.weekLineData = this.currentData;
+      console.log(this.cdata);
     }
   }
 };
