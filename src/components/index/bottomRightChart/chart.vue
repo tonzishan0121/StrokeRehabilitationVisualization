@@ -168,6 +168,11 @@ export default {
                 opacity: 0
               }
             },
+            axisLine: {
+              lineStyle: {
+                opacity: 0
+              }
+            },
             splitLine: {
               show: true,
               lineStyle: {

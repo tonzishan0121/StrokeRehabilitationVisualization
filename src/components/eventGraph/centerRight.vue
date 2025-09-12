@@ -101,7 +101,7 @@
         const id = inject('id');
         const data = event_graph(id);
         console.log(data);
-        physiologicalData.value = data.physiological;
+        physiologicalData.value = Array.from(new Set(data.physiological.map(item => JSON.stringify(item))), item => JSON.parse(item));
         riskPoints.value[0].index = data.riskIndicators.dDimer;
         riskPoints.value[0].suggestions = data.riskIndicators.dDimerSuggestions;
         riskPoints.value[1].index = data.riskIndicators.nutritionScore;
