@@ -2,12 +2,9 @@
 import * as echarts from 'echarts';
 import { ref, onMounted } from 'vue';
 import nodeStyle from '../../store/nodeStyle.json';
-import nodeList from '../../store/nodeContent.json';
 import { graph_3_nodes_data } from '../../common/dataSource/index';
 import { useRoute } from 'vue-router';
 
-// 存储请求返回的数据
-const res_data = ref(nodeList);
 
 // 定义图表的公共配置
 let commonSeriesConfig = { 
@@ -92,12 +89,10 @@ function update_series_template(id){
       links: []
     };
     const data = [...(new Set(graph_3_nodes_data(id+i)))];
-    console.log(data);
     data.map((item)=>{
       right.nodes.push({name:item, ...nodeStyle['node002']})
       right.links.push({source:'康复训练', target:item, ...nodeStyle['links']})
     })
-    console.log(right);
     // 将生成的图表配置添加到 series_template 数组中
     series_template.push(graph_template(`${left1Index}%`, `${right1Index}%`, left));
     series_template.push(graph_template(`${left2Index}%`, `${right2Index}%`, right));

@@ -30,13 +30,13 @@
 
 <script>
 import { today_9_zhibiao } from '../../common/dataSource';
-import { inject, ref, onMounted } from 'vue';
+import { inject, ref, } from 'vue';
 
 export default {
   setup() {
     const id = inject('id');
+    const patientInfoInject2 = inject('patient_info2');
     const patientData = today_9_zhibiao(id);
-    
     const titleItem = ref([
       {
         title: '心率 (HR):',

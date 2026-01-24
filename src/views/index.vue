@@ -1,30 +1,30 @@
 <template>
   <CommonLayout>
-  <!-- 上层 数据 -->
-  <div class="content-box">
-    <div>
+    <!-- 上层 数据 -->
+    <div class="content-box">
+      <div>
+        <dv-border-box-12>
+          <centerLeft />
+        </dv-border-box-12>
+      </div>
+      <div>
+        <centerRight2 />
+      </div>
+      <div>
+        <dv-border-box-13>
+          <centerRight1 />
+        </dv-border-box-13>
+      </div>
+    </div>
+    <!-- 下层 数据 -->
+    <div class="bottom-box">
+      <dv-border-box-13>
+        <bottomLeft />
+      </dv-border-box-13>
       <dv-border-box-12>
-        <centerLeft />
+        <bottomRight />
       </dv-border-box-12>
     </div>
-    <div>
-      <centerRight2 />
-    </div>
-    <div>
-      <dv-border-box-13>
-        <centerRight1 />
-      </dv-border-box-13>
-    </div>
-  </div>
-  <!-- 下层 数据 -->
-  <div class="bottom-box">
-    <dv-border-box-13>
-      <bottomLeft />
-    </dv-border-box-13>
-    <dv-border-box-12>
-      <bottomRight />
-    </dv-border-box-12>
-  </div>
   </CommonLayout>
 </template>
 
@@ -39,7 +39,7 @@ import bottomLeft from "../components/index/bottomLeft.vue"
 import bottomRight from "../components/index/bottomRight.vue"
 import CommonLayout from "../components/CommonLayout.vue"
 import { ref, onMounted, onBeforeUnmount, inject, provide } from 'vue';
-import { patient_info } from "../common/dataSource/index.js";
+import { patient_info, graph_3_fangan } from "../common/dataSource/index.js";
 import { useRoute } from 'vue-router';
 
 export default {
@@ -60,11 +60,12 @@ export default {
     const dateWeek = ref(null);
     const weekday = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
     const decorationColor = ['#568aea', '#000000'];
-    
+
     // 从父组件注入数据
-    
+
     const route = useRoute();
     const patientInfo = ref(null);
+    const patientInfo2 = ref(null);
     const id = ref(null);
     // 获取路由参数并请求数据
     const fetchPatientData = async () => {
@@ -74,8 +75,14 @@ export default {
         patientInfo.value = resp;
       }
     };
-    
+    const patientData2 = async () => {
+      if (id.value) {
+        const resp = await graph_3_fangan(id.value);
+        patientInfo2.value = resp;
+      }
+    };
     provide('patient_info', patientInfo);
+    provide('patient_info2', patientInfo2);
     provide('id', id);
     const timeFn = () => {
       timing.value = setInterval(() => {
@@ -96,6 +103,7 @@ export default {
         timeFn();
         cancelLoading();
         fetchPatientData();
+        patientData2();
       }
     );
     onBeforeUnmount(() => {

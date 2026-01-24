@@ -200,7 +200,6 @@ const graph_3_fangan = async (id) => {
     if (res.code == 200) {
         const results = res.data.treatment_paths.map(path => {
             const result = temp_res_data();
-            // 添加空值检查，避免空指针异常
             if (path.treatment_plan && path.treatment_plan.plan_content) {
                 result.tips = path.treatment_plan.plan_content[0] ?
                     (path.treatment_plan.plan_content[0].value ?
@@ -215,7 +214,7 @@ const graph_3_fangan = async (id) => {
                     }
                 }
             }
-            console.log(result);
+            console.log(res.data.treatment_paths[0]['vital_signs']);
             return result;
         });
         return results;

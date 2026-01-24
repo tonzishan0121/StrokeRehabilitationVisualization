@@ -64,7 +64,6 @@ export default {
         this.cdata.weekMaxData.push(this.cdata.maxData);
       }
       this.cdata.weekLineData = this.currentData;
-      console.log(this.cdata);
     }
   }
 };
