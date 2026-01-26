@@ -61,14 +61,15 @@
       flex-direction: column;
       //个人信息栏
       .info-box{
-        height: 15%;
         .info-item {
+          margin-left:30px ;
           display: flex;
-          flex-flow: row nowrap;
-          justify-content: space-around;
-          height: 65px;
+          flex-flow: row wrap;
+          justify-content: flex-start;
+          height: 70px;
+          font-size: large;
           align-items: center;
-          margin-right: 30%;
+          gap:32px
         }
       }
       .graph-box{
